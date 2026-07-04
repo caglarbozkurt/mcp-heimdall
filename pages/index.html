@@ -36,6 +36,13 @@
   .examples { margin: 12px 0 0; color: var(--muted); font-size: 13px; }
   .examples a { margin-right: 12px; cursor: pointer; }
   .toolnote { color: var(--muted); font-size: 12px; margin: 10px 0 0; }
+  pre { position: relative; background: var(--panel); border: 1px solid var(--border); border-radius: 10px; padding: 14px 16px; overflow-x: auto; font-size: 13px; line-height: 1.7; margin: 0 0 14px; }
+  pre .c { color: var(--muted); }
+  pre.prompt { white-space: pre-wrap; overflow-x: visible; color: var(--text); border-left: 2px solid var(--gold); }
+  .copybtn { position: absolute; top: 8px; right: 8px; background: var(--bg); color: var(--muted); border: 1px solid var(--border); border-radius: 6px; font: inherit; font-size: 11px; padding: 3px 9px; cursor: pointer; }
+  .copybtn:hover { color: var(--text); border-color: var(--accent); }
+  .sub { color: var(--muted); font-size: 13.5px; margin: 18px 0 8px; }
+  .note { color: var(--muted); font-size: 13px; margin-top: 14px; }
   #out { margin-top: 20px; }
   .card { background: var(--bg); border: 1px solid var(--border); border-radius: 10px; padding: 18px; }
   .summary { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
@@ -120,6 +127,27 @@
     <div id="out"></div>
   </div>
 
+  <section class="getstarted">
+    <h2>Connect it to your agent</h2>
+    <p class="lead">Prefer the CLI, or let your coding agent set it up.</p>
+    <pre data-copy><span class="c"># scan any server, or audit your whole agent config</span>
+npx mcp-heimdall firecrawl-mcp
+npx mcp-heimdall ./claude_desktop_config.json</pre>
+
+    <p class="sub">Paste this to your coding agent (Claude Code, etc.) and let it do the setup:</p>
+    <pre class="prompt" data-copy>Set up Heimdall (https://github.com/caglarbozkurt/mcp-heimdall) to vet my MCP servers before I trust them.
+
+1. Install it: run `npm i -g mcp-heimdall` (or use `npx mcp-heimdall`).
+2. Add it as a skill using the definition at skill/SKILL.md in that repo.
+3. Locate my MCP client config (e.g. claude_desktop_config.json) and run
+   `heimdall &lt;that config&gt;` to audit every server configured in it.
+4. Report anything that WARNs or FAILs with the reason, and tell me whether
+   each server is safe to keep before I let my agent use it.</pre>
+
+    <p class="note">Prefer a hard gate in CI? <code>heimdall &lt;target&gt; --policy strict --sarif</code>.
+      <a href="https://github.com/caglarbozkurt/mcp-heimdall" target="_blank" rel="noopener">Docs &amp; skill →</a></p>
+  </section>
+
   <section>
     <h2>What it checks</h2>
     <p class="lead">Every finding cites file:line or tool:name — reproducible, not an opinion.</p>
@@ -160,6 +188,17 @@
   const $ = (s) => document.querySelector(s);
   const out = $("#out"), input = $("#target"), btn = $("#go");
   const esc = (s) => String(s ?? "").replace(/[&<>]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;" }[c]));
+
+  async function copyText(text) {
+    try { await navigator.clipboard.writeText(text); return true; } catch {}
+    try { const ta = document.createElement("textarea"); ta.value = text; ta.style.position = "fixed"; ta.style.opacity = "0"; document.body.appendChild(ta); ta.focus(); ta.select(); const ok = document.execCommand("copy"); document.body.removeChild(ta); return ok; } catch { return false; }
+  }
+  document.querySelectorAll("pre[data-copy]").forEach((pre) => {
+    const text = pre.textContent;
+    const btn = document.createElement("button"); btn.type = "button"; btn.className = "copybtn"; btn.textContent = "copy";
+    btn.addEventListener("click", async () => { btn.textContent = (await copyText(text)) ? "copied ✓" : "select & copy"; setTimeout(() => (btn.textContent = "copy"), 1600); });
+    pre.appendChild(btn);
+  });
 
   const CAP_INFO = { "fs-read":["read files"], "fs-write":["write files"], "net-egress":["access the network"], "exec":["run commands"], "dynamic-eval":["evaluate code"], "secret-access":["read credentials"], "env-access":["read env vars"] };
   const REQ_INFO = { "has_repository":["have a public source repo"], "has_license":["declare a license"], "has_author":["name an author"], "no_install_scripts":["have no install scripts"], "tools_extracted":["expose readable tools"] };
