@@ -1,5 +1,5 @@
 import { spawn } from "node:child_process";
-import { mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
+import { mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join, resolve } from "node:path";
 import { scan } from "./scan.js";
@@ -229,12 +229,20 @@ interface DriveOptions {
   timeoutMs?: number;
 }
 
+/** A throwaway HOME + working directory so a server's file access can't touch the real home. */
+interface Sandbox {
+  home: string;
+  cwd: string;
+  npmCache?: string;
+}
+
 /** Spawn the server (recorder preloaded), handshake, and call each tool once. */
 function driveServer(
   plan: { command: string; args: string[] },
   recorderPath: string,
   recordPath: string,
   rootAbs: string,
+  sandbox: Sandbox,
   opts: DriveOptions,
 ): Promise<DriveResult> {
   const maxTools = opts.maxTools ?? 25;
@@ -245,10 +253,15 @@ function driveServer(
     try {
       child = spawn(plan.command, plan.args, {
         stdio: ["pipe", "pipe", "pipe"],
+        // Contain filesystem side effects: run in a throwaway cwd so relative writes stay local.
+        cwd: sandbox.cwd,
         env: {
           PATH: process.env.PATH,
-          HOME: process.env.HOME,
           SystemRoot: process.env.SystemRoot,
+          // Throwaway HOME: a server reading/writing ~ hits scratch, never the real home.
+          HOME: sandbox.home,
+          // Reuse the real npm cache so npx stays fast without exposing anything writable in ~.
+          ...(sandbox.npmCache ? { npm_config_cache: sandbox.npmCache } : {}),
           // Preload the recorder into the server (and any node children it spawns).
           NODE_OPTIONS: `--require ${recorderPath}`,
           HEIMDALL_RECORD: recordPath,
@@ -407,6 +420,10 @@ export async function validateServer(input: string, opts: ValidateOptions = {}):
   const workdir = mkdtempSync(join(tmpdir(), "mcp-audit-validate-"));
   const recorderPath = join(workdir, "recorder.cjs");
   const recordPath = join(workdir, "events.jsonl");
+  const sandboxHome = join(workdir, "home");
+  const sandboxCwd = join(workdir, "cwd");
+  mkdirSync(sandboxHome);
+  mkdirSync(sandboxCwd);
   writeFileSync(recorderPath, RECORDER_JS);
   writeFileSync(recordPath, "");
 
@@ -414,7 +431,12 @@ export async function validateServer(input: string, opts: ValidateOptions = {}):
   // Own-package root: for a spawned dir we filter reads under it; for npx (npm) the server
   // runs from an install cache elsewhere, so this won't match — the time cutoff handles that.
   const rootAbs = target.rootDir ? resolve(target.rootDir) : "";
-  const drive = await driveServer(plan, recorderPath, recordPath, rootAbs, opts);
+  const sandbox: Sandbox = {
+    home: sandboxHome,
+    cwd: sandboxCwd,
+    npmCache: process.env.HOME ? join(process.env.HOME, ".npm") : undefined,
+  };
+  const drive = await driveServer(plan, recorderPath, recordPath, rootAbs, sandbox, opts);
 
   const events = readEvents(recordPath);
   try {

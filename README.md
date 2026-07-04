@@ -144,7 +144,16 @@ heimdall validate --list servers.txt     # batch: a recall number over observed 
 - **missed** — observed but **not** flagged → a real static gap to review (or an incidental library side effect).
 
 So it's trustworthy for finding false **negatives** (static misses); it does not disprove a flag.
-⚠️ It **runs the server and calls its tools** (side effects possible) — use a disposable VM/container.
+Each server runs in a throwaway `HOME` + working directory with no inherited secrets, but it
+still **runs the server and calls its tools** (network/exec side effects) — use a disposable VM/container.
+
+**Behavioral run over 200 real packages** ([`benchmarks/validate-run.md`](benchmarks/validate-run.md)):
+46 booted, 27 exercised an observable capability. Of the capabilities servers *actually
+exercised at runtime*, the static scan had flagged **75.8%** (47/62). The misses were part
+incidental (a child process reading env, a browser server writing cache) and part genuine —
+network egress through some dependency HTTP clients, credential-file reads via CLI deps, and
+partial `dynamic-eval` detection — which is now a tracked fix-list. Honest recall, not a claim
+of perfection.
 
 ## Tested at scale
 
