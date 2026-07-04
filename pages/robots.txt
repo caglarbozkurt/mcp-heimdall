@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://caglarbozkurt.github.io/mcp-heimdall/sitemap.xml
