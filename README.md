@@ -39,7 +39,7 @@ No install, runs locally, nothing leaves your machine.
 
 ## What it checks
 
-| | |
+| Check | What it catches |
 |---|---|
 | 🧬 **Injection** | tool-poisoning across tools, resources & prompts — override, concealment, hidden chars, fake `<IMPORTANT>` tags |
 | 🔓 **Capability** | filesystem, network, shell, `eval`, and specific credential access (SSH / AWS / keychain / `.env`) |
