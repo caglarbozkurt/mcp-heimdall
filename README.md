@@ -9,7 +9,9 @@
 A security scanner for **Model Context Protocol (MCP) servers** — vet a server,
 or a whole agent config, before your agent trusts it.
 
+[![npm](https://img.shields.io/npm/v/mcp-heimdall-scan)](https://www.npmjs.com/package/mcp-heimdall-scan)
 [![CI](https://github.com/caglarbozkurt/mcp-heimdall/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/caglarbozkurt/mcp-heimdall/actions/workflows/ci.yml)
+[![downloads](https://img.shields.io/npm/dm/mcp-heimdall-scan)](https://www.npmjs.com/package/mcp-heimdall-scan)
 [![license](https://img.shields.io/github/license/caglarbozkurt/mcp-heimdall)](LICENSE)
 [![node](https://img.shields.io/badge/node-%E2%89%A518.17-3fb950)](package.json)
 [![try in your browser](https://img.shields.io/badge/try-in%20your%20browser-e3b341)](https://caglarbozkurt.github.io/mcp-heimdall)
