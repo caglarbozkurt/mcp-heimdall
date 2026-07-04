@@ -265,7 +265,7 @@ npx mcp-heimdall-scan ./claude_desktop_config.json</pre>
       '<fieldset style="border:1px solid var(--border);border-radius:8px;margin:0;padding:10px 12px"><legend style="font-size:12px;padding:0 6px">Block servers that can…</legend><div id="deny-caps" style="display:flex;flex-direction:column;gap:8px"></div></fieldset>' +
       '<fieldset style="border:1px solid var(--border);border-radius:8px;margin:0;padding:10px 12px"><legend style="font-size:12px;padding:0 6px">Only allow servers that…</legend><div id="require" style="display:flex;flex-direction:column;gap:8px"></div></fieldset>' +
     '</div>';
-  function mkChecks(id, info, cls) { $(id).innerHTML = Object.entries(info).map(([k,[l]]) => `<label style="font-size:13px;display:flex;align-items:center;gap:8px;cursor:pointer"><input type="checkbox" class="${cls}" value="${k}"><span>${l}</span> <span style="color:var(--muted);font-size:11px">${k}</span></label>`).join(""); }
+  function mkChecks(id, info, cls) { $(id).innerHTML = Object.entries(info).map(([k,[l]]) => `<label style="font-size:13px;display:flex;align-items:center;justify-content:flex-start;gap:8px;width:100%;cursor:pointer"><input type="checkbox" class="${cls}" value="${k}" style="flex:0 0 auto;margin:0"><span>${l}</span> <span style="color:var(--muted);font-size:11px">${k}</span></label>`).join(""); }
   mkChecks("#deny-caps", CAP_INFO, "deny"); mkChecks("#require", REQ_INFO, "req");
   const eqSet = (a,b) => a.length===b.length && a.every(x=>b.includes(x));
   function policyPayload() {
