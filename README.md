@@ -187,4 +187,4 @@ New detection rules are the highest-value contribution — see
 
 ## License
 
-[MIT](LICENSE) · built by [Caglar Bozkurt](https://github.com/caglarbozkurt)
+[MIT](LICENSE) · built by [Çağlar Bozkurt](https://github.com/caglarbozkurt)
