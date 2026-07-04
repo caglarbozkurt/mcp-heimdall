@@ -6,6 +6,7 @@ import { analyzeDependencies } from "../src/analyzers/dependencies.js";
 import { analyzeGates } from "../src/analyzers/gates.js";
 import { analyzeInjection } from "../src/analyzers/injection.js";
 import { analyzeProvenance } from "../src/analyzers/provenance.js";
+import { analyzeVulnerabilities } from "../src/analyzers/vulnerabilities.js";
 import { analyzeComposition, looksLikeConfig, parseConfig, RANK } from "../src/composition-core.js";
 import { extractPrompts, extractResources, extractTools, parseSurfaceDump } from "../src/extract.js";
 import { fingerprintTools, surfaceItems } from "../src/fingerprint.js";
@@ -72,7 +73,7 @@ function isGithub(input: string): boolean {
 }
 
 /** Run the standard analyzer pipeline over a resolved Target (mirrors the CLI's scan()). */
-function runPipeline(target: Target, refLabel: string, opts: ScanOptions): Report {
+async function runPipeline(target: Target, refLabel: string, opts: ScanOptions): Promise<Report> {
   if (opts.surface) {
     target.tools = opts.surface.tools;
     target.resources = opts.surface.resources;
@@ -89,6 +90,7 @@ function runPipeline(target: Target, refLabel: string, opts: ScanOptions): Repor
   analyzeDependencies(ctx);
   analyzeProvenance(ctx);
   analyzeGates(ctx, analyzeTaint(target.sourceFiles));
+  if (opts.online) await analyzeVulnerabilities(ctx); // OSV.dev is CORS-enabled → works in-browser
 
   const capabilities = [...new Set([...ctx.caps, ...ctx.depCaps])].sort();
   const surface = surfaceItems(target.tools, target.resources, target.prompts);
@@ -124,7 +126,7 @@ async function scanConfigBrowser(json: any, opts: ScanOptions): Promise<Composit
           throw new Error("only npm servers can be scanned in the browser");
         }
         const target = await resolveNpm(e.target);
-        return { name: e.name, target: e.target, report: runPipeline(target, e.target, { policy: opts.policy }) };
+        return { name: e.name, target: e.target, report: await runPipeline(target, e.target, { policy: opts.policy, online: opts.online }) };
       } catch (err) {
         return { name: e.name, target: e.target, error: err instanceof Error ? err.message : String(err) };
       }
@@ -166,7 +168,7 @@ export async function scanBrowser(input: string, opts: ScanOptions = {}): Promis
     if (looksLikeConfig(json)) return { ...(await scanConfigBrowser(json, opts)), composition: true };
     const surface = parseSurfaceDump(json);
     const target: Target = { kind: "tools", ref: "pasted", sourceFiles: [], ...surface };
-    return { ...runPipeline(target, "pasted JSON", opts), composition: false };
+    return { ...(await runPipeline(target, "pasted JSON", opts)), composition: false };
   }
 
   if (isGithub(trimmed)) {
@@ -177,5 +179,5 @@ export async function scanBrowser(input: string, opts: ScanOptions = {}): Promis
   }
 
   const target = await resolveNpm(trimmed);
-  return { ...runPipeline(target, trimmed, opts), composition: false };
+  return { ...(await runPipeline(target, trimmed, opts)), composition: false };
 }

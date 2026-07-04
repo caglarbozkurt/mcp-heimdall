@@ -35,6 +35,8 @@ Options:
   --baseline <file>  a prior --json report to diff against (detects drift / rug-pulls)
   --handshake        RUN the server(s) and use the live tools/list (highest fidelity).
                      Executes untrusted code — use only in a disposable VM/container.
+  --online           check declared dependencies against the OSV.dev CVE database.
+                     Sends only dependency names + versions (never your source).
   --json             output the report as JSON (also useful as a future baseline)
   --sarif            output SARIF 2.1.0 (for GitHub code-scanning / CI)
   --no-fail          always exit 0 (do not exit non-zero on a FAIL verdict)
@@ -51,6 +53,7 @@ async function main() {
       policy: { type: "string" },
       baseline: { type: "string" },
       handshake: { type: "boolean", default: false },
+      online: { type: "boolean", default: false },
       json: { type: "boolean", default: false },
       sarif: { type: "boolean", default: false },
       "no-fail": { type: "boolean", default: false },
@@ -63,6 +66,11 @@ async function main() {
       "⚠ --handshake runs the server(s) as untrusted code. Use only in an isolated environment.\n",
     );
   }
+  if (values.online) {
+    process.stderr.write(
+      "ℹ --online queries OSV.dev with your dependency names + versions (no source is sent).\n",
+    );
+  }
 
   if (values.help || positionals.length === 0) {
     process.stdout.write(HELP);
@@ -71,7 +79,7 @@ async function main() {
 
   // A client config → audit the whole configured set together (composition analysis).
   if (isConfig(positionals[0])) {
-    const cr = await scanConfig(positionals[0], { policy: values.policy, handshake: values.handshake });
+    const cr = await scanConfig(positionals[0], { policy: values.policy, handshake: values.handshake, online: values.online });
     process.stdout.write(values.json ? JSON.stringify(cr, null, 2) + "\n" : formatCompositionReport(cr));
     process.exit(cr.verdict === "fail" && !values["no-fail"] ? 1 : 0);
   }
@@ -89,6 +97,7 @@ async function main() {
     policy: values.policy,
     baseline: values.baseline,
     surface,
+    online: values.online,
   });
 
   if (values.sarif) {

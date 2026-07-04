@@ -180,4 +180,9 @@ export interface ScanOptions {
   surface?: { tools: ToolDef[]; resources: ToolDef[]; prompts: ToolDef[] };
   /** For scanConfig: spawn each server and use its live handshake surface. Runs untrusted code. */
   handshake?: boolean;
+  /**
+   * Check declared dependencies against the OSV.dev advisory database for known CVEs.
+   * Opt-in because it reaches the network (sends only dep names + versions, never source).
+   */
+  online?: boolean;
 }

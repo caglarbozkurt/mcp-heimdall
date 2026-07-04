@@ -43,7 +43,7 @@ const server = createServer(async (req, res) => {
     if (req.method === "POST" && req.url === "/api/scan") {
       const chunks: Buffer[] = [];
       for await (const c of req) chunks.push(c as Buffer);
-      const { target, policy } = JSON.parse(Buffer.concat(chunks).toString() || "{}");
+      const { target, policy, online } = JSON.parse(Buffer.concat(chunks).toString() || "{}");
       if (!target || typeof target !== "string") {
         return send(res, 400, JSON.stringify({ error: "Provide a 'target' string." }), "application/json");
       }
@@ -53,7 +53,7 @@ const server = createServer(async (req, res) => {
       if (policy === "default" || policy === "strict") policyArg = policy;
       else if (policy && typeof policy === "object") policyArg = sanitizePolicy(policy);
       try {
-        const report = await scan(target.trim(), { policy: policyArg as never });
+        const report = await scan(target.trim(), { policy: policyArg as never, online: online === true });
         return send(res, 200, JSON.stringify(report), "application/json");
       } catch (err) {
         const message = err instanceof Error ? err.message : String(err);

@@ -30,6 +30,7 @@ exact evidence.
 ```bash
 npx mcp-heimdall-scan firecrawl-mcp                   # scan a published server
 npx mcp-heimdall-scan ./claude_desktop_config.json    # audit your whole agent config
+npx mcp-heimdall-scan firecrawl-mcp --online          # + check its deps for known CVEs (OSV.dev)
 npx mcp-heimdall-scan ./my-server --policy strict     # gate it in CI
 ```
 
@@ -47,6 +48,7 @@ No install, runs locally, nothing leaves your machine.
 | 🔓 **Capability** | filesystem, network, shell, `eval`, and specific credential access (SSH / AWS / keychain / `.env`) |
 | 🎯 **Proven exfil paths** | data-flow that *proves* `secret → network` or `fetch → eval`, `file:line → file:line` |
 | 📦 **Provenance & deps** | install-time scripts, missing repo/license, capabilities inherited from dependencies |
+| 🛡️ **Known CVEs** *(opt-in)* | declared dependencies checked against the OSV.dev advisory DB — real CVE IDs, severity-ranked (`--online`) |
 | 🕸️ **Composition** | audits a whole config: cross-server exfiltration chains & tool-name collisions |
 | 🔁 **Drift** | fingerprints the surface — a silently changed tool description (rug-pull) is a hard fail |
 
@@ -84,6 +86,7 @@ heimdall <target> [options]
 --policy <p>       "default", "strict", or a JSON policy file
 --baseline <file>  diff against a prior --json report (drift / rug-pull detection)
 --handshake        RUN the server(s) for the live tool list (untrusted code — VM/container only)
+--online           check declared deps against OSV.dev for known CVEs (sends dep names, not source)
 --json             machine-readable report
 --sarif            SARIF 2.1.0 (GitHub code-scanning / CI)
 --no-fail          always exit 0
@@ -126,19 +129,35 @@ Also ships as a **Claude Code skill** (`skill/`) — vet a server in-conversatio
 
 ## Tested at scale
 
-Run against **1000 real MCP packages** from the npm registry (`benchmarks/`): 742 scanned,
-**~0.8% flagged**, in ~2 minutes — robust on messy real-world code. Separately, **100%
+Run against **2,500 real MCP packages** from the npm registry (`benchmarks/`): **1,726 scanned**
+in ~5 minutes, **0.7% flagged** — robust on messy real-world code. Separately, **100%
 precision / recall** on a small labeled corpus (`npm run eval`), including the Damn Vulnerable
 MCP project. Full log: [`benchmarks/field-run.md`](benchmarks/field-run.md).
 
-> A robustness + distribution run is *not* an accuracy benchmark — the 1000 servers are
+What that scan says about the ecosystem your agent trusts:
+
+| Of 1,726 real MCP servers… | share |
+|---|---|
+| can **run shell commands** | 45% |
+| make **network calls** | 67% |
+| can **`eval` code at runtime** | 9% |
+| can do **both exec + network** | 34% |
+| touch **credential files** | 5% |
+
+The 0.7% flagged were driven by install-time code execution and prompt-injection — including
+real servers with **hidden zero-width characters embedded in their tool descriptions**, the
+kind of stealth tool-poisoning a keyword scanner sails past.
+
+> A robustness + distribution run is *not* an accuracy benchmark — the 2,500 servers are
 > unlabeled. A flag means **review this**, not proven malicious.
 
 ## Security & limitations
 
 Heimdall is a **heuristic pre-flight check, not a guarantee** — a PASS isn't proof of safety.
 Deep analysis (capability, taint, provenance) is **JS/TS only**; injection is language-agnostic.
-`--handshake` **runs untrusted code** and is not a real sandbox. See
+Everything runs offline by default; `--online` is the one network call (it sends dependency
+names + versions to OSV.dev, never your source), and the CVE match is against the declared
+range, not a lockfile. `--handshake` **runs untrusted code** and is not a real sandbox. See
 [`SECURITY.md`](SECURITY.md) for the full threat model and how to report a vulnerability.
 
 ## Contributing

@@ -20,7 +20,7 @@
 <meta name="twitter:description" content="Vet an MCP server — or your whole agent config — for injection & exfiltration risks. Runs 100% in your browser, or via CLI. Open source." />
 <meta name="twitter:image" content="https://caglarbozkurt.github.io/mcp-heimdall/og.svg" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Heimdall","applicationCategory":"SecurityApplication","operatingSystem":"Node.js, browser","description":"Open-source security scanner for Model Context Protocol (MCP) servers: prompt injection, capability, taint/data-flow, provenance, multi-server composition, and rug-pull detection.","url":"https://caglarbozkurt.github.io/mcp-heimdall/","downloadUrl":"https://www.npmjs.com/package/mcp-heimdall-scan","softwareVersion":"0.1.0","license":"https://opensource.org/licenses/MIT","author":{"@type":"Person","name":"Caglar Bozkurt","url":"https://github.com/caglarbozkurt"},"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Heimdall","applicationCategory":"SecurityApplication","operatingSystem":"Node.js, browser","description":"Open-source security scanner for Model Context Protocol (MCP) servers: prompt injection, capability, taint/data-flow, provenance, multi-server composition, and rug-pull detection.","url":"https://caglarbozkurt.github.io/mcp-heimdall/","downloadUrl":"https://www.npmjs.com/package/mcp-heimdall-scan","softwareVersion":"0.2.0","license":"https://opensource.org/licenses/MIT","author":{"@type":"Person","name":"Caglar Bozkurt","url":"https://github.com/caglarbozkurt"},"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
 </script>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48' fill='none' stroke='%23e3b341' stroke-width='3' stroke-linejoin='round'%3E%3Cpath d='M24 4 L40 10 V24 C40 34 33 40.5 24 44 C15 40.5 8 34 8 24 V10 Z'/%3E%3Cpath d='M15 24 Q24 16.5 33 24 Q24 31.5 15 24 Z'/%3E%3Ccircle cx='24' cy='24' r='3.4' fill='%23e3b341' stroke='none'/%3E%3C/svg%3E" />
 <style>
@@ -93,6 +93,17 @@
   .fcard { background: var(--panel); border: 1px solid var(--border); border-radius: 12px; padding: 16px 18px; }
   .fcard h3 { font-size: 15px; margin: 0 0 6px; font-weight: 600; } .fcard p { margin: 0; color: var(--muted); font-size: 13.5px; }
   .fcard.accent { border-color: rgba(227,179,65,.5); } .fcard .k { color: var(--gold); font-size: 12px; letter-spacing: .5px; text-transform: uppercase; }
+  .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin-bottom: 22px; }
+  .stat { background: var(--panel); border: 1px solid var(--border); border-radius: 12px; padding: 16px; text-align: center; }
+  .stat b { display: block; font-size: 26px; color: var(--gold); font-weight: 700; line-height: 1.2; }
+  .stat span { color: var(--muted); font-size: 12.5px; }
+  .eco { display: flex; flex-direction: column; gap: 9px; margin-bottom: 16px; }
+  .ebar { display: grid; grid-template-columns: 190px 1fr 46px; align-items: center; gap: 12px; font-size: 13px; }
+  .ebar .el { color: var(--text); }
+  .ebar .etrack { height: 8px; background: var(--bg); border: 1px solid var(--border); border-radius: 5px; overflow: hidden; }
+  .ebar .efill { display: block; height: 100%; background: linear-gradient(90deg, var(--gold), var(--high)); }
+  .ebar .ep { color: var(--gold); font-weight: 700; text-align: right; }
+  @media (max-width: 520px) { .ebar { grid-template-columns: 116px 1fr 40px; } }
   .lore { text-align: center; margin-top: 72px; } .lore svg { width: 100%; max-width: 560px; height: auto; display: block; margin: 0 auto 10px; }
   .lore h2 { text-align: center; } .lore p { color: var(--muted); max-width: 560px; margin: 8px auto 0; font-size: 14px; }
   footer { margin-top: 56px; padding-top: 22px; border-top: 1px solid var(--border); color: var(--muted); font-size: 13px; text-align: center; }
@@ -133,6 +144,10 @@
       </select>
       <button id="go" type="submit">Scan</button>
     </form>
+    <label id="cveToggle" style="display:flex;align-items:center;gap:8px;margin-top:10px;font-size:13px;color:var(--muted);cursor:pointer">
+      <input type="checkbox" id="online" />
+      <span>Also check dependencies for known CVEs <span style="color:var(--muted);font-size:11px">— queries OSV.dev with package names + versions (not your source)</span></span>
+    </label>
     <details id="editor" class="editor" style="margin-top:12px;border:1px solid var(--border);border-radius:10px;padding:0 16px;background:var(--bg)">
       <summary style="cursor:pointer;padding:12px 0;color:var(--accent);font-size:13px">Adjust policy criteria</summary>
       <div id="polbody"></div>
@@ -178,7 +193,28 @@ npx mcp-heimdall-scan ./claude_desktop_config.json</pre>
       <div class="fcard accent"><span class="k">Composition</span><h3>The whole config</h3><p>Paste your MCP config: it finds cross-server exfiltration chains no single server shows alone.</p></div>
       <div class="fcard accent"><span class="k">Governance</span><h3>A gate you control</h3><p>Detectors emit facts; a policy you define turns them into pass / warn / fail.</p></div>
       <div class="fcard"><h3>Rug-pull drift</h3><p>Fingerprints the surface so a silently-changed tool description can be caught later.</p></div>
+      <div class="fcard"><h3>Known CVEs <span class="k">opt-in</span></h3><p>Checks declared dependencies against the OSV.dev advisory database — real CVE IDs, severity-ranked.</p></div>
     </div>
+  </section>
+
+  <section>
+    <h2>Field-tested on 2,500 real MCP servers</h2>
+    <p class="lead">The same analyzers you just ran, swept across the npm registry — to prove it's robust on messy real-world code, not just fixtures.</p>
+    <div class="stats">
+      <div class="stat"><b>2,500</b><span>servers harvested</span></div>
+      <div class="stat"><b>1,726</b><span>scanned in ~5 min</span></div>
+      <div class="stat"><b>0.7%</b><span>flagged for review</span></div>
+      <div class="stat"><b>0</b><span>crashes</span></div>
+    </div>
+    <p class="lead" style="margin-bottom:14px">What that says about the code your agent trusts — share of the 1,726 that…</p>
+    <div class="eco">
+      <div class="ebar"><span class="el">can run shell commands</span><span class="etrack"><span class="efill" style="width:45%"></span></span><span class="ep">45%</span></div>
+      <div class="ebar"><span class="el">make network calls</span><span class="etrack"><span class="efill" style="width:67%"></span></span><span class="ep">67%</span></div>
+      <div class="ebar"><span class="el">can exec <em>and</em> reach network</span><span class="etrack"><span class="efill" style="width:34%"></span></span><span class="ep">34%</span></div>
+      <div class="ebar"><span class="el">can <code>eval</code> code at runtime</span><span class="etrack"><span class="efill" style="width:9%"></span></span><span class="ep">9%</span></div>
+      <div class="ebar"><span class="el">touch credential files</span><span class="etrack"><span class="efill" style="width:5%"></span></span><span class="ep">5%</span></div>
+    </div>
+    <p class="note">The flagged 0.7% were driven by install-time code execution and prompt-injection — including real servers with <b>hidden zero-width characters embedded in their tool descriptions</b>, the kind of stealth tool-poisoning a keyword scanner sails past. Unlabeled data, so a flag means <b>review this</b>, not proven malicious. <a href="https://github.com/caglarbozkurt/mcp-heimdall/blob/main/benchmarks/field-run.md" target="_blank" rel="noopener">Full run →</a></p>
   </section>
 
   <section class="lore">
@@ -248,10 +284,11 @@ npx mcp-heimdall-scan ./claude_desktop_config.json</pre>
 
   async function run() {
     const target = input.value.trim(); if (!target) return;
+    const online = $("#online").checked;
     btn.disabled = true;
-    out.innerHTML = '<div class="card empty">Scanning… (fetching package files from jsDelivr)</div>';
+    out.innerHTML = '<div class="card empty">Scanning… (fetching package files from jsDelivr' + (online ? ', checking OSV.dev for CVEs' : '') + ')</div>';
     try {
-      const data = await Heimdall.scanBrowser(target, { policy: policyPayload() });
+      const data = await Heimdall.scanBrowser(target, { policy: policyPayload(), online });
       out.innerHTML = data.composition ? compositionCard(data) : reportCard(data);
     } catch (err) { out.innerHTML = '<div class="card"><div class="error">Scan failed:</div><div class="fev">' + esc(err.message||err) + "</div></div>"; }
     finally { btn.disabled = false; }

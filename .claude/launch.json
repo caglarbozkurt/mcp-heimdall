@@ -1,0 +1,7 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    { "name": "heimdall-pages", "runtimeExecutable": "python3", "runtimeArgs": ["-m", "http.server", "4320", "--directory", "pages"], "port": 4320 },
+    { "name": "heimdall-ui", "runtimeExecutable": "npm", "runtimeArgs": ["run", "ui"], "port": 4319 }
+  ]
+}

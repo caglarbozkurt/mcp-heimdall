@@ -6,6 +6,26 @@ All notable changes to Heimdall are documented here. This project adheres to
 
 ## [Unreleased]
 
+## [0.2.0] — 2026-07-04
+
+### Added
+
+- **Known-CVE check (`--online`)** — declared dependencies are checked against the
+  [OSV.dev](https://osv.dev) advisory database. Opt-in because it is the only analyzer that
+  reaches the network; it sends dependency names + versions (never source). Findings are
+  severity-ranked with real CVE/GHSA IDs, itemized worst-first per dependency with a rollup,
+  and flow through the policy engine like any other finding (WARN by default, FAIL under
+  `strict` or any `failOnSeverity: high` policy — never a hard gate, since a manifest range
+  is not a lockfile). Works in the CLI and the browser build (OSV.dev is CORS-enabled). New
+  policy fact `no_known_vulnerabilities`. Network failures degrade to an informational notice.
+- **CVE toggle in both web UIs** — "Also check dependencies for known CVEs" (off by default).
+
+### Changed
+
+- **Field run expanded to 2,500 real MCP packages** (`benchmarks/`): 1,726 scanned, 0.7%
+  flagged. Ecosystem snapshot: ~45% of servers can run shell, 9% can `eval`, 34% can do both
+  exec + network. README and `benchmarks/field-run.md` updated.
+
 ## [0.1.0] — 2026-07-04
 
 Initial release.

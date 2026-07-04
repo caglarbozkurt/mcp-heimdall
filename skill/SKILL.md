@@ -26,9 +26,16 @@ npx tsx src/cli.ts <npm-package | github-url | tools.json>
 
 # machine-readable
 npx tsx src/cli.ts <target> --json
+
+# also check the server's dependencies for known CVEs (queries OSV.dev over the network)
+npx tsx src/cli.ts <target> --online
 ```
 
 If installed globally / as a dependency, use `heimdall <target>` instead.
+
+Add `--online` when the user wants supply-chain coverage: it checks declared dependencies
+against the OSV.dev advisory database and reports real CVE IDs. It sends only dependency
+names + versions (never source); leave it off to stay fully offline.
 
 To analyze injection with full fidelity when tool descriptions can't be read from
 source, capture the server's `tools/list` output to a file and pass `--tools <file>`.

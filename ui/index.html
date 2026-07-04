@@ -171,6 +171,10 @@
       </select>
       <button id="go" type="submit">Scan</button>
     </form>
+    <label id="cveToggle" style="display:flex;align-items:center;gap:8px;margin-top:10px;font-size:13px;color:var(--muted);cursor:pointer">
+      <input type="checkbox" id="online" />
+      <span>Also check dependencies for known CVEs <span class="k">— queries OSV.dev with package names + versions (not your source)</span></span>
+    </label>
     <details id="editor" class="editor">
       <summary>Adjust policy criteria</summary>
       <p class="editor-intro">A policy decides <b>pass</b>, <b>warn</b>, or <b>fail</b>. Pick a preset above,
@@ -402,7 +406,7 @@ npx mcp-heimdall-scan ./claude_desktop_config.json</pre>
     btn.disabled = true;
     out.innerHTML = '<div class="card empty">Scanning ' + esc(target) + '… (npm/github targets download first)</div>';
     try {
-      const res = await fetch("/api/scan", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ target, policy: policyPayload() }) });
+      const res = await fetch("/api/scan", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ target, policy: policyPayload(), online: $("#online").checked }) });
       const data = await res.json();
       out.innerHTML = data.error ? errorCard(data.error) : reportCard(data);
     } catch (err) {

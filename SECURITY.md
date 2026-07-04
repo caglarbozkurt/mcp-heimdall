@@ -52,6 +52,14 @@ process** to read its live tool list.
   server's code; install scripts are **detected, not executed**. `--handshake` is the only
   code-execution path.
 
+### `--online` is the only network call
+
+By default Heimdall runs **fully offline** and sends nothing off your machine. `--online`
+enables the OSV.dev CVE lookup, which **transmits the target's dependency names and versions**
+(from its `package.json`) to `api.osv.dev`. It never sends your source. The match is against
+the **declared version range**, not an installed lockfile, so a hit is a strong review signal,
+not proof the installed tree is exploitable — hence it WARNs rather than hard-gating.
+
 ### What Heimdall is not
 
 It is a **pre-flight check**, not runtime protection. It does not replace sandboxing,

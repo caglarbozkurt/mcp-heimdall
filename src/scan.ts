@@ -4,6 +4,7 @@ import { analyzeDependencies } from "./analyzers/dependencies.js";
 import { analyzeGates } from "./analyzers/gates.js";
 import { analyzeInjection } from "./analyzers/injection.js";
 import { analyzeProvenance } from "./analyzers/provenance.js";
+import { analyzeVulnerabilities } from "./analyzers/vulnerabilities.js";
 import { diffSurface } from "./drift.js";
 import { extractPrompts, extractResources, extractTools } from "./extract.js";
 import { fingerprintTools, surfaceItems } from "./fingerprint.js";
@@ -36,6 +37,7 @@ export async function scan(input: string, opts: ScanOptions = {}): Promise<Repor
   analyzeDependencies(ctx);
   analyzeProvenance(ctx);
   analyzeGates(ctx, analyzeTaint(target.sourceFiles)); // taint-aware: proven flows vs co-presence
+  if (opts.online) await analyzeVulnerabilities(ctx); // opt-in OSV.dev CVE lookup (network)
 
   // Reported capabilities = proven (source) ∪ latent (dependencies). Gates used ctx.caps
   // only, so latent dep capabilities inform the profile and policy without hard-failing.

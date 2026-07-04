@@ -25,7 +25,7 @@ export async function scanConfig(input: string, opts: ScanOptions = {}): Promise
           const live = await handshake(e.command, e.args ?? []);
           if (!live.error) surface = { tools: live.tools, resources: live.resources, prompts: live.prompts };
         }
-        return { name: e.name, target: e.target, report: await scan(e.target, { policy: opts.policy, surface }) };
+        return { name: e.name, target: e.target, report: await scan(e.target, { policy: opts.policy, surface, online: opts.online }) };
       } catch (err) {
         return { name: e.name, target: e.target, error: err instanceof Error ? err.message : String(err) };
       }

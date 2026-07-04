@@ -52,6 +52,8 @@ function factSatisfied(req: string, findings: Finding[], toolCount: number): boo
       return !noManifest && absent("provenance/anonymous-publisher");
     case "no_install_scripts":
       return absent("provenance/install-script") && absent("provenance/install-script-exec");
+    case "no_known_vulnerabilities":
+      return absent("provenance/known-vulnerability");
     case "tools_extracted":
       return toolCount > 0;
     default:

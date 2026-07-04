@@ -2,7 +2,18 @@ import assert from "node:assert/strict";
 import { fileURLToPath } from "node:url";
 import { dirname, join } from "node:path";
 import { test } from "node:test";
-import { evaluateCorpus, handshake, scan, scanConfig } from "../src/index.js";
+import {
+  analyzeVulnerabilities,
+  coerceVersion,
+  evaluateCorpus,
+  handshake,
+  mapSeverity,
+  resolveDeps,
+  scan,
+  scanConfig,
+  vulnerabilityFinding,
+} from "../src/index.js";
+import type { AnalysisContext } from "../src/index.js";
 
 const fixtures = join(dirname(fileURLToPath(import.meta.url)), "..", "fixtures");
 
@@ -38,6 +49,78 @@ test("malicious server fails with gates", async () => {
     report.findings.some((f) => f.id === "injection/conceal-from-user"),
     "detects concealment instruction in poisoned tool description",
   );
+});
+
+test("CVE check: version specs coerce to a queryable version (or are skipped)", () => {
+  assert.equal(coerceVersion("^4.17.11"), "4.17.11");
+  assert.equal(coerceVersion("~1.2"), "1.2.0");
+  assert.equal(coerceVersion(">=1.0.0 <2.0.0"), "1.0.0");
+  assert.equal(coerceVersion("1.x"), "1.0.0");
+  assert.equal(coerceVersion("npm:left-pad@1.3.0"), "1.3.0");
+  // Non-registry / unresolvable specs are skipped, not guessed.
+  assert.equal(coerceVersion("*"), null);
+  assert.equal(coerceVersion("latest"), null);
+  assert.equal(coerceVersion("workspace:*"), null);
+  assert.equal(coerceVersion("git+https://github.com/a/b.git"), null);
+  assert.equal(coerceVersion("user/repo"), null);
+});
+
+test("CVE check: OSV severity maps to a Heimdall severity", () => {
+  assert.equal(mapSeverity({ database_specific: { severity: "CRITICAL" } }), "critical");
+  assert.equal(mapSeverity({ database_specific: { severity: "MODERATE" } }), "medium");
+  assert.equal(mapSeverity({ severity: [{ type: "CVSS_V3", score: "9.8" }] }), "critical");
+  assert.equal(mapSeverity({}), "medium"); // unknown → reviewable, not auto-fail
+});
+
+test("CVE check: a known vuln becomes a review anomaly by default, and FAILs under strict", () => {
+  const dep = { name: "lodash", range: "^4.17.11", version: "4.17.11" };
+  const finding = vulnerabilityFinding(dep, "GHSA-p6mc-m468-83gw", {
+    aliases: ["CVE-2020-8203"],
+    summary: "Prototype Pollution in lodash",
+    database_specific: { severity: "HIGH" },
+  });
+  assert.equal(finding.id, "provenance/known-vulnerability");
+  assert.equal(finding.severity, "high");
+  assert.ok(!finding.profile, "a known CVE is a real risk signal, not informational");
+  assert.match(finding.evidence ?? "", /CVE-2020-8203/);
+  assert.match(finding.detail, /osv\.dev/);
+});
+
+test("CVE check: resolveDeps ignores unresolvable ranges", () => {
+  const deps = resolveDeps({ dependencies: { axios: "^1.6.0", foo: "*", bar: "workspace:*" } });
+  assert.deepEqual(
+    deps.map((d) => d.name),
+    ["axios"],
+  );
+});
+
+test("CVE check: a network failure degrades to an informational finding, never a crash", async () => {
+  const realFetch = globalThis.fetch;
+  globalThis.fetch = (async () => {
+    throw new Error("offline");
+  }) as typeof fetch;
+  try {
+    const ctx: AnalysisContext = {
+      target: {
+        kind: "npm",
+        ref: "x",
+        packageJson: { dependencies: { axios: "^1.6.0" } },
+        sourceFiles: [],
+        tools: [],
+        resources: [],
+        prompts: [],
+      },
+      caps: new Set(),
+      depCaps: new Set(),
+      findings: [],
+    };
+    await analyzeVulnerabilities(ctx);
+    const f = ctx.findings.find((f) => f.id === "provenance/vuln-scan-unavailable");
+    assert.ok(f, "emits an unavailable notice");
+    assert.ok(f?.profile, "the notice is informational and never changes the verdict");
+  } finally {
+    globalThis.fetch = realFetch;
+  }
 });
 
 test("a custom policy changes the verdict on the same facts", async () => {

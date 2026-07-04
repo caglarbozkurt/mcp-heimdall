@@ -2,7 +2,11 @@
 // Output: benchmarks/targets.txt (one package name per line).
 import { writeFileSync } from "node:fs";
 
-const QUERIES = ["mcp", "mcp server", "model context protocol", "mcp-server", "mcp tools", "mcp client"];
+const QUERIES = [
+  "mcp", "mcp server", "model context protocol", "mcp-server", "mcp tools", "mcp client",
+  "mcp connector", "mcp bridge", "mcp integration", "modelcontextprotocol", "mcp api",
+  "claude mcp", "mcp agent", "mcp gateway", "mcp plugin",
+];
 const LIMIT = Number(process.argv[2] ?? 1000);
 const names = new Set();
 
@@ -10,7 +14,7 @@ const looksLikeMcp = (p) =>
   /\bmcp\b|model[-\s]?context[-\s]?protocol/i.test(`${p.name} ${(p.keywords || []).join(" ")} ${p.description || ""}`);
 
 for (const q of QUERIES) {
-  for (let from = 0; from < 1000 && names.size < LIMIT; from += 250) {
+  for (let from = 0; from < 2500 && names.size < LIMIT; from += 250) {
     const url = `https://registry.npmjs.org/-/v1/search?text=${encodeURIComponent(q)}&size=250&from=${from}`;
     let objects;
     try {

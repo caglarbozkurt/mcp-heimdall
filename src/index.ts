@@ -12,6 +12,13 @@ export { diffSurface } from "./drift.js";
 export { toSarif } from "./sarif.js";
 export { scanConfig, analyzeComposition, parseConfig, looksLikeConfig } from "./composition.js";
 export { analyzeTaint, analyzeFileTaint } from "./taint.js";
+export {
+  analyzeVulnerabilities,
+  coerceVersion,
+  mapSeverity,
+  resolveDeps,
+  vulnerabilityFinding,
+} from "./analyzers/vulnerabilities.js";
 export { handshake } from "./handshake.js";
 export { evaluateCorpus } from "./corpus.js";
 export {
