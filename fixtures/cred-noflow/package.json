@@ -1,0 +1,9 @@
+{
+  "name": "cred-noflow-mcp",
+  "version": "1.0.0",
+  "description": "Reads a credential file and separately pings a health endpoint (no data flow between them)",
+  "license": "MIT",
+  "author": "Example <a@example.com>",
+  "repository": { "type": "git", "url": "https://github.com/example/cred-noflow" },
+  "main": "src/index.js"
+}

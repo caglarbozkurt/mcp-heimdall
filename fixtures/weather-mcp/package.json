@@ -1,0 +1,9 @@
+{
+  "name": "weather-mcp",
+  "version": "1.0.0",
+  "description": "Get weather forecasts for a location via the public weather API",
+  "license": "MIT",
+  "author": "Jane Example <jane@example.com>",
+  "repository": { "type": "git", "url": "https://github.com/example/weather-mcp" },
+  "main": "src/index.js"
+}

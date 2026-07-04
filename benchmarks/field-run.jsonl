@@ -1,0 +1,1000 @@
+{"target":"@playwright/mcp","verdict":"pass","score":0,"toolCount":0,"capabilities":["net-egress"],"gates":[]}
+{"target":"@upstash/context7-mcp","verdict":"warn","score":25,"toolCount":3,"capabilities":["env-access","fs-read","net-egress"],"gates":[]}
+{"target":"mcp-handler","verdict":"warn","score":22,"toolCount":1,"capabilities":["env-access","exec","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"@storybook/mcp","verdict":"pass","score":0,"toolCount":0,"capabilities":["net-egress"],"gates":[]}
+{"target":"@hono/mcp","verdict":"pass","score":0,"toolCount":0,"capabilities":[],"gates":[]}
+{"target":"@supabase/mcp-utils","verdict":"pass","score":0,"toolCount":0,"capabilities":[],"gates":[]}
+{"target":"@langchain/mcp-adapters","verdict":"pass","score":0,"toolCount":0,"capabilities":["dotenv-access","env-access","exec","fs-write","net-egress"],"gates":[]}
+{"target":"@mcp-ui/client","verdict":"pass","score":0,"toolCount":0,"capabilities":["dynamic-eval","fs-write"],"gates":[]}
+{"target":"mcp-proxy","verdict":"warn","score":22,"toolCount":1,"capabilities":["dynamic-eval","env-access","exec","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"@mcp-ui/server","verdict":"pass","score":0,"toolCount":0,"capabilities":["dynamic-eval","fs-write"],"gates":[]}
+{"target":"chrome-devtools-mcp","verdict":"warn","score":75,"toolCount":124,"capabilities":["dynamic-eval","env-access","exec","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"n8n-nodes-mcp","verdict":"warn","score":9,"toolCount":26,"capabilities":["env-access"],"gates":[]}
+{"target":"@ui5/mcp-server","verdict":"warn","score":22,"toolCount":10,"capabilities":["env-access","exec","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"@mcp-use/inspector","verdict":"warn","score":22,"toolCount":1,"capabilities":["env-access","exec","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"mcp-searxng","verdict":"warn","score":44,"toolCount":7,"capabilities":["env-access","fs-read","net-egress","secret-access"],"gates":[]}
+{"target":"@azure/mcp","verdict":"warn","score":9,"toolCount":0,"capabilities":["env-access","exec"],"gates":[]}
+{"target":"@expo/mcp-tunnel","verdict":"pass","score":0,"toolCount":0,"capabilities":[],"gates":[]}
+{"target":"@sap-ux/fiori-mcp-server","verdict":"warn","score":44,"toolCount":0,"capabilities":["dynamic-eval","exec","fs-read","net-egress"],"gates":[]}
+{"target":"@notionhq/notion-mcp-server","verdict":"warn","score":22,"toolCount":14,"capabilities":["dynamic-eval","env-access","exec","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"@ai-sdk/mcp","verdict":"pass","score":0,"toolCount":6,"capabilities":["env-access","exec"],"gates":[]}
+{"target":"@mobilenext/mobile-mcp","verdict":"warn","score":25,"toolCount":51,"capabilities":["env-access","exec","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"@eslint/mcp","verdict":"pass","score":3,"toolCount":1,"capabilities":[],"gates":[]}
+{"target":"@traceloop/instrumentation-mcp","verdict":"pass","score":0,"toolCount":0,"capabilities":[],"gates":[]}
+{"target":"@currents/mcp","verdict":"warn","score":9,"toolCount":38,"capabilities":["env-access","net-egress"],"gates":[]}
+{"target":"@penpot/mcp","verdict":"warn","score":44,"toolCount":0,"capabilities":["dynamic-eval","env-access","exec","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"argocd-mcp","error":"mcp-audit: ENOENT: no such file or directory, scandir '/var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-CV9wdE'"}
+{"target":"hostinger-api-mcp","verdict":"pass","score":0,"toolCount":0,"capabilities":["dotenv-access","env-access","exec","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"add-mcp","error":"mcp-audit: Command failed: npm pack add-mcp --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-dB5Axy"}
+{"target":"@modelcontextprotocol/ext-apps","verdict":"pass","score":0,"toolCount":4,"capabilities":[],"gates":[]}
+{"target":"@shortcut/mcp","error":"mcp-audit: Command failed: npm pack @shortcut/mcp --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-Fc0IZE"}
+{"target":"@apify/actors-mcp-server","error":"mcp-audit: Command failed: npm pack @apify/actors-mcp-server --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-n"}
+{"target":"n8n-mcp","verdict":"warn","score":44,"toolCount":32,"capabilities":["dotenv-access","dynamic-eval","env-access","exec","fs-read","net-egress"],"gates":[]}
+{"target":"@aikidosec/mcp","verdict":"warn","score":44,"toolCount":2,"capabilities":["env-access","exec","fs-read","fs-write","net-egress","secret-access"],"gates":[]}
+{"target":"@azure-devops/mcp","verdict":"warn","score":31,"toolCount":0,"capabilities":["env-access","exec","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"agentation-mcp","verdict":"warn","score":22,"toolCount":9,"capabilities":["env-access","exec","fs-read","net-egress"],"gates":[]}
+{"target":"resend-mcp","verdict":"warn","score":34,"toolCount":85,"capabilities":["dotenv-access","env-access","fs-read","net-egress"],"gates":[]}
+{"target":"@salesforce/mcp","verdict":"pass","score":0,"toolCount":0,"capabilities":["env-access","exec","fs-read"],"gates":[]}
+{"target":"@ag-ui/mcp-apps-middleware","verdict":"pass","score":0,"toolCount":0,"capabilities":[],"gates":[]}
+{"target":"@browsermcp/mcp","verdict":"pass","score":0,"toolCount":2,"capabilities":["exec","net-egress"],"gates":[]}
+{"target":"@clerk/mcp-tools","verdict":"warn","score":22,"toolCount":0,"capabilities":["env-access","exec","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"tavily-mcp","verdict":"pass","score":0,"toolCount":5,"capabilities":["dotenv-access","env-access","net-egress"],"gates":[]}
+{"target":"@rekog/mcp-nest","verdict":"pass","score":0,"toolCount":11,"capabilities":["env-access"],"gates":[]}
+{"target":"@agentmemory/mcp","verdict":"pass","score":0,"toolCount":0,"capabilities":[],"gates":[]}
+{"target":"mcp-framework","verdict":"warn","score":22,"toolCount":3,"capabilities":["dotenv-access","env-access","exec","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"mcp-evals","verdict":"pass","score":0,"toolCount":0,"capabilities":["dotenv-access","env-access","fs-read"],"gates":[]}
+{"target":"hlims-mcp","verdict":"pass","score":0,"toolCount":0,"capabilities":["env-access"],"gates":[]}
+{"target":"@transcend-io/mcp-server-assessment","verdict":"pass","score":0,"toolCount":14,"capabilities":[],"gates":[]}
+{"target":"@transcend-io/mcp-server-admin","verdict":"pass","score":0,"toolCount":8,"capabilities":[],"gates":[]}
+{"target":"@payloadcms/plugin-mcp","verdict":"pass","score":0,"toolCount":32,"capabilities":["dynamic-eval","env-access","exec","fs-read","fs-write"],"gates":[]}
+{"target":"@theia/ai-mcp","verdict":"pass","score":0,"toolCount":1,"capabilities":["env-access","net-egress"],"gates":[]}
+{"target":"@browserstack/mcp-server","error":"mcp-audit: Command failed: npm pack @browserstack/mcp-server --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-n"}
+{"target":"next-devtools-mcp","error":"mcp-audit: Command failed: npm pack next-devtools-mcp --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-BleM"}
+{"target":"@larksuiteoapi/lark-mcp","error":"mcp-audit: Command failed: npm pack @larksuiteoapi/lark-mcp --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-np"}
+{"target":"@transcend-io/mcp-server-dsr","verdict":"pass","score":0,"toolCount":12,"capabilities":[],"gates":[]}
+{"target":"openapi-mcp-generator","verdict":"warn","score":22,"toolCount":0,"capabilities":["dotenv-access","dynamic-eval","env-access","exec","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"expo-mcp","error":"mcp-audit: Command failed: npm pack expo-mcp --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-gyYm3Q"}
+{"target":"mcp-hello-world","error":"mcp-audit: Command failed: npm pack mcp-hello-world --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-ZVUKdP"}
+{"target":"@vercel/mcp-adapter","error":"mcp-audit: Command failed: npm pack @vercel/mcp-adapter --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-0H"}
+{"target":"@mastergo/magic-mcp","error":"mcp-audit: Command failed: npm pack @mastergo/magic-mcp --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-18"}
+{"target":"@zereight/mcp-gitlab","verdict":"warn","score":22,"toolCount":215,"capabilities":["env-access","exec","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"@sentry/mcp-server","verdict":"warn","score":22,"toolCount":6,"capabilities":["dotenv-access","env-access","exec","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"@smartbear/mcp","verdict":"warn","score":22,"toolCount":30,"capabilities":["env-access","exec","fs-read","net-egress"],"gates":[]}
+{"target":"@transcend-io/mcp","verdict":"pass","score":0,"toolCount":0,"capabilities":["env-access"],"gates":[]}
+{"target":"@transcend-io/mcp-server-consent","verdict":"pass","score":0,"toolCount":14,"capabilities":[],"gates":[]}
+{"target":"@pandacss/mcp","verdict":"pass","score":0,"toolCount":12,"capabilities":["fs-read","fs-write"],"gates":[]}
+{"target":"@gongrzhe/server-gmail-autoauth-mcp","verdict":"warn","score":22,"toolCount":27,"capabilities":["env-access","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"@hubspot/mcp-server","verdict":"warn","score":9,"toolCount":22,"capabilities":["dotenv-access","env-access","net-egress"],"gates":[]}
+{"target":"@metorial/mcp-sdk-utils","verdict":"pass","score":0,"toolCount":0,"capabilities":[],"gates":[]}
+{"target":"@sveltejs/mcp","verdict":"pass","score":0,"toolCount":0,"capabilities":["fs-read"],"gates":[]}
+{"target":"mcp-server-kubernetes","verdict":"pass","score":0,"toolCount":33,"capabilities":["env-access","exec","fs-write","net-egress"],"gates":[]}
+{"target":"fastmcp","verdict":"warn","score":22,"toolCount":4,"capabilities":["env-access","exec","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"@mcp-use/cli","verdict":"warn","score":22,"toolCount":1,"capabilities":["dotenv-access","env-access","exec","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"@modelcontextprotocol/server-filesystem","verdict":"pass","score":0,"toolCount":14,"capabilities":["fs-read","fs-write"],"gates":[]}
+{"target":"mcp-auth","verdict":"pass","score":0,"toolCount":0,"capabilities":["net-egress"],"gates":[]}
+{"target":"mcp-use","verdict":"warn","score":22,"toolCount":18,"capabilities":["env-access","exec","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"@alchemy/mcp-server","error":"mcp-audit: Command failed: npm pack @alchemy/mcp-server --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-fU"}
+{"target":"@automattic/mcp-wordpress-remote","error":"mcp-audit: Command failed: npm pack @automattic/mcp-wordpress-remote --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp"}
+{"target":"@growthbook/mcp","error":"mcp-audit: ENOENT: no such file or directory, scandir '/var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-kNFkGX'"}
+{"target":"pi-mcp-adapter","error":"mcp-audit: ENOENT: no such file or directory, scandir '/var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-hGQllk'"}
+{"target":"@heroku/mcp-server","error":"mcp-audit: Command failed: npm pack @heroku/mcp-server --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-1g7"}
+{"target":"@knip/mcp","error":"mcp-audit: Command failed: npm pack @knip/mcp --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-QtPBd7"}
+{"target":"@midscene/mcp","error":"mcp-audit: Command failed: npm pack @midscene/mcp --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-sd6gjL"}
+{"target":"@siemens/element-mcp","error":"mcp-audit: Command failed: npm pack @siemens/element-mcp --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-O"}
+{"target":"@translated/lara-mcp","error":"mcp-audit: Command failed: npm pack @translated/lara-mcp --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-O"}
+{"target":"@drawio/mcp","verdict":"warn","score":44,"toolCount":4,"capabilities":["dynamic-eval","env-access","exec","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"@circleci/mcp-server-circleci","error":"mcp-audit: Command failed: npm pack @circleci/mcp-server-circleci --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-au"}
+{"target":"kubernetes-mcp-server","verdict":"pass","score":0,"toolCount":0,"capabilities":["exec"],"gates":[]}
+{"target":"@stripe/mcp","verdict":"pass","score":0,"toolCount":0,"capabilities":["env-access"],"gates":[]}
+{"target":"fetcher-mcp","verdict":"warn","score":9,"toolCount":4,"capabilities":["exec","net-egress"],"gates":[]}
+{"target":"workers-mcp","verdict":"pass","score":0,"toolCount":1,"capabilities":["env-access","exec","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"@brightdata/mcp","verdict":"warn","score":22,"toolCount":31,"capabilities":["dynamic-eval","env-access","net-egress"],"gates":[]}
+{"target":"@descope/mcp-express","verdict":"pass","score":0,"toolCount":2,"capabilities":["env-access","net-egress"],"gates":[]}
+{"target":"trpc-to-mcp","verdict":"pass","score":0,"toolCount":0,"capabilities":[],"gates":[]}
+{"target":"paput-mcp","verdict":"warn","score":31,"toolCount":52,"capabilities":["dotenv-access","env-access","exec","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"@cap-js/mcp-server","verdict":"warn","score":22,"toolCount":0,"capabilities":["env-access","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"@anyproto/anytype-mcp","verdict":"pass","score":0,"toolCount":13,"capabilities":["env-access","exec","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"@n8n/mcp-apps","verdict":"pass","score":0,"toolCount":0,"capabilities":["exec","fs-read"],"gates":[]}
+{"target":"@digitalocean/mcp","verdict":"pass","score":0,"toolCount":0,"capabilities":["exec"],"gates":[]}
+{"target":"@azure/mcp-linux-x64","verdict":"pass","score":0,"toolCount":0,"capabilities":["env-access","exec"],"gates":[]}
+{"target":"@modelcontextprotocol/server-everything","verdict":"warn","score":22,"toolCount":1,"capabilities":["env-access","fs-read","net-egress"],"gates":[]}
+{"target":"@benborla29/mcp-server-mysql","error":"mcp-audit: Command failed: npm pack @benborla29/mcp-server-mysql --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-aud"}
+{"target":"@posthog/mcp","verdict":"pass","score":0,"toolCount":0,"capabilities":[],"gates":[]}
+{"target":"@goke/mcp","verdict":"warn","score":22,"toolCount":1,"capabilities":["env-access","exec","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"@winor30/mcp-server-datadog","verdict":"pass","score":0,"toolCount":0,"capabilities":["env-access"],"gates":[]}
+{"target":"mcp-scraper","verdict":"warn","score":9,"toolCount":51,"capabilities":["dotenv-access","env-access","exec","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"@claude-flow/mcp","verdict":"pass","score":0,"toolCount":12,"capabilities":["exec","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"agentmail-mcp","verdict":"pass","score":0,"toolCount":0,"capabilities":["env-access"],"gates":[]}
+{"target":"@n8n/mcp-browser","error":"mcp-audit: Command failed: npm pack @n8n/mcp-browser --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-8gTV8"}
+{"target":"@kubb/plugin-mcp","error":"mcp-audit: Command failed: npm pack @kubb/plugin-mcp --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-klpca"}
+{"target":"@azure/mcp-win32-x64","error":"mcp-audit: Command failed: npm pack @azure/mcp-win32-x64 --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-M"}
+{"target":"mcp-echo-server","verdict":"pass","score":0,"toolCount":3,"capabilities":[],"gates":[]}
+{"target":"freee-mcp","verdict":"pass","score":0,"toolCount":8,"capabilities":["env-access","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"kapture-mcp","verdict":"pass","score":0,"toolCount":36,"capabilities":["env-access","exec","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"mcp-client","verdict":"pass","score":0,"toolCount":6,"capabilities":["exec"],"gates":[]}
+{"target":"@dynatrace-oss/dynatrace-mcp-server","verdict":"pass","score":0,"toolCount":0,"capabilities":[],"gates":[]}
+{"target":"@transcend-io/mcp-server-workflows","verdict":"pass","score":0,"toolCount":3,"capabilities":[],"gates":[]}
+{"target":"@firfi/huly-mcp","verdict":"pass","score":0,"toolCount":0,"capabilities":[],"gates":[]}
+{"target":"@roychri/mcp-server-asana","verdict":"warn","score":9,"toolCount":50,"capabilities":["env-access"],"gates":[]}
+{"target":"mcp-registry-spec-sdk","verdict":"pass","score":0,"toolCount":0,"capabilities":["net-egress"],"gates":[]}
+{"target":"@metorial/mcp-session","verdict":"pass","score":0,"toolCount":0,"capabilities":["exec"],"gates":[]}
+{"target":"supabase-mcp","verdict":"pass","score":0,"toolCount":9,"capabilities":["dotenv-access","env-access","net-egress"],"gates":[]}
+{"target":"@agent-infra/mcp-shared","verdict":"pass","score":0,"toolCount":0,"capabilities":[],"gates":[]}
+{"target":"@browserbasehq/mcp","verdict":"pass","score":0,"toolCount":7,"capabilities":["dotenv-access","env-access","fs-read","net-egress"],"gates":[]}
+{"target":"@kimuson/modular-mcp","verdict":"warn","score":31,"toolCount":3,"capabilities":["env-access","exec","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"@discourse/mcp","verdict":"warn","score":22,"toolCount":25,"capabilities":["exec","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"@structured-world/gitlab-mcp","verdict":"warn","score":31,"toolCount":93,"capabilities":["dotenv-access","env-access","exec","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"@github/computer-use-mcp","error":"mcp-audit: Command failed: npm pack @github/computer-use-mcp --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-n"}
+{"target":"@inkeep/agents-mcp","verdict":"warn","score":22,"toolCount":295,"capabilities":["dotenv-access","env-access","net-egress","secret-access"],"gates":[]}
+{"target":"@sellable/mcp","verdict":"warn","score":56,"toolCount":165,"capabilities":["env-access","exec","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"@google-cloud/cloud-run-mcp","error":"mcp-audit: Command failed: npm pack @google-cloud/cloud-run-mcp --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audi"}
+{"target":"@grackle-ai/mcp","error":"mcp-audit: Command failed: npm pack @grackle-ai/mcp --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-LqekhQ"}
+{"target":"excalidraw-mcp","verdict":"fail","score":80,"toolCount":12,"capabilities":["dotenv-access","env-access"],"gates":["provenance/install-script-exec"]}
+{"target":"@esaio/esa-mcp-server","error":"mcp-audit: Command failed: npm pack @esaio/esa-mcp-server --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-"}
+{"target":"hud-mcp","verdict":"warn","score":22,"toolCount":1,"capabilities":["env-access","exec","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"mcp-atlassian","verdict":"warn","score":25,"toolCount":41,"capabilities":["dotenv-access","env-access","exec","fs-read","net-egress"],"gates":[]}
+{"target":"xmcp","verdict":"warn","score":44,"toolCount":4,"capabilities":["dotenv-access","dynamic-eval","env-access","exec","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"@transcend-io/mcp-server-preferences","verdict":"pass","score":0,"toolCount":6,"capabilities":[],"gates":[]}
+{"target":"@transcend-io/mcp-server-inventory","verdict":"pass","score":0,"toolCount":10,"capabilities":[],"gates":[]}
+{"target":"@anthropic-ai/mcpb","verdict":"pass","score":0,"toolCount":1,"capabilities":["exec","fs-read","fs-write","secret-access"],"gates":[]}
+{"target":"@variflight-ai/variflight-mcp","verdict":"warn","score":9,"toolCount":18,"capabilities":["dotenv-access","env-access","net-egress"],"gates":[]}
+{"target":"gemini-mcp-tool","verdict":"pass","score":0,"toolCount":7,"capabilities":["env-access","exec","fs-read","fs-write"],"gates":[]}
+{"target":"@theia/ai-mcp-server","verdict":"pass","score":0,"toolCount":1,"capabilities":[],"gates":[]}
+{"target":"firecrawl-mcp","verdict":"warn","score":12,"toolCount":23,"capabilities":["dotenv-access","env-access","exec","fs-read","net-egress"],"gates":[]}
+{"target":"@mastra/mcp-docs-server","verdict":"warn","score":22,"toolCount":16,"capabilities":["env-access","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"@azure/mcp-darwin-arm64","verdict":"pass","score":0,"toolCount":0,"capabilities":["env-access","exec"],"gates":[]}
+{"target":"liepin-mcp","verdict":"warn","score":31,"toolCount":0,"capabilities":["env-access","exec","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"@transcend-io/mcp-server-discovery","verdict":"pass","score":0,"toolCount":4,"capabilities":[],"gates":[]}
+{"target":"@supabase/mcp-server-supabase","verdict":"pass","score":0,"toolCount":1,"capabilities":["dotenv-access","env-access","net-egress"],"gates":[]}
+{"target":"@tocharianou/mcp-server-kibana","verdict":"warn","score":25,"toolCount":16,"capabilities":["env-access","fs-read","net-egress"],"gates":[]}
+{"target":"@microsoft/powerbi-modeling-mcp","verdict":"pass","score":0,"toolCount":0,"capabilities":["env-access","exec","net-egress"],"gates":[]}
+{"target":"mcp-mermaid","error":"mcp-audit: Command failed: npm pack mcp-mermaid --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-PyzWG1"}
+{"target":"@gleanwork/mcp-config-schema","error":"mcp-audit: Command failed: npm pack @gleanwork/mcp-config-schema --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-aud"}
+{"target":"@_davideast/stitch-mcp","verdict":"warn","score":22,"toolCount":35,"capabilities":["dotenv-access","dynamic-eval","env-access","exec","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"@nestjs-mcp/server","verdict":"pass","score":0,"toolCount":0,"capabilities":[],"gates":[]}
+{"target":"@zapier/zapier-sdk-mcp","verdict":"pass","score":0,"toolCount":1,"capabilities":["fs-write"],"gates":[]}
+{"target":"@mantine/mcp-server","verdict":"pass","score":0,"toolCount":4,"capabilities":["env-access","net-egress"],"gates":[]}
+{"target":"@launchdarkly/mcp-server","verdict":"warn","score":9,"toolCount":0,"capabilities":["dotenv-access","env-access"],"gates":[]}
+{"target":"vite-plugin-mcp","verdict":"pass","score":0,"toolCount":2,"capabilities":["fs-read","fs-write"],"gates":[]}
+{"target":"@wonderwhy-er/desktop-commander","verdict":"fail","score":98,"toolCount":28,"capabilities":["dotenv-access","dynamic-eval","env-access","exec","fs-read","fs-write","net-egress"],"gates":["provenance/install-script-exec"]}
+{"target":"@netlify/mcp","verdict":"warn","score":22,"toolCount":2,"capabilities":["dotenv-access","env-access","exec","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"@zuplo/mcp","verdict":"pass","score":0,"toolCount":0,"capabilities":["env-access","net-egress"],"gates":[]}
+{"target":"slite-mcp-server","verdict":"pass","score":0,"toolCount":12,"capabilities":["dotenv-access","env-access","net-egress"],"gates":[]}
+{"target":"mcp-lite","verdict":"pass","score":0,"toolCount":13,"capabilities":[],"gates":[]}
+{"target":"@cocal/google-calendar-mcp","verdict":"warn","score":22,"toolCount":13,"capabilities":["env-access","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"@doist/todoist-mcp","verdict":"warn","score":22,"toolCount":1,"capabilities":["dotenv-access","env-access","exec","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"@theia/ai-mcp-ui","verdict":"pass","score":0,"toolCount":0,"capabilities":[],"gates":[]}
+{"target":"ios-simulator-mcp","verdict":"pass","score":0,"toolCount":28,"capabilities":["env-access","exec","fs-read","fs-write"],"gates":[]}
+{"target":"@arizeai/openinference-instrumentation-mcp","verdict":"pass","score":0,"toolCount":0,"capabilities":[],"gates":[]}
+{"target":"@superblocksteam/mcp-server","verdict":"warn","score":22,"toolCount":50,"capabilities":["env-access","fs-read","net-egress"],"gates":[]}
+{"target":"@jaypie/mcp","verdict":"warn","score":22,"toolCount":0,"capabilities":["dotenv-access","env-access","fs-read","net-egress"],"gates":[]}
+{"target":"@microsoft/github-copilot-app-modernization-mcp-server","verdict":"pass","score":0,"toolCount":0,"capabilities":["env-access","exec"],"gates":[]}
+{"target":"@enfyra/mcp-server","verdict":"warn","score":31,"toolCount":145,"capabilities":["dotenv-access","env-access","exec","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"@agentdeskai/browser-tools-mcp","verdict":"pass","score":0,"toolCount":19,"capabilities":["env-access","fs-read","net-egress"],"gates":[]}
+{"target":"@mapbox/mcp-server","verdict":"warn","score":31,"toolCount":9,"capabilities":["dotenv-access","env-access","exec","fs-read","net-egress"],"gates":[]}
+{"target":"@codefuturist/email-mcp","verdict":"warn","score":31,"toolCount":75,"capabilities":["env-access","exec","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"@google-cloud/observability-mcp","verdict":"pass","score":3,"toolCount":15,"capabilities":["dynamic-eval","env-access","exec","fs-read","fs-write"],"gates":[]}
+{"target":"@transcend-io/mcp-server-base","error":"mcp-audit: Command failed: npm pack @transcend-io/mcp-server-base --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-au"}
+{"target":"@salesforce/mcp-provider-aura-experts","error":"mcp-audit: Command failed: tar -xzf /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-xDR7ic/salesforce-mcp-provider-aura-exper"}
+{"target":"@coinbase/cds-mcp-server","error":"mcp-audit: Command failed: npm pack @coinbase/cds-mcp-server --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-n"}
+{"target":"@civic/auth-mcp","error":"mcp-audit: Command failed: npm pack @civic/auth-mcp --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-Y5lf3o"}
+{"target":"@fangjunjie/ssh-mcp-server","error":"mcp-audit: Command failed: npm pack @fangjunjie/ssh-mcp-server --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit"}
+{"target":"@taazkareem/clickup-mcp-server","verdict":"pass","score":3,"toolCount":21,"capabilities":["dotenv-access","env-access","net-egress"],"gates":[]}
+{"target":"@z_ai/mcp-server","verdict":"warn","score":22,"toolCount":8,"capabilities":["env-access","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"@mcp-s/mcp","error":"mcp-audit: Command failed: npm pack @mcp-s/mcp --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-xtGYi5"}
+{"target":"@google-cloud/gcloud-mcp","verdict":"pass","score":0,"toolCount":2,"capabilities":["dynamic-eval","env-access","exec","fs-read","fs-write"],"gates":[]}
+{"target":"@salesforce/mcp-provider-code-analyzer","verdict":"pass","score":0,"toolCount":0,"capabilities":["exec","fs-read","fs-write"],"gates":[]}
+{"target":"supergateway","verdict":"pass","score":0,"toolCount":1,"capabilities":["env-access","exec","fs-read","net-egress"],"gates":[]}
+{"target":"mcp-image","verdict":"pass","score":0,"toolCount":1,"capabilities":["env-access","fs-read","fs-write"],"gates":[]}
+{"target":"davinci-resolve-mcp","verdict":"pass","score":0,"toolCount":0,"capabilities":["env-access","exec","fs-read","fs-write"],"gates":[]}
+{"target":"@ericthered926/duckduckgo-mcp-server","verdict":"pass","score":0,"toolCount":2,"capabilities":["env-access"],"gates":[]}
+{"target":"@ragieai/mcp-server","verdict":"pass","score":0,"toolCount":0,"capabilities":["env-access","fs-read"],"gates":[]}
+{"target":"@ehrocks/fe-mcp-server","verdict":"pass","score":0,"toolCount":2,"capabilities":["env-access","net-egress"],"gates":[]}
+{"target":"@o3r/mcp","verdict":"pass","score":0,"toolCount":3,"capabilities":["env-access","fs-read"],"gates":[]}
+{"target":"@mcpmarket/mcp-auto-install","verdict":"warn","score":22,"toolCount":4,"capabilities":["env-access","exec","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"@sassoftware/sas-score-mcp-serverjs","verdict":"warn","score":22,"toolCount":2,"capabilities":["env-access","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"@instantdb/mcp","verdict":"pass","score":0,"toolCount":9,"capabilities":["dotenv-access","env-access","net-egress"],"gates":[]}
+{"target":"@anaisbetts/mcp-youtube","verdict":"pass","score":0,"toolCount":2,"capabilities":["env-access","exec","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"@primeng/mcp","verdict":"pass","score":0,"toolCount":0,"capabilities":[],"gates":[]}
+{"target":"@ivotoby/openapi-mcp-server","verdict":"pass","score":0,"toolCount":4,"capabilities":["dotenv-access","env-access","exec","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"@postman/postman-mcp-server","verdict":"warn","score":9,"toolCount":0,"capabilities":["dotenv-access","env-access","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"@onozaty/redmine-mcp-server","error":"mcp-audit: Command failed: npm pack @onozaty/redmine-mcp-server --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audi"}
+{"target":"@mzxrai/mcp-webresearch","error":"mcp-audit: Command failed: npm pack @mzxrai/mcp-webresearch --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-np"}
+{"target":"@midscene/android-mcp","error":"mcp-audit: Command failed: npm pack @midscene/android-mcp --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-"}
+{"target":"@mui/mcp","verdict":"warn","score":25,"toolCount":5,"capabilities":["dynamic-eval","env-access","exec","fs-write","net-egress"],"gates":[]}
+{"target":"@socketsecurity/mcp","error":"mcp-audit: Command failed: npm pack @socketsecurity/mcp --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-9g"}
+{"target":"@kernlang/mcp-server","error":"mcp-audit: Command failed: npm pack @kernlang/mcp-server --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-G"}
+{"target":"@mcp-b/transports","error":"mcp-audit: Command failed: npm pack @mcp-b/transports --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-yWpj"}
+{"target":"@microsoft/workiq","error":"mcp-audit: Command failed: npm pack @microsoft/workiq --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-Rcde"}
+{"target":"mcp-from-openapi","error":"mcp-audit: Command failed: npm pack mcp-from-openapi --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-VYRJB"}
+{"target":"@doitintl/doit-mcp-server","error":"mcp-audit: Command failed: npm pack @doitintl/doit-mcp-server --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-"}
+{"target":"@github/mcp-registry","error":"mcp-audit: Command failed: npm pack @github/mcp-registry --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-1"}
+{"target":"firecrawl-fastmcp","verdict":"warn","score":22,"toolCount":29,"capabilities":["env-access","exec","fs-read","net-egress"],"gates":[]}
+{"target":"@atlassian-dc-mcp/common","verdict":"pass","score":0,"toolCount":0,"capabilities":["dotenv-access","env-access","exec","fs-read","fs-write","secret-access"],"gates":[]}
+{"target":"@florentine-ai/mcp","verdict":"pass","score":0,"toolCount":2,"capabilities":["env-access","fs-write","net-egress"],"gates":[]}
+{"target":"@salesforce/mcp-provider-lwc-experts","verdict":"pass","score":0,"toolCount":0,"capabilities":["fs-read"],"gates":[]}
+{"target":"terminator-mcp-agent","verdict":"warn","score":31,"toolCount":0,"capabilities":["env-access","exec","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"@mastra/mcp-registry-registry","verdict":"warn","score":22,"toolCount":30,"capabilities":["fs-read","net-egress"],"gates":[]}
+{"target":"@siemens/ix-mcp-react","verdict":"warn","score":44,"toolCount":0,"capabilities":["dotenv-access","env-access","exec","fs-read","fs-write","net-egress","secret-access"],"gates":[]}
+{"target":"touchdesigner-mcp-server","verdict":"warn","score":22,"toolCount":4,"capabilities":["env-access","fs-read","net-egress"],"gates":[]}
+{"target":"@weapp-vite/mcp","verdict":"warn","score":22,"toolCount":35,"capabilities":["env-access","exec","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"pi-mcp-extension","verdict":"warn","score":22,"toolCount":0,"capabilities":["env-access","exec","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"@softeria/ms-365-mcp-server","verdict":"warn","score":31,"toolCount":26,"capabilities":["dotenv-access","env-access","exec","fs-read","fs-write","net-egress","secret-access"],"gates":[]}
+{"target":"mcp-graphql","verdict":"warn","score":22,"toolCount":25,"capabilities":["env-access","fs-read","net-egress"],"gates":[]}
+{"target":"mcp-server","verdict":"pass","score":0,"toolCount":4,"capabilities":["env-access","fs-read","net-egress"],"gates":[]}
+{"target":"datadog-mcp-server","verdict":"pass","score":0,"toolCount":21,"capabilities":["dotenv-access","env-access","net-egress"],"gates":[]}
+{"target":"@fanyangmeng/ghost-mcp","verdict":"pass","score":0,"toolCount":0,"capabilities":["env-access","net-egress"],"gates":[]}
+{"target":"@skanda-yutori/mcp-send-email","error":"mcp-audit: ENOENT: no such file or directory, scandir '/var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-FPRFxg'"}
+{"target":"obsidian-mcp","error":"mcp-audit: ENOENT: no such file or directory, scandir '/var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-2ELnl1'"}
+{"target":"camoufox-mcp","error":"mcp-audit: ENOENT: no such file or directory, scandir '/var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-sBZDlC'"}
+{"target":"@negokaz/excel-mcp-server","error":"mcp-audit: Command failed: npm pack @negokaz/excel-mcp-server --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-"}
+{"target":"@midscene/ios-mcp","error":"mcp-audit: Command failed: npm pack @midscene/ios-mcp --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-N5V9"}
+{"target":"@salesforce/mcp-provider-scale-products","error":"mcp-audit: Command failed: npm pack @salesforce/mcp-provider-scale-products --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000g"}
+{"target":"@mneme-ai/mcp","error":"mcp-audit: Command failed: npm pack @mneme-ai/mcp --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-YyHv8z"}
+{"target":"@midscene/web-bridge-mcp","error":"mcp-audit: Command failed: npm pack @midscene/web-bridge-mcp --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-n"}
+{"target":"@lockon0927/woocommerce-mcp","error":"mcp-audit: Command failed: npm pack @lockon0927/woocommerce-mcp --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audi"}
+{"target":"@agimon-ai/mcp-proxy","error":"mcp-audit: Command failed: npm pack @agimon-ai/mcp-proxy --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-u"}
+{"target":"polaris-mcp-server","verdict":"pass","score":0,"toolCount":3,"capabilities":["fs-read","net-egress"],"gates":[]}
+{"target":"@gitee/mcp-gitee","verdict":"pass","score":0,"toolCount":0,"capabilities":["exec"],"gates":[]}
+{"target":"serper-search-scrape-mcp-server","verdict":"pass","score":0,"toolCount":15,"capabilities":["dotenv-access","env-access","net-egress"],"gates":[]}
+{"target":"@motiffcom/motiff-mcp-server","verdict":"warn","score":22,"toolCount":0,"capabilities":["env-access","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"@mongodb-js/mcp-metrics","verdict":"pass","score":0,"toolCount":0,"capabilities":[],"gates":[]}
+{"target":"ollama-mcp","verdict":"warn","score":22,"toolCount":13,"capabilities":["env-access","fs-read","net-egress"],"gates":[]}
+{"target":"@mondaydotcomorg/atp-mcp-adapter","verdict":"pass","score":0,"toolCount":0,"capabilities":["net-egress"],"gates":[]}
+{"target":"@mcp-apps/kusto-mcp-server","verdict":"pass","score":0,"toolCount":3,"capabilities":["dotenv-access","env-access"],"gates":[]}
+{"target":"@suthio/redash-mcp","verdict":"pass","score":0,"toolCount":56,"capabilities":["dotenv-access","env-access","net-egress"],"gates":[]}
+{"target":"@primevue/mcp","verdict":"pass","score":0,"toolCount":0,"capabilities":[],"gates":[]}
+{"target":"@magicuidesign/mcp","verdict":"pass","score":0,"toolCount":8,"capabilities":["net-egress"],"gates":[]}
+{"target":"@avallon-labs/mcp","verdict":"pass","score":0,"toolCount":118,"capabilities":["env-access","net-egress"],"gates":[]}
+{"target":"time-mcp","verdict":"pass","score":0,"toolCount":6,"capabilities":[],"gates":[]}
+{"target":"mcp-client-capabilities","verdict":"pass","score":0,"toolCount":0,"capabilities":[],"gates":[]}
+{"target":"fastify-mcp-server","error":"mcp-audit: Command failed: tar -xzf /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-S73OXR/fastify-mcp-server-0.7.2.tgz -C /v"}
+{"target":"@salesforce/mcp-provider-devops","verdict":"warn","score":9,"toolCount":0,"capabilities":["exec"],"gates":[]}
+{"target":"mcp-firebird","error":"mcp-audit: Command failed: npm pack mcp-firebird --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-DQYmdI"}
+{"target":"lsp-mcp-server","error":"mcp-audit: Command failed: npm pack lsp-mcp-server --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-A8BATh"}
+{"target":"mcp-server-code-runner","error":"mcp-audit: Command failed: npm pack mcp-server-code-runner --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm"}
+{"target":"@sigmacomputing/slack-mcp-server","error":"mcp-audit: Command failed: npm pack @sigmacomputing/slack-mcp-server --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp"}
+{"target":"@salesforce/mcp-provider-dx-core","error":"mcp-audit: Command failed: npm pack @salesforce/mcp-provider-dx-core --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp"}
+{"target":"@antv/mcp-server-chart","error":"mcp-audit: Command failed: npm pack @antv/mcp-server-chart --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm"}
+{"target":"@json-render/mcp","error":"mcp-audit: Command failed: npm pack @json-render/mcp --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-b75Ij"}
+{"target":"@kubb/mcp","error":"mcp-audit: Command failed: npm pack @kubb/mcp --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-eRTrKI"}
+{"target":"@sylphlab/pdf-reader-mcp","error":"mcp-audit: Command failed: npm pack @sylphlab/pdf-reader-mcp --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-n"}
+{"target":"airweave-mcp-search","verdict":"warn","score":22,"toolCount":1,"capabilities":["dynamic-eval","env-access","fs-read","net-egress"],"gates":[]}
+{"target":"samarth-gtm-mcp","verdict":"pass","score":0,"toolCount":97,"capabilities":["dotenv-access","env-access","exec","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"howtocook-mcp","verdict":"warn","score":22,"toolCount":10,"capabilities":["env-access","fs-read","net-egress"],"gates":[]}
+{"target":"n8n-nodes-mcp-client","verdict":"pass","score":0,"toolCount":11,"capabilities":["net-egress"],"gates":[]}
+{"target":"@shinzolabs/instrumentation-mcp","verdict":"pass","score":0,"toolCount":0,"capabilities":["env-access"],"gates":[]}
+{"target":"@ag-ui/mcp-middleware","verdict":"pass","score":0,"toolCount":0,"capabilities":[],"gates":[]}
+{"target":"bitbucket-mcp","verdict":"pass","score":0,"toolCount":49,"capabilities":["env-access","fs-write","net-egress"],"gates":[]}
+{"target":"@unthread-io/mcp-server","verdict":"pass","score":0,"toolCount":1,"capabilities":[],"gates":[]}
+{"target":"testdino-mcp","verdict":"warn","score":34,"toolCount":28,"capabilities":["env-access","exec","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"@gavdi/cap-mcp","verdict":"warn","score":22,"toolCount":2,"capabilities":["env-access","exec","fs-read","net-egress"],"gates":[]}
+{"target":"@siemens/ix-mcp","verdict":"warn","score":44,"toolCount":0,"capabilities":["dotenv-access","env-access","exec","fs-read","fs-write","net-egress","secret-access"],"gates":[]}
+{"target":"firehydrant-mcp","verdict":"pass","score":0,"toolCount":6,"capabilities":["env-access","net-egress"],"gates":[]}
+{"target":"@brave/brave-search-mcp-server","verdict":"pass","score":0,"toolCount":0,"capabilities":["dotenv-access","env-access","net-egress"],"gates":[]}
+{"target":"@ama-mcp/core","verdict":"pass","score":0,"toolCount":0,"capabilities":["fs-read","fs-write"],"gates":[]}
+{"target":"@modelcontextprotocol/server-sequential-thinking","error":"mcp-audit: ENOENT: no such file or directory, scandir '/var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-FtxkNH'"}
+{"target":"@contentful/mcp-server","verdict":"pass","score":0,"toolCount":0,"capabilities":["dotenv-access","env-access","net-egress"],"gates":[]}
+{"target":"@pageindex/mcp","error":"mcp-audit: Command failed: npm pack @pageindex/mcp --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-9ewjDB"}
+{"target":"strapi-mcp","verdict":"pass","score":0,"toolCount":20,"capabilities":["dotenv-access","env-access","fs-read","net-egress"],"gates":[]}
+{"target":"@siemens/ix-mcp-angular","error":"mcp-audit: ENOENT: no such file or directory, scandir '/var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-fxbJ7z'"}
+{"target":"autotel-mcp","error":"mcp-audit: ENOENT: no such file or directory, scandir '/var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-JX3HVq'"}
+{"target":"@eggjs/mcp-client","error":"mcp-audit: Command failed: npm pack @eggjs/mcp-client --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-6NIf"}
+{"target":"malicious-mcp-server","verdict":"pass","score":3,"toolCount":10,"capabilities":["dynamic-eval"],"gates":[]}
+{"target":"@kud/mcp-datadog","error":"mcp-audit: Command failed: npm pack @kud/mcp-datadog --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-XezAH"}
+{"target":"appium-mcp","error":"mcp-audit: ENOENT: no such file or directory, scandir '/var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-Tmprtg'"}
+{"target":"agent-install","error":"mcp-audit: ENOENT: no such file or directory, scandir '/var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-iTvzkj'"}
+{"target":"jira-mcp","verdict":"pass","score":0,"toolCount":2,"capabilities":["env-access","net-egress"],"gates":[]}
+{"target":"langsmith-mcp-server","verdict":"pass","score":0,"toolCount":15,"capabilities":["env-access","net-egress"],"gates":[]}
+{"target":"@mondaydotcomorg/monday-api-mcp","verdict":"warn","score":9,"toolCount":5,"capabilities":["dotenv-access","env-access"],"gates":[]}
+{"target":"@vibe/mcp","verdict":"warn","score":22,"toolCount":9,"capabilities":["exec","fs-read","net-egress"],"gates":[]}
+{"target":"@nexus2520/bitbucket-mcp-server","verdict":"pass","score":0,"toolCount":33,"capabilities":["env-access","fs-read","net-egress"],"gates":[]}
+{"target":"@infisical/mcp","verdict":"warn","score":22,"toolCount":10,"capabilities":["env-access","fs-read","net-egress"],"gates":[]}
+{"target":"@dxos/mcp-client","verdict":"pass","score":0,"toolCount":0,"capabilities":["env-access"],"gates":[]}
+{"target":"@iobroker/mcp-server","verdict":"warn","score":22,"toolCount":28,"capabilities":["exec","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"@mintlify/mcp","verdict":"warn","score":22,"toolCount":5,"capabilities":["env-access","exec","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"@nuxtjs/mcp-toolkit","verdict":"pass","score":0,"toolCount":3,"capabilities":["env-access","exec","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"@univerjs-pro/mcp","verdict":"pass","score":0,"toolCount":0,"capabilities":[],"gates":[]}
+{"target":"@amap/amap-maps-mcp-server","verdict":"pass","score":0,"toolCount":12,"capabilities":["env-access","net-egress"],"gates":[]}
+{"target":"mcp-http-server","verdict":"pass","score":0,"toolCount":0,"capabilities":["env-access"],"gates":[]}
+{"target":"@eui/mcp","verdict":"warn","score":22,"toolCount":13,"capabilities":["env-access","exec","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"@dropthis/mcp","error":"mcp-audit: ENOENT: no such file or directory, scandir '/var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-R3augM'"}
+{"target":"@mcp-abap-adt/interfaces","error":"mcp-audit: ENOENT: no such file or directory, scandir '/var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-cTGcCD'"}
+{"target":"shadcn-ui-mcp-server","error":"mcp-audit: ENOENT: no such file or directory, scandir '/var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-jxeI3e'"}
+{"target":"gezhe-mcp-server","error":"mcp-audit: ENOENT: no such file or directory, scandir '/var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-bKmnJD'"}
+{"target":"@productbrain/mcp","error":"mcp-audit: ENOENT: no such file or directory, scandir '/var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-MFTDKG'"}
+{"target":"@mcp-b/webmcp-ts-sdk","error":"mcp-audit: ENOENT: no such file or directory, scandir '/var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-IgteP5'"}
+{"target":"@diskd-ai/email-mcp","verdict":"warn","score":31,"toolCount":75,"capabilities":["env-access","exec","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"@ada-mcp/launcher","error":"mcp-audit: Command failed: npm pack @ada-mcp/launcher --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-92Ln"}
+{"target":"@grackle-ai/mcp-stdio","error":"mcp-audit: Command failed: npm pack @grackle-ai/mcp-stdio --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-"}
+{"target":"@primer/mcp","error":"mcp-audit: Command failed: npm pack @primer/mcp --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-obuaBk"}
+{"target":"@tsmztech/mcp-server-salesforce","error":"mcp-audit: Command failed: npm pack @tsmztech/mcp-server-salesforce --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-"}
+{"target":"storybook-mcp","verdict":"warn","score":22,"toolCount":2,"capabilities":["dynamic-eval","env-access","exec","net-egress"],"gates":[]}
+{"target":"@microsoft/clarity-mcp-server","verdict":"pass","score":0,"toolCount":0,"capabilities":["env-access","net-egress"],"gates":[]}
+{"target":"@assistant-ui/mcp-docs-server","verdict":"pass","score":0,"toolCount":5,"capabilities":["dotenv-access","env-access","fs-read","fs-write","secret-access"],"gates":[]}
+{"target":"@cloudflare/mcp-server-cloudflare","verdict":"pass","score":0,"toolCount":92,"capabilities":["dotenv-access","env-access","exec","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"@greenarmor/ges-mcp-server","verdict":"warn","score":31,"toolCount":47,"capabilities":["fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"@yawlabs/mcp","verdict":"warn","score":9,"toolCount":41,"capabilities":["env-access","exec","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"@professional-wiki/mediawiki-mcp-server","verdict":"warn","score":31,"toolCount":47,"capabilities":["env-access","exec","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"drawio-mcp-server","verdict":"warn","score":44,"toolCount":0,"capabilities":["env-access","exec","fs-read","fs-write","net-egress","secret-access"],"gates":[]}
+{"target":"@tiberriver256/mcp-server-azure-devops","verdict":"warn","score":22,"toolCount":57,"capabilities":["dotenv-access","env-access","exec","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"@yoryoboy/bi-mcp","verdict":"warn","score":31,"toolCount":138,"capabilities":["dotenv-access","env-access","fs-read","net-egress"],"gates":[]}
+{"target":"@mseep/linear-mcp","verdict":"pass","score":0,"toolCount":7,"capabilities":["dotenv-access","env-access"],"gates":[]}
+{"target":"notebooklm-mcp","verdict":"pass","score":0,"toolCount":30,"capabilities":["dotenv-access","env-access","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"playwright-mcp-advanced","verdict":"warn","score":44,"toolCount":32,"capabilities":["dynamic-eval","env-access","exec","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"@odgrim/mcp-datetime","verdict":"pass","score":0,"toolCount":6,"capabilities":["env-access"],"gates":[]}
+{"target":"@aifinpay/mcp","error":"mcp-audit: Command failed: npm pack @aifinpay/mcp --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-Owvu7O"}
+{"target":"screenpipe-mcp","verdict":"pass","score":0,"toolCount":34,"capabilities":["env-access","exec","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"@a-bonus/google-docs-mcp","verdict":"warn","score":31,"toolCount":118,"capabilities":["env-access","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"zion-mcp","error":"scan failed"}
+{"target":"vite-plugin-vue-mcp","error":"mcp-audit: Command failed: npm pack vite-plugin-vue-mcp --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-Ue"}
+{"target":"github-mcp","error":"mcp-audit: Command failed: npm pack github-mcp --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-L0uLoW"}
+{"target":"@pmxt/mcp","error":"mcp-audit: Command failed: npm pack @pmxt/mcp --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-xUwVTb"}
+{"target":"momen-mcp","error":"scan failed"}
+{"target":"@caffeineai/mcp","error":"mcp-audit: Command failed: npm pack @caffeineai/mcp --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-vY0ZES"}
+{"target":"@dokploy/mcp","verdict":"pass","score":0,"toolCount":524,"capabilities":["env-access","net-egress"],"gates":[]}
+{"target":"@suekou/mcp-notion-server","verdict":"warn","score":9,"toolCount":45,"capabilities":["env-access","fs-read","net-egress"],"gates":[]}
+{"target":"@smartytalent/mcp-tools","verdict":"pass","score":0,"toolCount":0,"capabilities":[],"gates":[]}
+{"target":"@supabase/mcp-server-postgrest","verdict":"pass","score":0,"toolCount":1,"capabilities":["net-egress"],"gates":[]}
+{"target":"@chakra-ui/react-mcp","verdict":"warn","score":9,"toolCount":54,"capabilities":["env-access","exec","net-egress"],"gates":[]}
+{"target":"cursor-talk-to-figma-mcp","verdict":"pass","score":0,"toolCount":40,"capabilities":[],"gates":[]}
+{"target":"@xeroapi/xero-mcp-server","verdict":"pass","score":0,"toolCount":0,"capabilities":["dotenv-access","env-access","fs-read","net-egress"],"gates":[]}
+{"target":"@appium/mcp-documentation","verdict":"pass","score":0,"toolCount":2,"capabilities":["dynamic-eval","env-access","fs-read","fs-write"],"gates":[]}
+{"target":"@letoribo/mcp-graphql-enhanced","verdict":"warn","score":22,"toolCount":0,"capabilities":["env-access","fs-read","net-egress"],"gates":[]}
+{"target":"gangtise-mcp","verdict":"pass","score":0,"toolCount":80,"capabilities":["env-access","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"@nookplot/mcp","verdict":"warn","score":43,"toolCount":493,"capabilities":["env-access","exec","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"@aputime/mcp","verdict":"pass","score":0,"toolCount":0,"capabilities":["dynamic-eval","exec"],"gates":[]}
+{"target":"@karakeep/mcp","verdict":"warn","score":22,"toolCount":11,"capabilities":["dynamic-eval","env-access","exec","net-egress"],"gates":[]}
+{"target":"@umbraco-cms/mcp-server-sdk","verdict":"warn","score":22,"toolCount":0,"capabilities":["dotenv-access","env-access","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"lighthouse-mcp","verdict":"pass","score":0,"toolCount":2,"capabilities":["env-access","net-egress"],"gates":[]}
+{"target":"@silkweave/mcp","verdict":"warn","score":22,"toolCount":0,"capabilities":["fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"todoist-mcp","error":"mcp-audit: Command failed: tar -xzf /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-y04oaq/todoist-mcp-1.3.4.tgz -C /var/fold"}
+{"target":"@toolprint/hypertool-mcp","verdict":"warn","score":12,"toolCount":42,"capabilities":["env-access","exec","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"fsolar-mcp","verdict":"pass","score":0,"toolCount":34,"capabilities":["dotenv-access","env-access","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"@cloudflare/playwright-mcp","verdict":"pass","score":0,"toolCount":30,"capabilities":["env-access","exec","net-egress"],"gates":[]}
+{"target":"mcp-deepwiki","verdict":"pass","score":0,"toolCount":2,"capabilities":["net-egress"],"gates":[]}
+{"target":"@tsed/cli-mcp","verdict":"pass","score":0,"toolCount":0,"capabilities":["dynamic-eval","env-access"],"gates":[]}
+{"target":"@kernlang/mcp","verdict":"warn","score":22,"toolCount":0,"capabilities":["env-access","exec","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"iobroker.mcp","verdict":"warn","score":22,"toolCount":28,"capabilities":["exec","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"axiom-mcp","error":"mcp-audit: Command failed: npm pack axiom-mcp --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-eOokeH"}
+{"target":"@qase/mcp-server","error":"mcp-audit: Command failed: npm pack @qase/mcp-server --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-7iMby"}
+{"target":"@cgize/mcp-think-tool","error":"mcp-audit: Command failed: npm pack @cgize/mcp-think-tool --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-"}
+{"target":"trvl-mcp","verdict":"warn","score":9,"toolCount":0,"capabilities":["exec","fs-write","net-egress"],"gates":[]}
+{"target":"rn-debug-mcp","verdict":"warn","score":22,"toolCount":22,"capabilities":["env-access","exec","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"tg2ai-mcp","verdict":"pass","score":0,"toolCount":1,"capabilities":["exec","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"storybook-mcp-server","verdict":"warn","score":22,"toolCount":6,"capabilities":["env-access","exec","fs-read","net-egress"],"gates":[]}
+{"target":"mcp-gsheets","verdict":"warn","score":9,"toolCount":55,"capabilities":["dotenv-access","dynamic-eval","env-access","exec","fs-read","fs-write","secret-access"],"gates":[]}
+{"target":"@eggjs/mcp-proxy","verdict":"pass","score":0,"toolCount":0,"capabilities":["net-egress"],"gates":[]}
+{"target":"@ampless/mcp-server","verdict":"warn","score":9,"toolCount":16,"capabilities":[],"gates":[]}
+{"target":"mcp-local-rag","verdict":"pass","score":0,"toolCount":7,"capabilities":["env-access","fs-read","fs-write"],"gates":[]}
+{"target":"@salesforce/b2c-dx-mcp","verdict":"warn","score":22,"toolCount":48,"capabilities":["env-access","exec","fs-read","net-egress"],"gates":[]}
+{"target":"slack-mcp-server","verdict":"pass","score":0,"toolCount":0,"capabilities":["env-access","exec"],"gates":[]}
+{"target":"@microsoft/powerbi-modeling-mcp-win32-x64","verdict":"pass","score":0,"toolCount":0,"capabilities":["env-access","exec"],"gates":[]}
+{"target":"@atlassian-dc-mcp/jira","verdict":"pass","score":0,"toolCount":9,"capabilities":["dotenv-access","env-access","fs-write","net-egress"],"gates":[]}
+{"target":"@aleph-alpha/lib-mcp","verdict":"pass","score":0,"toolCount":5,"capabilities":["dynamic-eval","exec","fs-read","fs-write"],"gates":[]}
+{"target":"mcp-bitbucket-server","verdict":"warn","score":12,"toolCount":17,"capabilities":["dotenv-access","env-access","net-egress"],"gates":[]}
+{"target":"@wdio/mcp","verdict":"warn","score":9,"toolCount":51,"capabilities":["env-access","exec","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"@21st-dev/magic","error":"mcp-audit: ENOENT: no such file or directory, scandir '/var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-SRQ8OS'"}
+{"target":"@fuul/mcp-server","verdict":"warn","score":22,"toolCount":10,"capabilities":["dotenv-access","env-access","exec","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"@runpod/mcp-server","verdict":"warn","score":9,"toolCount":50,"capabilities":["env-access","exec","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"obsidian-mcp-server","verdict":"warn","score":9,"toolCount":17,"capabilities":["env-access","exec","net-egress"],"gates":[]}
+{"target":"backlog-mcp-server","error":"mcp-audit: ENOENT: no such file or directory, scandir '/var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-Vvqwd3'"}
+{"target":"@piotr-agier/google-drive-mcp","verdict":"pass","score":0,"toolCount":104,"capabilities":["env-access","exec","fs-read","fs-write","secret-access"],"gates":[]}
+{"target":"mcp-deepseek","error":"mcp-audit: Command failed: npm pack mcp-deepseek --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-d3r4CN"}
+{"target":"@shopify/dev-mcp","error":"mcp-audit: Command failed: npm pack @shopify/dev-mcp --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-qQLcg"}
+{"target":"@chkp/mcp-utils","error":"mcp-audit: Command failed: npm pack @chkp/mcp-utils --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-jZRQSE"}
+{"target":"@armature-tech/mcp-analytics","verdict":"pass","score":0,"toolCount":0,"capabilities":["env-access","exec","net-egress"],"gates":[]}
+{"target":"@mcpcentral/mcp-time","verdict":"pass","score":0,"toolCount":6,"capabilities":["net-egress"],"gates":[]}
+{"target":"@shiplightai/mcp","verdict":"pass","score":0,"toolCount":0,"capabilities":["dotenv-access","net-egress"],"gates":[]}
+{"target":"@regle/mcp-server","verdict":"pass","score":0,"toolCount":0,"capabilities":[],"gates":[]}
+{"target":"@ama-mcp/otter","verdict":"pass","score":0,"toolCount":1,"capabilities":["fs-read","fs-write"],"gates":[]}
+{"target":"@phantom/mcp-server","verdict":"pass","score":0,"toolCount":0,"capabilities":["env-access","exec","fs-read","fs-write"],"gates":[]}
+{"target":"@codacy/codacy-mcp","verdict":"warn","score":22,"toolCount":0,"capabilities":["env-access","exec","fs-read","net-egress"],"gates":[]}
+{"target":"replicate-mcp","verdict":"warn","score":31,"toolCount":38,"capabilities":["env-access"],"gates":[]}
+{"target":"@atlassian/mcp-compressor","verdict":"warn","score":22,"toolCount":0,"capabilities":["env-access","exec","fs-read","net-egress"],"gates":[]}
+{"target":"@workday/canvas-kit-mcp","verdict":"pass","score":0,"toolCount":4,"capabilities":["fs-read"],"gates":[]}
+{"target":"square-mcp-server","verdict":"pass","score":3,"toolCount":5,"capabilities":["dotenv-access","env-access","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"@univerjs-pro/sheets-mcp","verdict":"pass","score":0,"toolCount":0,"capabilities":[],"gates":[]}
+{"target":"mcp-omnisearch","verdict":"warn","score":9,"toolCount":6,"capabilities":["env-access","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"@eggjs/tegg-mcp-client","verdict":"pass","score":0,"toolCount":0,"capabilities":[],"gates":[]}
+{"target":"@google/jules-mcp","verdict":"warn","score":9,"toolCount":10,"capabilities":["env-access","fs-read","fs-write"],"gates":[]}
+{"target":"@monocle.sh/instrumentation-mcp","verdict":"pass","score":0,"toolCount":0,"capabilities":[],"gates":[]}
+{"target":"@nexus2520/jira-mcp-server","verdict":"pass","score":0,"toolCount":6,"capabilities":["env-access","fs-read","net-egress"],"gates":[]}
+{"target":"ag-mcp","verdict":"warn","score":22,"toolCount":16,"capabilities":["fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"@xyd-js/mcp-server","verdict":"pass","score":0,"toolCount":1,"capabilities":["env-access"],"gates":[]}
+{"target":"@mgsoftwarebv/mcp-server-bridge","error":"mcp-audit: Command failed: tar -xzf /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-3gAtNg/mgsoftwarebv-mcp-server-bridge-3.5"}
+{"target":"@figcodessolucoes/gmcps","error":"mcp-audit: Command failed: npm pack @figcodessolucoes/gmcps --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-np"}
+{"target":"gitlab-mcp","error":"mcp-audit: Command failed: npm pack gitlab-mcp --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-OkKV4z"}
+{"target":"@yawlabs/mcp-compliance","error":"mcp-audit: Command failed: npm pack @yawlabs/mcp-compliance --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-np"}
+{"target":"@otskit/mcp","error":"mcp-audit: Command failed: npm pack @otskit/mcp --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-DNuJOu"}
+{"target":"coda-mcp","error":"mcp-audit: Command failed: npm pack coda-mcp --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-tO4VfT"}
+{"target":"@uniformdev/uniform-mcp","error":"scan failed"}
+{"target":"mcp-tanstack-start","verdict":"pass","score":0,"toolCount":1,"capabilities":[],"gates":[]}
+{"target":"@transloadit/mcp-server","verdict":"warn","score":22,"toolCount":8,"capabilities":["env-access","fs-read","net-egress"],"gates":[]}
+{"target":"codex-mcp-server","verdict":"pass","score":0,"toolCount":0,"capabilities":["env-access","exec","fs-write"],"gates":[]}
+{"target":"@primeuix/mcp","verdict":"pass","score":0,"toolCount":46,"capabilities":[],"gates":[]}
+{"target":"@myspec/mcp-server","verdict":"warn","score":44,"toolCount":11,"capabilities":["dotenv-access","env-access","exec","fs-read","fs-write","net-egress","secret-access"],"gates":[]}
+{"target":"docusaurus-plugin-mcp-server","verdict":"pass","score":0,"toolCount":2,"capabilities":["fs-read","net-egress"],"gates":[]}
+{"target":"@jrmc/adonis-mcp","verdict":"pass","score":0,"toolCount":0,"capabilities":["env-access","fs-read"],"gates":[]}
+{"target":"@aws/run-mcp-servers-with-aws-lambda","verdict":"pass","score":0,"toolCount":0,"capabilities":["env-access","net-egress"],"gates":[]}
+{"target":"brilliant-directories-mcp","verdict":"warn","score":22,"toolCount":0,"capabilities":["env-access","exec","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"flora-mcp","verdict":"warn","score":9,"toolCount":14,"capabilities":["env-access","exec","fs-read","net-egress"],"gates":[]}
+{"target":"@angiejones/mcp-selenium","verdict":"warn","score":9,"toolCount":18,"capabilities":["env-access","exec","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"@salesforce/mcp-provider-mobile-web","verdict":"pass","score":0,"toolCount":0,"capabilities":["exec","fs-read","fs-write"],"gates":[]}
+{"target":"prometheus-mcp","verdict":"pass","score":0,"toolCount":10,"capabilities":["dotenv-access","env-access","net-egress"],"gates":[]}
+{"target":"playwright-mcp-server","verdict":"pass","score":0,"toolCount":3,"capabilities":["env-access","exec","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"vel-mcp","verdict":"pass","score":0,"toolCount":0,"capabilities":["env-access","exec","fs-read","fs-write"],"gates":[]}
+{"target":"@lottiefiles/creator-mcp","verdict":"pass","score":0,"toolCount":0,"capabilities":["env-access","net-egress"],"gates":[]}
+{"target":"@agent-vm/mcp-portal","error":"mcp-audit: Command failed: npm pack @agent-vm/mcp-portal --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-M"}
+{"target":"@ada-mcp/mcp-server","error":"mcp-audit: Command failed: npm pack @ada-mcp/mcp-server --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-2Y"}
+{"target":"@univerjs-pro/mcp-ui","error":"mcp-audit: ENOENT: no such file or directory, scandir '/var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-L1Wito'"}
+{"target":"helios9-mcp-server","verdict":"warn","score":22,"toolCount":123,"capabilities":["dotenv-access","env-access","fs-read","net-egress"],"gates":[]}
+{"target":"@atlassian-dc-mcp/confluence","verdict":"warn","score":9,"toolCount":5,"capabilities":["dotenv-access","env-access","fs-write","net-egress"],"gates":[]}
+{"target":"@sgoettschkes/nirvana-mcp","verdict":"warn","score":22,"toolCount":17,"capabilities":["env-access","fs-read","net-egress"],"gates":[]}
+{"target":"@google-cloud/storage-mcp","verdict":"pass","score":0,"toolCount":25,"capabilities":["dynamic-eval","env-access","exec","fs-read","fs-write"],"gates":[]}
+{"target":"@onyxsecurity/mcp-gateway","verdict":"warn","score":22,"toolCount":0,"capabilities":["dotenv-access","env-access","exec","fs-read","fs-write","net-egress","secret-access"],"gates":[]}
+{"target":"@fluttersdk/mcp","error":"mcp-audit: Command failed: npm pack @fluttersdk/mcp --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-0i1Nfd"}
+{"target":"kusto-mcp","verdict":"pass","score":0,"toolCount":8,"capabilities":["env-access","fs-read","fs-write"],"gates":[]}
+{"target":"apisix-mcp","verdict":"pass","score":0,"toolCount":32,"capabilities":["env-access","net-egress"],"gates":[]}
+{"target":"agenthub-multiagent-mcp","verdict":"warn","score":53,"toolCount":146,"capabilities":["env-access","exec","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"@line/line-bot-mcp-server","verdict":"pass","score":0,"toolCount":12,"capabilities":["env-access","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"@floriscornel/teams-mcp","verdict":"warn","score":22,"toolCount":58,"capabilities":["env-access","exec","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"@snokam/mcp-cvpartner","verdict":"pass","score":0,"toolCount":42,"capabilities":["env-access","net-egress"],"gates":[]}
+{"target":"@mongodb-js/mcp-types","verdict":"pass","score":0,"toolCount":0,"capabilities":["secret-access"],"gates":[]}
+{"target":"@pdpp/mcp-server","verdict":"warn","score":9,"toolCount":9,"capabilities":["env-access","exec","net-egress"],"gates":[]}
+{"target":"@anip-dev/mcp","verdict":"pass","score":0,"toolCount":0,"capabilities":[],"gates":[]}
+{"target":"@snokam/mcp-salesforce","verdict":"pass","score":0,"toolCount":18,"capabilities":["env-access","net-egress"],"gates":[]}
+{"target":"@barivia/barsom-mcp","verdict":"warn","score":22,"toolCount":0,"capabilities":["env-access","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"@telora/mcp-products","verdict":"warn","score":31,"toolCount":65,"capabilities":["env-access","exec","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"create-mcp-use-app","verdict":"warn","score":22,"toolCount":6,"capabilities":["dotenv-access","env-access","exec","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"@salesforce/mcp-provider-metadata-enrichment","verdict":"pass","score":0,"toolCount":0,"capabilities":["exec"],"gates":[]}
+{"target":"terraform-mcp-server","error":"mcp-audit: ENOENT: no such file or directory, scandir '/var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-TegcoF'"}
+{"target":"deepseek-thinker-mcp","verdict":"pass","score":0,"toolCount":1,"capabilities":[],"gates":[]}
+{"target":"nuxt-mcp-dev","verdict":"pass","score":0,"toolCount":5,"capabilities":[],"gates":[]}
+{"target":"@heroui/react-mcp","error":"mcp-audit: Command failed: npm pack @heroui/react-mcp --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-GWUy"}
+{"target":"mcp-ripgrep","error":"mcp-audit: ENOENT: no such file or directory, scandir '/var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-LpbHCh'"}
+{"target":"@isaacphi/mcp-gdrive","error":"mcp-audit: Command failed: npm pack @isaacphi/mcp-gdrive --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-H"}
+{"target":"@trycourier/courier-mcp","error":"mcp-audit: Command failed: npm pack @trycourier/courier-mcp --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-np"}
+{"target":"@hiveai/mcp","error":"mcp-audit: Command failed: npm pack @hiveai/mcp --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-IBq7KQ"}
+{"target":"@jira-deploy/mcp","error":"mcp-audit: Command failed: npm pack @jira-deploy/mcp --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-4tIeQ"}
+{"target":"@confluentinc/mcp-confluent","error":"mcp-audit: Command failed: npm pack @confluentinc/mcp-confluent --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audi"}
+{"target":"@ama-mcp/angular","error":"mcp-audit: Command failed: npm pack @ama-mcp/angular --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-mKNgI"}
+{"target":"dingtalk-mcp","verdict":"warn","score":22,"toolCount":1,"capabilities":["dotenv-access","env-access","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"@bharathvaj/whois-mcp","verdict":"pass","score":0,"toolCount":9,"capabilities":[],"gates":[]}
+{"target":"stitch-mcp","verdict":"pass","score":0,"toolCount":2,"capabilities":["env-access","exec","fs-write","net-egress"],"gates":[]}
+{"target":"mysql-mcp","verdict":"pass","score":0,"toolCount":2,"capabilities":["dotenv-access","env-access"],"gates":[]}
+{"target":"twelvelabs-mcp","verdict":"warn","score":31,"toolCount":25,"capabilities":["dotenv-access","env-access","exec","fs-read","net-egress"],"gates":[]}
+{"target":"@agimon-ai/log-sink-mcp","verdict":"pass","score":0,"toolCount":0,"capabilities":["env-access","exec","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"@j0hanz/fetch-url-mcp","verdict":"pass","score":0,"toolCount":0,"capabilities":["exec","fs-read","net-egress"],"gates":[]}
+{"target":"@agimon-ai/video-editor-mcp","verdict":"warn","score":44,"toolCount":0,"capabilities":["env-access","exec","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"@codelytv/mcp-client","verdict":"pass","score":0,"toolCount":0,"capabilities":[],"gates":[]}
+{"target":"@aiwerk/openclaw-mcp-bridge","verdict":"pass","score":0,"toolCount":2,"capabilities":["fs-read"],"gates":[]}
+{"target":"mcp-code-graph","verdict":"warn","score":9,"toolCount":8,"capabilities":["dotenv-access","env-access","net-egress"],"gates":[]}
+{"target":"@mapbox/mcp-devkit-server","verdict":"warn","score":31,"toolCount":25,"capabilities":["dotenv-access","env-access","fs-read","net-egress"],"gates":[]}
+{"target":"@socialneuron/mcp-server","verdict":"warn","score":44,"toolCount":105,"capabilities":["env-access","exec","fs-read","fs-write","net-egress","secret-access"],"gates":[]}
+{"target":"atlas-vision-mcp","verdict":"warn","score":22,"toolCount":0,"capabilities":["dotenv-access","env-access","exec","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"@ironbee-ai/devtools","verdict":"warn","score":53,"toolCount":29,"capabilities":["dynamic-eval","env-access","exec","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"@extentos/mcp-server","error":"mcp-audit: Command failed: npm pack @extentos/mcp-server --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-K"}
+{"target":"@ama-sdk/mcp","error":"mcp-audit: Command failed: npm pack @ama-sdk/mcp --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-mzbEXk"}
+{"target":"@leval/mcp-grafana","verdict":"warn","score":22,"toolCount":56,"capabilities":["dotenv-access","env-access","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"@getmarrow/mcp","error":"mcp-audit: Command failed: npm pack @getmarrow/mcp --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-h6e40t"}
+{"target":"@rokealvo/jira-mcp","error":"mcp-audit: Command failed: npm pack @rokealvo/jira-mcp --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-txQ"}
+{"target":"terminal-pilot-mcp","error":"mcp-audit: Command failed: npm pack terminal-pilot-mcp --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-Frj"}
+{"target":"@azure/mcp-win32-arm64","error":"mcp-audit: ENOENT: no such file or directory, scandir '/var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-siVbru'"}
+{"target":"@edgescaleai/cube-mcp","error":"mcp-audit: Command failed: npm pack @edgescaleai/cube-mcp --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-"}
+{"target":"vercel-mcp","error":"mcp-audit: Command failed: npm pack vercel-mcp --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-qM0P0S"}
+{"target":"fast-context-mcp","error":"mcp-audit: Command failed: npm pack fast-context-mcp --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-HN1cN"}
+{"target":"astro-mcp","verdict":"pass","score":0,"toolCount":13,"capabilities":["net-egress"],"gates":[]}
+{"target":"mcp-server-madeonsol","verdict":"warn","score":31,"toolCount":153,"capabilities":["env-access","net-egress"],"gates":[]}
+{"target":"@atrib/mcp-wrap","verdict":"pass","score":0,"toolCount":0,"capabilities":["env-access","exec","fs-read","fs-write","secret-access"],"gates":[]}
+{"target":"@chamba/mcp","verdict":"pass","score":0,"toolCount":0,"capabilities":["env-access","exec","fs-read","fs-write"],"gates":[]}
+{"target":"@react-aria/mcp","verdict":"warn","score":22,"toolCount":3,"capabilities":["env-access","fs-read","net-egress"],"gates":[]}
+{"target":"@voltagent/mcp-server","verdict":"pass","score":0,"toolCount":0,"capabilities":["net-egress"],"gates":[]}
+{"target":"@youdotcom-oss/mcp","verdict":"pass","score":0,"toolCount":0,"capabilities":["env-access"],"gates":[]}
+{"target":"@commercetools/nimbus-mcp","verdict":"pass","score":0,"toolCount":6,"capabilities":["exec","fs-read"],"gates":[]}
+{"target":"@agimon-ai/workflow-mcp","verdict":"pass","score":0,"toolCount":0,"capabilities":["dotenv-access","env-access","exec","fs-read","fs-write"],"gates":[]}
+{"target":"ue-mcp","verdict":"warn","score":22,"toolCount":17,"capabilities":["env-access","exec","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"@airtable/mcp-cli","verdict":"pass","score":0,"toolCount":0,"capabilities":["dynamic-eval","env-access","exec","fs-read","fs-write"],"gates":[]}
+{"target":"ts-language-mcp","verdict":"pass","score":0,"toolCount":26,"capabilities":["exec","fs-read"],"gates":[]}
+{"target":"@sinch/mcp","error":"mcp-audit: Command failed: npm pack @sinch/mcp --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-VL37Eh"}
+{"target":"@llui/mcp","verdict":"warn","score":53,"toolCount":70,"capabilities":["dynamic-eval","env-access","exec","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"worldbank-mcp","error":"mcp-audit: ENOENT: no such file or directory, scandir '/var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-K9xeXD'"}
+{"target":"@agent-infra/mcp-server-browser","error":"mcp-audit: Command failed: npm pack @agent-infra/mcp-server-browser --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-"}
+{"target":"@t2000/mcp","verdict":"pass","score":0,"toolCount":0,"capabilities":[],"gates":[]}
+{"target":"@fanduzi/deltascope-mcp","verdict":"pass","score":0,"toolCount":0,"capabilities":["env-access","exec","fs-read","fs-write"],"gates":[]}
+{"target":"skybridge","verdict":"warn","score":22,"toolCount":7,"capabilities":["env-access","exec","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"@agentsgang/azure-devops-mcp","verdict":"warn","score":9,"toolCount":0,"capabilities":["env-access","exec","net-egress"],"gates":[]}
+{"target":"@remixhq/mcp","verdict":"warn","score":9,"toolCount":74,"capabilities":["env-access","exec","fs-read"],"gates":[]}
+{"target":"rosetta-mcp-server","verdict":"warn","score":22,"toolCount":57,"capabilities":["env-access","exec","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"rabbitmq-mcp","verdict":"warn","score":22,"toolCount":123,"capabilities":["env-access","fs-read","net-egress"],"gates":[]}
+{"target":"mcp-playwright","verdict":"warn","score":22,"toolCount":30,"capabilities":["env-access","exec","fs-read","net-egress"],"gates":[]}
+{"target":"kubeview-mcp","verdict":"warn","score":88,"toolCount":77,"capabilities":["dynamic-eval","env-access","exec","fs-read","fs-write","net-egress","secret-access"],"gates":[]}
+{"target":"@pinkpixel/taskflow-mcp","verdict":"pass","score":3,"toolCount":24,"capabilities":["env-access","fs-read","fs-write"],"gates":[]}
+{"target":"@kernlang/review-mcp","verdict":"fail","score":100,"toolCount":61,"capabilities":["dynamic-eval","env-access","exec","fs-read","fs-write","net-egress","secret-access"],"gates":["injection/instruction-override"]}
+{"target":"@ttoss/http-server-mcp","verdict":"pass","score":0,"toolCount":3,"capabilities":["env-access","net-egress"],"gates":[]}
+{"target":"js-reverse-mcp","verdict":"warn","score":31,"toolCount":24,"capabilities":["env-access","exec","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"@seed-design/docs-mcp","verdict":"pass","score":0,"toolCount":13,"capabilities":["net-egress"],"gates":[]}
+{"target":"@delorenj/mcp-server-trello","verdict":"warn","score":22,"toolCount":40,"capabilities":["dynamic-eval","env-access","exec","fs-write","net-egress"],"gates":[]}
+{"target":"@skyramp/mcp","verdict":"warn","score":44,"toolCount":8,"capabilities":["env-access","exec","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"@kintone/mcp-server","verdict":"warn","score":22,"toolCount":0,"capabilities":["env-access","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"@hypequery/mcp","verdict":"pass","score":0,"toolCount":6,"capabilities":[],"gates":[]}
+{"target":"@vizejs/musea-mcp-server","verdict":"warn","score":9,"toolCount":21,"capabilities":["env-access","fs-read"],"gates":[]}
+{"target":"@atlassian-dc-mcp/bitbucket","verdict":"pass","score":3,"toolCount":21,"capabilities":["dotenv-access","env-access","fs-write","net-egress"],"gates":[]}
+{"target":"jenkins-mcp","verdict":"warn","score":22,"toolCount":24,"capabilities":["env-access","fs-read","net-egress"],"gates":[]}
+{"target":"mcp-fetch-server","verdict":"warn","score":22,"toolCount":7,"capabilities":["dynamic-eval","env-access","exec","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"mcp-figma","verdict":"pass","score":0,"toolCount":18,"capabilities":["fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"mssql-mcp","verdict":"pass","score":0,"toolCount":14,"capabilities":["dotenv-access","env-access","net-egress"],"gates":[]}
+{"target":"@shinzolabs/gmail-mcp","error":"mcp-audit: Command failed: npm pack @shinzolabs/gmail-mcp --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-"}
+{"target":"aws-s3-mcp","verdict":"pass","score":0,"toolCount":0,"capabilities":["dotenv-access","env-access","secret-access"],"gates":[]}
+{"target":"@air/mcp","error":"mcp-audit: Command failed: npm pack @air/mcp --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-JSLHao"}
+{"target":"cclsp","verdict":"pass","score":0,"toolCount":29,"capabilities":["env-access","exec","fs-read","fs-write"],"gates":[]}
+{"target":"roblox-mcp-difz","verdict":"warn","score":31,"toolCount":160,"capabilities":["env-access","exec","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"mcp-confluence-data-center","error":"mcp-audit: Command failed: npm pack mcp-confluence-data-center --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit"}
+{"target":"@wrtnlabs/calculator-mcp","verdict":"warn","score":22,"toolCount":6,"capabilities":["dynamic-eval","env-access","exec","net-egress"],"gates":[]}
+{"target":"@kordra/mcp","verdict":"warn","score":34,"toolCount":80,"capabilities":["env-access","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"@contorium/mcp","verdict":"warn","score":22,"toolCount":98,"capabilities":["env-access","exec","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"diffler-mcp","verdict":"pass","score":0,"toolCount":0,"capabilities":["env-access","fs-read"],"gates":[]}
+{"target":"temba-mcp","verdict":"pass","score":0,"toolCount":1,"capabilities":["fs-write","net-egress"],"gates":[]}
+{"target":"mcp-scripts","verdict":"pass","score":0,"toolCount":0,"capabilities":["exec","fs-read","fs-write"],"gates":[]}
+{"target":"@wundr.io/mcp-registry","verdict":"pass","score":0,"toolCount":0,"capabilities":[],"gates":[]}
+{"target":"@agimon-ai/imagine-mcp","verdict":"warn","score":22,"toolCount":1,"capabilities":["env-access","fs-read","net-egress"],"gates":[]}
+{"target":"dodopayments-mcp","verdict":"warn","score":9,"toolCount":47,"capabilities":["dotenv-access","env-access","exec","fs-read","net-egress"],"gates":[]}
+{"target":"@tosspayments/integration-guide-mcp","verdict":"warn","score":22,"toolCount":6,"capabilities":["exec","fs-read","net-egress"],"gates":[]}
+{"target":"@bunas/fs-mcp","verdict":"pass","score":0,"toolCount":0,"capabilities":["env-access","fs-read"],"gates":[]}
+{"target":"gitnexus","verdict":"warn","score":65,"toolCount":91,"capabilities":["env-access","exec","fs-read","fs-write","net-egress","secret-access"],"gates":[]}
+{"target":"@thirdstrandstudio/mcp-figma","verdict":"pass","score":0,"toolCount":31,"capabilities":["env-access","net-egress"],"gates":[]}
+{"target":"@microsoft/m365agentstoolkit-mcp","verdict":"pass","score":0,"toolCount":7,"capabilities":["net-egress"],"gates":[]}
+{"target":"@ohah/react-native-mcp-server","verdict":"warn","score":53,"toolCount":44,"capabilities":["dynamic-eval","env-access","exec","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"@vheins/local-memory-mcp","verdict":"warn","score":34,"toolCount":41,"capabilities":["env-access","exec","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"coalesce-mcp","verdict":"warn","score":44,"toolCount":7,"capabilities":["env-access","exec","fs-read","net-egress","secret-access"],"gates":[]}
+{"target":"@skillsmith/mcp-server","verdict":"warn","score":44,"toolCount":154,"capabilities":["env-access","exec","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"@qingflow-tech/qingflow-app-builder-mcp","verdict":"warn","score":9,"toolCount":0,"capabilities":["env-access","exec","fs-read","fs-write"],"gates":[]}
+{"target":"@henkey/postgres-mcp-server","error":"mcp-audit: ENOENT: no such file or directory, scandir '/var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-jWTJ0H'"}
+{"target":"@arizeai/phoenix-mcp","error":"mcp-audit: Command failed: npm pack @arizeai/phoenix-mcp --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-0"}
+{"target":"@vibeframe/mcp-server","verdict":"pass","score":0,"toolCount":0,"capabilities":["net-egress"],"gates":[]}
+{"target":"@codegraphy-dev/mcp","error":"mcp-audit: Command failed: npm pack @codegraphy-dev/mcp --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-6m"}
+{"target":"openchrome-mcp","verdict":"warn","score":53,"toolCount":135,"capabilities":["dotenv-access","dynamic-eval","env-access","exec","fs-read","fs-write","net-egress","secret-access"],"gates":[]}
+{"target":"agent-twitter-client-mcp","verdict":"pass","score":0,"toolCount":14,"capabilities":["dotenv-access","env-access","net-egress"],"gates":[]}
+{"target":"perplexity-mcp","verdict":"pass","score":0,"toolCount":3,"capabilities":["dotenv-access","env-access","fs-read","net-egress"],"gates":[]}
+{"target":"@qingflow-tech/qingflow-app-user-mcp","error":"mcp-audit: Command failed: npm pack @qingflow-tech/qingflow-app-user-mcp --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T"}
+{"target":"rhombus-node-mcp","error":"mcp-audit: Command failed: npm pack rhombus-node-mcp --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-tGku1"}
+{"target":"mcp-test-client","error":"mcp-audit: Command failed: npm pack mcp-test-client --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-YMJRgh"}
+{"target":"mcp-server-docker","verdict":"pass","score":0,"toolCount":1,"capabilities":["dotenv-access","env-access","exec"],"gates":[]}
+{"target":"mcp-server-sqlite-npx","verdict":"pass","score":0,"toolCount":10,"capabilities":[],"gates":[]}
+{"target":"mcp-discord","verdict":"pass","score":0,"toolCount":22,"capabilities":["dotenv-access","env-access","net-egress"],"gates":[]}
+{"target":"mssql-mcp-node","verdict":"pass","score":0,"toolCount":12,"capabilities":["dotenv-access","env-access","exec"],"gates":[]}
+{"target":"@mokei/mcp-sqlite","verdict":"pass","score":0,"toolCount":0,"capabilities":[],"gates":[]}
+{"target":"@aithos/mcp","verdict":"pass","score":0,"toolCount":0,"capabilities":["env-access","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"@memberjunction/ai-mcp-client","verdict":"pass","score":0,"toolCount":0,"capabilities":["env-access","net-egress"],"gates":[]}
+{"target":"@walletchan/mcp","verdict":"warn","score":22,"toolCount":66,"capabilities":["env-access","exec","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"codebase-memory-mcp","verdict":"warn","score":31,"toolCount":0,"capabilities":["exec","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"@happyvertical/smrt-app-mcp","verdict":"pass","score":0,"toolCount":0,"capabilities":[],"gates":[]}
+{"target":"@cyanheads/mcp-ts-core","verdict":"warn","score":22,"toolCount":9,"capabilities":["dotenv-access","env-access","exec","fs-read","fs-write","net-egress","secret-access"],"gates":[]}
+{"target":"@ganintegrity/mcp","verdict":"pass","score":0,"toolCount":0,"capabilities":[],"gates":[]}
+{"target":"@unified-product-graph/mcp-server","verdict":"warn","score":34,"toolCount":181,"capabilities":["env-access","exec","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"botrun-mcp-rust-pdf","verdict":"warn","score":9,"toolCount":0,"capabilities":["env-access","exec"],"gates":[]}
+{"target":"@bridge_gpt/mcp-server","verdict":"warn","score":31,"toolCount":78,"capabilities":["env-access","exec","fs-read","fs-write","net-egress","secret-access"],"gates":[]}
+{"target":"@easbot/mcp","verdict":"warn","score":22,"toolCount":0,"capabilities":["env-access","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"@convertcom/mcp-server","verdict":"warn","score":31,"toolCount":133,"capabilities":["dotenv-access","env-access","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"@vapi-ai/mcp-server","verdict":"pass","score":0,"toolCount":17,"capabilities":["dotenv-access","env-access"],"gates":[]}
+{"target":"smart-web-mcp","verdict":"warn","score":9,"toolCount":5,"capabilities":["env-access","exec","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"atabey-mcp","verdict":"warn","score":22,"toolCount":77,"capabilities":["dotenv-access","env-access","exec","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"install-mcp","error":"mcp-audit: Command failed: npm pack install-mcp --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-7ZSzkO"}
+{"target":"mcp-opsgenie","error":"mcp-audit: Command failed: npm pack mcp-opsgenie --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-DK0wBO"}
+{"target":"@eraserlabs/eraser-mcp","error":"mcp-audit: Command failed: npm pack @eraserlabs/eraser-mcp --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm"}
+{"target":"@agimon-ai/model-proxy-mcp","error":"mcp-audit: Command failed: npm pack @agimon-ai/model-proxy-mcp --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit"}
+{"target":"@browserless.io/mcp","error":"mcp-audit: Command failed: npm pack @browserless.io/mcp --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-W3"}
+{"target":"mcp-oauth-provider","verdict":"pass","score":0,"toolCount":0,"capabilities":["fs-write","net-egress"],"gates":[]}
+{"target":"xhs-mcp","verdict":"pass","score":0,"toolCount":13,"capabilities":["dynamic-eval","fs-read","net-egress"],"gates":[]}
+{"target":"duckduckgo-mcp","verdict":"pass","score":0,"toolCount":2,"capabilities":["net-egress"],"gates":[]}
+{"target":"@cexll/codex-mcp-server","verdict":"pass","score":0,"toolCount":11,"capabilities":["env-access","exec","fs-read","fs-write"],"gates":[]}
+{"target":"@ama-mcp/github","verdict":"pass","score":0,"toolCount":0,"capabilities":[],"gates":[]}
+{"target":"@webiny/mcp","verdict":"pass","score":0,"toolCount":3,"capabilities":["fs-read","fs-write"],"gates":[]}
+{"target":"easyeda-mcp-pro","verdict":"warn","score":22,"toolCount":125,"capabilities":["dotenv-access","env-access","exec","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"@azure/mcp-template","verdict":"warn","score":9,"toolCount":0,"capabilities":["env-access","exec"],"gates":[]}
+{"target":"@intlayer/mcp","verdict":"pass","score":0,"toolCount":37,"capabilities":["dotenv-access","env-access","fs-read"],"gates":[]}
+{"target":"@next-ai-ready/mcp","verdict":"pass","score":0,"toolCount":0,"capabilities":[],"gates":[]}
+{"target":"@r-huijts/strava-mcp-server","verdict":"warn","score":9,"toolCount":22,"capabilities":["dotenv-access","env-access","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"@leonardsellem/n8n-mcp-server","verdict":"pass","score":0,"toolCount":15,"capabilities":["dotenv-access","env-access","net-egress"],"gates":[]}
+{"target":"mcp-server-nationalparks","verdict":"pass","score":0,"toolCount":6,"capabilities":["dotenv-access","env-access","net-egress"],"gates":[]}
+{"target":"deepl-mcp-server","verdict":"pass","score":0,"toolCount":15,"capabilities":["env-access","net-egress"],"gates":[]}
+{"target":"ssh-mcp","verdict":"pass","score":0,"toolCount":4,"capabilities":["env-access","exec","fs-read"],"gates":[]}
+{"target":"@adia-ai/a2ui-mcp","error":"mcp-audit: Command failed: npm pack @adia-ai/a2ui-mcp --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-EqjH"}
+{"target":"@iblai/mcp","error":"mcp-audit: Command failed: npm pack @iblai/mcp --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-7MZpKh"}
+{"target":"@radholm/azure-devops-mcp","verdict":"warn","score":22,"toolCount":0,"capabilities":["env-access","exec","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"dataforseo-mcp-server","verdict":"pass","score":0,"toolCount":0,"capabilities":["env-access","exec","fs-read","net-egress"],"gates":[]}
+{"target":"hevy-mcp","error":"mcp-audit: ENOENT: no such file or directory, scandir '/var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-Mpblt8'"}
+{"target":"youtube-data-mcp-server","verdict":"pass","score":0,"toolCount":18,"capabilities":["dotenv-access","env-access"],"gates":[]}
+{"target":"bochk-ai-payment-demo-mcp","verdict":"warn","score":22,"toolCount":14,"capabilities":["fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"@ceraph/react-native-mcp","error":"mcp-audit: Command failed: tar -xzf /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-yH3JsB/ceraph-react-native-mcp-0.4.18.tgz"}
+{"target":"apt-mcp-agent-setup","error":"mcp-audit: Command failed: npm pack apt-mcp-agent-setup --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-SK"}
+{"target":"linkup-mcp-server","verdict":"pass","score":0,"toolCount":4,"capabilities":["env-access","net-egress"],"gates":[]}
+{"target":"datadog-mcp","verdict":"pass","score":0,"toolCount":0,"capabilities":[],"gates":[]}
+{"target":"fileditor-mcp","verdict":"pass","score":3,"toolCount":7,"capabilities":["exec","fs-read","fs-write"],"gates":[]}
+{"target":"snowflake-mcp","verdict":"pass","score":0,"toolCount":22,"capabilities":["env-access"],"gates":[]}
+{"target":"agent-orchestrator-mcp-server","verdict":"warn","score":22,"toolCount":27,"capabilities":["env-access","fs-read","net-egress"],"gates":[]}
+{"target":"gongio-mcp","verdict":"warn","score":9,"toolCount":13,"capabilities":["env-access","net-egress"],"gates":[]}
+{"target":"@idachev/mcp-javadc","verdict":"pass","score":0,"toolCount":3,"capabilities":["env-access","exec","fs-read","fs-write"],"gates":[]}
+{"target":"@vivantel/virage-mcp","verdict":"pass","score":0,"toolCount":9,"capabilities":[],"gates":[]}
+{"target":"@41px/mcp-xmind","verdict":"pass","score":0,"toolCount":8,"capabilities":["fs-read"],"gates":[]}
+{"target":"@nitish-raj/searxng-mcp-bridge","verdict":"warn","score":22,"toolCount":2,"capabilities":["env-access","fs-read","net-egress"],"gates":[]}
+{"target":"@pyreon/mcp","verdict":"warn","score":44,"toolCount":20,"capabilities":["dynamic-eval","env-access","exec","fs-read","net-egress"],"gates":[]}
+{"target":"@longtable/mcp","verdict":"pass","score":0,"toolCount":24,"capabilities":["fs-read","fs-write"],"gates":[]}
+{"target":"sensorium-mcp","verdict":"pass","score":0,"toolCount":19,"capabilities":["env-access","exec","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"@loadmill/mcp","verdict":"pass","score":0,"toolCount":2,"capabilities":["env-access","fs-read","net-egress"],"gates":[]}
+{"target":"codeloop-mcp-server","verdict":"warn","score":44,"toolCount":54,"capabilities":["dotenv-access","env-access","exec","fs-read","fs-write","net-egress","secret-access"],"gates":[]}
+{"target":"@agledger/mcp-server","verdict":"pass","score":0,"toolCount":4,"capabilities":["env-access","fs-read","net-egress"],"gates":[]}
+{"target":"@midscene/harmony-mcp","verdict":"pass","score":0,"toolCount":0,"capabilities":[],"gates":[]}
+{"target":"@tsrx/mcp","error":"mcp-audit: Command failed: npm pack @tsrx/mcp --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-GmfFsP"}
+{"target":"@verevoir/mcp","error":"mcp-audit: Command failed: tar -xzf /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-PD2EYi/verevoir-mcp-0.76.0.tgz -C /var/fo"}
+{"target":"@yjzf/mcp-server-yjzf","verdict":"warn","score":22,"toolCount":1,"capabilities":["dotenv-access","env-access","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"wikipedia-mcp","verdict":"pass","score":0,"toolCount":3,"capabilities":["exec","net-egress"],"gates":[]}
+{"target":"@kinqs/brainrouter-mcp-server","verdict":"warn","score":53,"toolCount":93,"capabilities":["dotenv-access","env-access","exec","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"express-mcp-handler","verdict":"pass","score":0,"toolCount":2,"capabilities":["env-access"],"gates":[]}
+{"target":"@composer-app/mcp","verdict":"warn","score":25,"toolCount":19,"capabilities":["env-access","exec","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"@jetbrains/mcp-proxy","verdict":"pass","score":0,"toolCount":0,"capabilities":["env-access","net-egress"],"gates":[]}
+{"target":"@xyd-js/mcp","verdict":"pass","score":0,"toolCount":0,"capabilities":[],"gates":[]}
+{"target":"@siemens/ix-mcp-vue","verdict":"warn","score":44,"toolCount":0,"capabilities":["dotenv-access","env-access","exec","fs-read","fs-write","net-egress","secret-access"],"gates":[]}
+{"target":"@fractalizer/mcp-cli","verdict":"pass","score":0,"toolCount":8,"capabilities":["env-access","exec","fs-read","fs-write"],"gates":[]}
+{"target":"@codemap-ai/mcp","verdict":"pass","score":0,"toolCount":0,"capabilities":[],"gates":[]}
+{"target":"fluorite-mcp","error":"mcp-audit: spawnSync npm ENOBUFS"}
+{"target":"@ziggs-ai/ziggs-mcp","verdict":"pass","score":0,"toolCount":60,"capabilities":["dotenv-access","env-access","exec","net-egress"],"gates":[]}
+{"target":"mcp-inspector","verdict":"pass","score":0,"toolCount":6,"capabilities":[],"gates":[]}
+{"target":"@toolprint/mcp-logger","verdict":"pass","score":0,"toolCount":0,"capabilities":["env-access"],"gates":[]}
+{"target":"@sketchxflow/mcp","verdict":"pass","score":0,"toolCount":15,"capabilities":["env-access","exec","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"@eidentic/mcp","verdict":"pass","score":0,"toolCount":0,"capabilities":[],"gates":[]}
+{"target":"agentdocs-mcp","verdict":"warn","score":9,"toolCount":18,"capabilities":["env-access","fs-read","net-egress"],"gates":[]}
+{"target":"mcp-jira-data-center","verdict":"pass","score":0,"toolCount":29,"capabilities":["dotenv-access","env-access"],"gates":[]}
+{"target":"@vscode-mcp/vscode-mcp-server","verdict":"pass","score":0,"toolCount":0,"capabilities":["env-access"],"gates":[]}
+{"target":"@neruva/mcp","verdict":"warn","score":34,"toolCount":83,"capabilities":["env-access","exec","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"mcp-accessibility-scanner","verdict":"warn","score":22,"toolCount":43,"capabilities":["dotenv-access","dynamic-eval","env-access","exec","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"@szc-ft/mcp-szcd-client","verdict":"warn","score":53,"toolCount":3,"capabilities":["dynamic-eval","env-access","exec","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"backlog-mcp","verdict":"warn","score":22,"toolCount":61,"capabilities":["env-access","exec","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"@auth0/auth0-mcp-server","error":"mcp-audit: Command failed: npm pack @auth0/auth0-mcp-server --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-np"}
+{"target":"@unleash/mcp","verdict":"warn","score":34,"toolCount":16,"capabilities":["dotenv-access","dynamic-eval","env-access","exec","fs-write","net-egress"],"gates":[]}
+{"target":"@centrali-io/centrali-mcp","error":"mcp-audit: Command failed: npm pack @centrali-io/centrali-mcp --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-"}
+{"target":"@aiwerk/mcp-bridge","error":"mcp-audit: Command failed: npm pack @aiwerk/mcp-bridge --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-NJl"}
+{"target":"interactive-brokers-mcp","verdict":"warn","score":9,"toolCount":0,"capabilities":[],"gates":[]}
+{"target":"@umbraco-cms/mcp-dev","verdict":"warn","score":69,"toolCount":466,"capabilities":["dotenv-access","dynamic-eval","env-access","exec","fs-read","net-egress","secret-access"],"gates":[]}
+{"target":"sdl-mcp","verdict":"warn","score":53,"toolCount":65,"capabilities":["dotenv-access","env-access","exec","fs-read","fs-write","net-egress","secret-access"],"gates":[]}
+{"target":"@kya-os/mcp-i","verdict":"warn","score":44,"toolCount":6,"capabilities":["dotenv-access","dynamic-eval","env-access","exec","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"newsnow-mcp-server","verdict":"pass","score":0,"toolCount":1,"capabilities":["dotenv-access","env-access","net-egress"],"gates":[]}
+{"target":"portkey-admin-mcp","verdict":"warn","score":9,"toolCount":150,"capabilities":["env-access","exec","fs-read","net-egress"],"gates":[]}
+{"target":"@lg-mcp/hooks","verdict":"pass","score":0,"toolCount":0,"capabilities":[],"gates":[]}
+{"target":"@solapi/mcp-server","verdict":"warn","score":9,"toolCount":46,"capabilities":["env-access","exec","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"@react-spectrum/mcp","verdict":"warn","score":22,"toolCount":6,"capabilities":["env-access","fs-read","net-egress"],"gates":[]}
+{"target":"@ahmad.soliman/mcp-n8n-server","verdict":"warn","score":22,"toolCount":8,"capabilities":["dotenv-access","env-access","net-egress"],"gates":[]}
+{"target":"kubernetes-mcp-server-linux-amd64","verdict":"pass","score":0,"toolCount":0,"capabilities":[],"gates":[]}
+{"target":"mcp-oauth2-proxy","verdict":"pass","score":0,"toolCount":0,"capabilities":["env-access","exec","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"agent-recall-mcp","verdict":"pass","score":3,"toolCount":51,"capabilities":["env-access","fs-read","fs-write"],"gates":[]}
+{"target":"html-to-markdown-mcp","verdict":"warn","score":22,"toolCount":2,"capabilities":["env-access","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"@modelstat/mcp","verdict":"warn","score":22,"toolCount":10,"capabilities":["env-access","exec","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"@pikku/modelcontextprotocol","verdict":"pass","score":0,"toolCount":0,"capabilities":["net-egress"],"gates":[]}
+{"target":"mcp-sdk","verdict":"pass","score":0,"toolCount":1,"capabilities":[],"gates":[]}
+{"target":"comfyui-mcp","verdict":"warn","score":40,"toolCount":190,"capabilities":["dotenv-access","env-access","exec","fs-read","fs-write","net-egress","secret-access"],"gates":[]}
+{"target":"@achmadya-dev/mcp-core","verdict":"pass","score":0,"toolCount":1,"capabilities":["env-access","net-egress"],"gates":[]}
+{"target":"axe-mcp-server","error":"scan failed"}
+{"target":"gogcli-mcp","verdict":"warn","score":22,"toolCount":75,"capabilities":["dynamic-eval","env-access","exec","secret-access"],"gates":[]}
+{"target":"convex-mcp-gateway","error":"mcp-audit: Command failed: npm pack convex-mcp-gateway --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-aBP"}
+{"target":"@astudioplus/codegraph-mcp","error":"mcp-audit: ENOENT: no such file or directory, scandir '/var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-u5irq4'"}
+{"target":"@paddle/paddle-mcp","error":"mcp-audit: Command failed: npm pack @paddle/paddle-mcp --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-vye"}
+{"target":"@calcom/cal-mcp","error":"mcp-audit: Command failed: npm pack @calcom/cal-mcp --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-Sd8AMV"}
+{"target":"@lu71/mcp","error":"mcp-audit: Command failed: npm pack @lu71/mcp --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-6VTXXB"}
+{"target":"figma-console-mcp","error":"mcp-audit: Command failed: npm pack figma-console-mcp --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-8Q3i"}
+{"target":"@foldkit/devtools-mcp","error":"mcp-audit: Command failed: npm pack @foldkit/devtools-mcp --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-"}
+{"target":"@agent-vm/openclaw-mcp-portal-plugin","error":"mcp-audit: Command failed: npm pack @agent-vm/openclaw-mcp-portal-plugin --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T"}
+{"target":"outline-mcp-server","verdict":"pass","score":0,"toolCount":18,"capabilities":["dotenv-access","env-access","fs-read","net-egress"],"gates":[]}
+{"target":"zubeid-youtube-mcp-server","verdict":"pass","score":0,"toolCount":8,"capabilities":["env-access","fs-read","fs-write"],"gates":[]}
+{"target":"apple-mail-mcp","verdict":"warn","score":31,"toolCount":48,"capabilities":["env-access","exec","fs-read","fs-write","net-egress","secret-access"],"gates":[]}
+{"target":"@mokei/mcp-fetch","verdict":"pass","score":0,"toolCount":0,"capabilities":["net-egress"],"gates":[]}
+{"target":"@ahrefs/mcp","verdict":"pass","score":0,"toolCount":0,"capabilities":["env-access","net-egress"],"gates":[]}
+{"target":"@bojanrajkovic/mcp-paprika","verdict":"warn","score":22,"toolCount":48,"capabilities":["dotenv-access","env-access","exec","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"@seed-design/mcp","verdict":"warn","score":22,"toolCount":17,"capabilities":["env-access","fs-read","net-egress"],"gates":[]}
+{"target":"@gannonh/firebase-mcp","verdict":"warn","score":22,"toolCount":12,"capabilities":["dotenv-access","env-access","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"@cariot-labs/cariot-mcp-server","verdict":"pass","score":0,"toolCount":0,"capabilities":["env-access","net-egress"],"gates":[]}
+{"target":"deepwiki-mcp","verdict":"pass","score":0,"toolCount":5,"capabilities":["net-egress"],"gates":[]}
+{"target":"@teolin/mcp-atlassian","verdict":"warn","score":22,"toolCount":4,"capabilities":["dotenv-access","env-access","exec","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"@askable-ui/mcp","verdict":"pass","score":0,"toolCount":3,"capabilities":[],"gates":[]}
+{"target":"autotel-mcp-instrumentation","verdict":"pass","score":0,"toolCount":1,"capabilities":[],"gates":[]}
+{"target":"@agentreadyweb/mcp","verdict":"pass","score":0,"toolCount":0,"capabilities":["env-access","net-egress"],"gates":[]}
+{"target":"@omni-tars/mcp-agent","verdict":"pass","score":0,"toolCount":0,"capabilities":[],"gates":[]}
+{"target":"@questdeck/mcp","error":"mcp-audit: Command failed: npm pack @questdeck/mcp --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-3RebHf"}
+{"target":"@baseline-ui/mcp","verdict":"warn","score":9,"toolCount":49,"capabilities":[],"gates":[]}
+{"target":"@typia/mcp","verdict":"pass","score":0,"toolCount":0,"capabilities":[],"gates":[]}
+{"target":"@hypabolic/hypa","verdict":"pass","score":0,"toolCount":0,"capabilities":["env-access","exec"],"gates":[]}
+{"target":"@steipete/macos-automator-mcp","error":"mcp-audit: Command failed: npm pack @steipete/macos-automator-mcp --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-au"}
+{"target":"cloakbrowser-mcp","error":"mcp-audit: Command failed: npm pack cloakbrowser-mcp --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-cjhPj"}
+{"target":"@civic/mcp-client","error":"mcp-audit: Command failed: npm pack @civic/mcp-client --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-rIDC"}
+{"target":"@h16rkim/mcp-fetch-server","error":"mcp-audit: Command failed: npm pack @h16rkim/mcp-fetch-server --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-"}
+{"target":"@kjanat/paperless-mcp","error":"mcp-audit: Command failed: npm pack @kjanat/paperless-mcp --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-"}
+{"target":"linear-mcp","verdict":"pass","score":0,"toolCount":2,"capabilities":["env-access","net-egress"],"gates":[]}
+{"target":"@nocobase/plugin-mcp-server","verdict":"pass","score":0,"toolCount":0,"capabilities":["fs-read","fs-write"],"gates":[]}
+{"target":"@next-ai-drawio/mcp-server","verdict":"warn","score":9,"toolCount":9,"capabilities":["env-access","exec","fs-write","net-egress"],"gates":[]}
+{"target":"@domphy/mcp","verdict":"warn","score":22,"toolCount":10,"capabilities":["env-access","fs-read","net-egress"],"gates":[]}
+{"target":"google-workspace-mcp","verdict":"warn","score":53,"toolCount":110,"capabilities":["dotenv-access","env-access","exec","fs-read","fs-write","net-egress","secret-access"],"gates":[]}
+{"target":"@agiflowai/one-mcp","verdict":"warn","score":22,"toolCount":2,"capabilities":["env-access","exec","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"@tencentcloud/sdk-mcp","verdict":"pass","score":0,"toolCount":0,"capabilities":["env-access","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"@sylphx/pdf-reader-mcp","verdict":"warn","score":22,"toolCount":0,"capabilities":["env-access","exec","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"@remnux/mcp-server","verdict":"pass","score":0,"toolCount":132,"capabilities":["dynamic-eval","env-access","exec","fs-read","fs-write"],"gates":[]}
+{"target":"e-arveldaja-mcp","verdict":"pass","score":0,"toolCount":3,"capabilities":["dotenv-access","env-access","exec","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"@lg-mcp/embeddable-uis","verdict":"pass","score":0,"toolCount":0,"capabilities":[],"gates":[]}
+{"target":"@claude-code-best/mcp-chrome-bridge","verdict":"warn","score":31,"toolCount":1,"capabilities":["env-access","exec","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"@stigg/typescript-mcp","verdict":"pass","score":0,"toolCount":63,"capabilities":["dotenv-access","env-access","exec","fs-read","net-egress"],"gates":[]}
+{"target":"@azure/mcp-linux-arm64","verdict":"pass","score":0,"toolCount":0,"capabilities":["env-access","exec"],"gates":[]}
+{"target":"@bitwarden/mcp-server","verdict":"pass","score":0,"toolCount":59,"capabilities":["env-access","exec","net-egress"],"gates":[]}
+{"target":"ews-meeting-mcp","verdict":"pass","score":0,"toolCount":0,"capabilities":["env-access","exec","fs-read","fs-write"],"gates":[]}
+{"target":"lemma-mcp","verdict":"warn","score":40,"toolCount":27,"capabilities":["env-access","exec","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"@vscode-mcp/vscode-mcp-ipc","error":"mcp-audit: Command failed: npm pack @vscode-mcp/vscode-mcp-ipc --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit"}
+{"target":"mcp-mailtrap","verdict":"pass","score":0,"toolCount":86,"capabilities":["dotenv-access","env-access","net-egress"],"gates":[]}
+{"target":"@guhcostan/web-search-mcp","verdict":"pass","score":0,"toolCount":4,"capabilities":["dotenv-access","net-egress"],"gates":[]}
+{"target":"@tpsdev-ai/flair-mcp","verdict":"fail","score":80,"toolCount":19,"capabilities":["env-access"],"gates":["provenance/install-script-exec"]}
+{"target":"ucu-mcp","verdict":"pass","score":0,"toolCount":52,"capabilities":["env-access","exec","fs-read","fs-write","secret-access"],"gates":[]}
+{"target":"@apicity/mcp-server","error":"mcp-audit: Command failed: npm pack @apicity/mcp-server --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-F0"}
+{"target":"@hugeicons/mcp-server","verdict":"warn","score":9,"toolCount":23,"capabilities":["net-egress"],"gates":[]}
+{"target":"tailwindcss-mcp-server","verdict":"pass","score":0,"toolCount":8,"capabilities":["env-access","exec","net-egress"],"gates":[]}
+{"target":"@pairsystems/goodmem-mcp","error":"mcp-audit: Command failed: npm pack @pairsystems/goodmem-mcp --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-n"}
+{"target":"@ton/mcp","verdict":"pass","score":0,"toolCount":0,"capabilities":[],"gates":[]}
+{"target":"marketing-mcp","verdict":"fail","score":89,"toolCount":80,"capabilities":["dotenv-access","env-access","fs-read","fs-write","net-egress","secret-access"],"gates":["provenance/install-script-exec"]}
+{"target":"mealie-mcp","verdict":"pass","score":0,"toolCount":0,"capabilities":["env-access","fs-read","net-egress"],"gates":[]}
+{"target":"@insforge/mcp","verdict":"warn","score":22,"toolCount":18,"capabilities":["dotenv-access","env-access","exec","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"@kud/mcp-jenkins","verdict":"pass","score":0,"toolCount":38,"capabilities":["env-access","net-egress"],"gates":[]}
+{"target":"helius-mcp","verdict":"warn","score":22,"toolCount":205,"capabilities":["env-access","exec","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"@omni-co/mcp","verdict":"pass","score":0,"toolCount":0,"capabilities":["env-access","net-egress"],"gates":[]}
+{"target":"@xuandev/atlassian-mcp","verdict":"pass","score":0,"toolCount":52,"capabilities":["env-access","fs-read","net-egress"],"gates":[]}
+{"target":"@synergy-design-system/mcp","verdict":"warn","score":22,"toolCount":22,"capabilities":["fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"@platformatic/mcp","verdict":"warn","score":44,"toolCount":14,"capabilities":["dotenv-access","dynamic-eval","env-access","exec","fs-read","net-egress"],"gates":[]}
+{"target":"@dankinsoid/claude-talk-to-figma-mcp","verdict":"warn","score":22,"toolCount":39,"capabilities":["fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"@hanna84/mcp-writing","verdict":"warn","score":34,"toolCount":72,"capabilities":["env-access","exec","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"@apideck/mcp","verdict":"warn","score":34,"toolCount":336,"capabilities":["env-access","exec","net-egress"],"gates":[]}
+{"target":"@cdr-kit/mcp","verdict":"pass","score":0,"toolCount":0,"capabilities":["env-access"],"gates":[]}
+{"target":"context-repo-mcp","verdict":"warn","score":22,"toolCount":31,"capabilities":["env-access","exec","fs-read","net-egress"],"gates":[]}
+{"target":"@settlemint/sdk-mcp","verdict":"pass","score":0,"toolCount":0,"capabilities":[],"gates":[]}
+{"target":"vite-react-mcp","verdict":"pass","score":0,"toolCount":4,"capabilities":["fs-read"],"gates":[]}
+{"target":"@microsoft/fabric-mcp","verdict":"warn","score":9,"toolCount":0,"capabilities":["env-access","exec"],"gates":[]}
+{"target":"mysql-mcp-server","verdict":"pass","score":0,"toolCount":4,"capabilities":["env-access"],"gates":[]}
+{"target":"@caidazi/mcp","error":"mcp-audit: ENOENT: no such file or directory, scandir '/var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-6FR9mN'"}
+{"target":"@apex-inc/mcp-server","verdict":"warn","score":22,"toolCount":21,"capabilities":["env-access","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"mcp-sqlite","error":"mcp-audit: Command failed: npm pack mcp-sqlite --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-FkKtQj"}
+{"target":"pytheos-mcp","error":"mcp-audit: Command failed: npm pack pytheos-mcp --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-VRgBBO"}
+{"target":"@protonspy/csdd-mcp","error":"mcp-audit: Command failed: npm pack @protonspy/csdd-mcp --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-NQ"}
+{"target":"run402-mcp","verdict":"warn","score":34,"toolCount":188,"capabilities":["dotenv-access","env-access","exec","fs-read","fs-write","net-egress","secret-access"],"gates":[]}
+{"target":"@dbx-app/mcp-server","verdict":"pass","score":0,"toolCount":20,"capabilities":["env-access"],"gates":[]}
+{"target":"targetprocess-mcp-server","verdict":"warn","score":25,"toolCount":57,"capabilities":["dotenv-access","env-access","fs-read","net-egress"],"gates":[]}
+{"target":"@avodado/mcp","verdict":"pass","score":0,"toolCount":8,"capabilities":[],"gates":[]}
+{"target":"mcp-server-sqlite","verdict":"pass","score":0,"toolCount":10,"capabilities":["env-access","exec","fs-read"],"gates":[]}
+{"target":"mcp-svelte-docs","verdict":"pass","score":0,"toolCount":1,"capabilities":["env-access","exec","fs-read","fs-write"],"gates":[]}
+{"target":"@nextscope/mcp","verdict":"pass","score":0,"toolCount":9,"capabilities":["env-access","exec","fs-write","net-egress"],"gates":[]}
+{"target":"@cyanheads/pubmed-mcp-server","verdict":"pass","score":0,"toolCount":11,"capabilities":["env-access","exec","net-egress"],"gates":[]}
+{"target":"renovate-mcp","verdict":"warn","score":53,"toolCount":17,"capabilities":["env-access","exec","fs-read","fs-write","net-egress","secret-access"],"gates":[]}
+{"target":"@yaelg/ios-simulator-mcp","verdict":"warn","score":12,"toolCount":78,"capabilities":["env-access","exec","fs-read","fs-write"],"gates":[]}
+{"target":"@voltagent/docs-mcp","verdict":"warn","score":66,"toolCount":97,"capabilities":["dotenv-access","dynamic-eval","env-access","fs-read","fs-write","net-egress","secret-access"],"gates":[]}
+{"target":"@sonenta/mcp","verdict":"warn","score":44,"toolCount":0,"capabilities":["dynamic-eval","env-access","exec","fs-read","net-egress"],"gates":[]}
+{"target":"figma-mcp-express","verdict":"pass","score":0,"toolCount":0,"capabilities":["exec"],"gates":[]}
+{"target":"kicad-mcp-pro","verdict":"pass","score":0,"toolCount":0,"capabilities":["env-access","exec"],"gates":[]}
+{"target":"octocode-mcp","verdict":"pass","score":0,"toolCount":1,"capabilities":["env-access","secret-access"],"gates":[]}
+{"target":"@eventcatalog/mcp-server","verdict":"warn","score":22,"toolCount":9,"capabilities":["env-access","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"@gleanwork/mcp-server-tester","verdict":"warn","score":44,"toolCount":1,"capabilities":["env-access","exec","fs-read","fs-write","net-egress","secret-access"],"gates":[]}
+{"target":"@applitools/mcp","error":"mcp-audit: Command failed: npm pack @applitools/mcp --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-mGRb03"}
+{"target":"@gethmy/mcp","error":"mcp-audit: Command failed: npm pack @gethmy/mcp --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-KRSyS1"}
+{"target":"mcp-sequentialthinking-tools","error":"mcp-audit: ENOENT: no such file or directory, scandir '/var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-kEKtwz'"}
+{"target":"@h4shed/mcp-core","error":"mcp-audit: Command failed: npm pack @h4shed/mcp-core --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-ZIDRW"}
+{"target":"@capivv/mcp-server","error":"mcp-audit: Command failed: npm pack @capivv/mcp-server --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-giG"}
+{"target":"@abraca/mcp","error":"mcp-audit: Command failed: npm pack @abraca/mcp --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-m8TKqU"}
+{"target":"@stackwright-pro/mcp","error":"mcp-audit: Command failed: npm pack @stackwright-pro/mcp --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-K"}
+{"target":"decocms","error":"mcp-audit: Command failed: npm pack decocms --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-UjiRSD"}
+{"target":"@debugmcp/mcp-debugger","error":"mcp-audit: ENOENT: no such file or directory, scandir '/var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-bGHWtO'"}
+{"target":"@kevinwatt/shell-mcp","error":"mcp-audit: Command failed: npm pack @kevinwatt/shell-mcp --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-G"}
+{"target":"mcp-grafana-npx","verdict":"warn","score":22,"toolCount":0,"capabilities":["exec","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"concurrent-browser-mcp","verdict":"pass","score":0,"toolCount":20,"capabilities":["env-access","exec","net-egress"],"gates":[]}
+{"target":"@aionis/mcp","verdict":"pass","score":0,"toolCount":1,"capabilities":["env-access","exec","fs-read","fs-write"],"gates":[]}
+{"target":"@octocodeai/octocode-core","verdict":"pass","score":0,"toolCount":0,"capabilities":[],"gates":[]}
+{"target":"@research-copilot/mcp-pdf","verdict":"pass","score":0,"toolCount":3,"capabilities":["fs-read"],"gates":[]}
+{"target":"bc-code-intelligence-mcp","error":"mcp-audit: spawnSync npm ENOBUFS"}
+{"target":"mcp-server-linear","verdict":"pass","score":0,"toolCount":2,"capabilities":["env-access","net-egress"],"gates":[]}
+{"target":"@cognium-ai/mcp-server","verdict":"pass","score":0,"toolCount":9,"capabilities":["exec","fs-read"],"gates":[]}
+{"target":"@subscribe.dev/mcp","verdict":"warn","score":47,"toolCount":21,"capabilities":["env-access","exec","fs-read","net-egress"],"gates":[]}
+{"target":"@greirson/mcp-todoist","verdict":"warn","score":9,"toolCount":108,"capabilities":["env-access","net-egress"],"gates":[]}
+{"target":"@tankpkg/mcp-server","verdict":"warn","score":66,"toolCount":31,"capabilities":["dynamic-eval","env-access","exec","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"docrenders-mcp","verdict":"pass","score":0,"toolCount":12,"capabilities":["env-access","net-egress"],"gates":[]}
+{"target":"ember-mcp","verdict":"warn","score":22,"toolCount":8,"capabilities":["fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"clinicaltrialsgov-mcp-server","verdict":"warn","score":9,"toolCount":8,"capabilities":["net-egress"],"gates":[]}
+{"target":"honeybook-mcp","verdict":"warn","score":53,"toolCount":9,"capabilities":["dotenv-access","dynamic-eval","env-access","exec","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"google-searchconsole-mcp","error":"mcp-audit: ENOENT: no such file or directory, scandir '/var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-Bbm0dQ'"}
+{"target":"@deveco-codegenie/mcp","error":"mcp-audit: Command failed: npm pack @deveco-codegenie/mcp --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-"}
+{"target":"@masonator/coolify-mcp","error":"mcp-audit: ENOENT: no such file or directory, scandir '/var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-MWMX1F'"}
+{"target":"@spences10/pi-mcp","error":"mcp-audit: Command failed: npm pack @spences10/pi-mcp --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-Wumh"}
+{"target":"@anaisbetts/mcp-installer","error":"mcp-audit: Command failed: npm pack @anaisbetts/mcp-installer --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-"}
+{"target":"@mozilla/firefox-devtools-mcp-moz","error":"mcp-audit: Command failed: npm pack @mozilla/firefox-devtools-mcp-moz --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mc"}
+{"target":"blender-mcp","error":"mcp-audit: Command failed: npm pack blender-mcp --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-EIYgqV"}
+{"target":"@donmai/mcp-server","error":"mcp-audit: Command failed: npm pack @donmai/mcp-server --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-Dhg"}
+{"target":"@geobio/mcp-open-library","error":"mcp-audit: Command failed: npm pack @geobio/mcp-open-library --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-n"}
+{"target":"fa-mcp-sdk","error":"mcp-audit: Command failed: npm pack fa-mcp-sdk --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-9TRvkk"}
+{"target":"@paca-ai/paca-mcp","verdict":"pass","score":0,"toolCount":65,"capabilities":["env-access","net-egress"],"gates":[]}
+{"target":"openinsider-mcp","verdict":"pass","score":0,"toolCount":24,"capabilities":["env-access","exec","net-egress"],"gates":[]}
+{"target":"@revealui/mcp","verdict":"pass","score":0,"toolCount":11,"capabilities":["dotenv-access","env-access","exec","net-egress"],"gates":[]}
+{"target":"myoperator-mcp","verdict":"pass","score":0,"toolCount":52,"capabilities":["exec"],"gates":[]}
+{"target":"@icoretech/warden-mcp","verdict":"warn","score":18,"toolCount":53,"capabilities":["env-access","exec","fs-read","fs-write","secret-access"],"gates":[]}
+{"target":"@warmio/mcp","verdict":"pass","score":0,"toolCount":3,"capabilities":["dotenv-access","env-access","fs-read","fs-write"],"gates":[]}
+{"target":"@suiteinsider/netsuite-mcp","verdict":"warn","score":22,"toolCount":2,"capabilities":["env-access","exec","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"@swqt/mcp","verdict":"pass","score":0,"toolCount":0,"capabilities":["env-access","exec","fs-read"],"gates":[]}
+{"target":"@noteplanco/noteplan-mcp","verdict":"warn","score":22,"toolCount":15,"capabilities":["env-access","exec","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"@schemyx/mcp","verdict":"warn","score":22,"toolCount":0,"capabilities":["env-access","exec","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"@reconcrap/boss-recommend-mcp","verdict":"warn","score":31,"toolCount":0,"capabilities":["env-access","exec","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"mcp-aegis","verdict":"warn","score":22,"toolCount":46,"capabilities":["env-access","exec","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"duckduckgo-mcp-server","verdict":"pass","score":0,"toolCount":1,"capabilities":["net-egress"],"gates":[]}
+{"target":"mcp-arr-server","verdict":"pass","score":0,"toolCount":48,"capabilities":["env-access","net-egress"],"gates":[]}
+{"target":"@lousy-agents/mcp","error":"mcp-audit: Command failed: npm pack @lousy-agents/mcp --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-ksO4"}
+{"target":"jdk-migration-mcp","error":"mcp-audit: Command failed: npm pack jdk-migration-mcp --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-02xf"}
+{"target":"claude-talk-to-figma-mcp","error":"mcp-audit: ENOENT: no such file or directory, scandir '/var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-PradfL'"}
+{"target":"palantir-mcp","error":"mcp-audit: Command failed: npm pack palantir-mcp --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-9loePh"}
+{"target":"handoff-mcp-server","error":"mcp-audit: Command failed: npm pack handoff-mcp-server --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-QQG"}
+{"target":"actual-mcp","error":"mcp-audit: Command failed: npm pack actual-mcp --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-6cB9S7"}
+{"target":"telnyx-mcp","error":"mcp-audit: Command failed: npm pack telnyx-mcp --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-Dt78ZU"}
+{"target":"n8n-nodes-mcp-readonly-trigger","error":"mcp-audit: Command failed: npm pack n8n-nodes-mcp-readonly-trigger --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-a"}
+{"target":"@mcp-abap-adt/deepseek-llm","error":"mcp-audit: Command failed: npm pack @mcp-abap-adt/deepseek-llm --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit"}
+{"target":"@carbonstopper/agent-mcp","verdict":"pass","score":0,"toolCount":0,"capabilities":["env-access","fs-read","net-egress"],"gates":[]}
+{"target":"@yoonion/mimi-seed-mcp","verdict":"warn","score":44,"toolCount":187,"capabilities":["env-access","exec","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"mcp-bigquery-server","verdict":"pass","score":0,"toolCount":33,"capabilities":["env-access","secret-access"],"gates":[]}
+{"target":"@hesed/mcp-server","verdict":"warn","score":22,"toolCount":1,"capabilities":["fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"@datacules/agent-identity-mcp-client","verdict":"pass","score":0,"toolCount":0,"capabilities":[],"gates":[]}
+{"target":"@moneyforward_i/admina-mcp-server","verdict":"pass","score":0,"toolCount":31,"capabilities":["env-access","net-egress"],"gates":[]}
+{"target":"yapi-auto-mcp","verdict":"pass","score":0,"toolCount":10,"capabilities":["dotenv-access","env-access","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"@maintainabilityai/redqueen-mcp","verdict":"pass","score":0,"toolCount":314,"capabilities":["env-access","exec","fs-read","fs-write"],"gates":[]}
+{"target":"@atawai/mcp","verdict":"warn","score":22,"toolCount":54,"capabilities":["dotenv-access","env-access","exec","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"@angelogiacco/elevenlabs-mcp-server","verdict":"warn","score":22,"toolCount":0,"capabilities":["env-access","exec","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"@kya-os/mcp-i-core","verdict":"pass","score":0,"toolCount":5,"capabilities":["env-access","net-egress"],"gates":[]}
+{"target":"@pi-unipi/mcp","verdict":"fail","score":80,"toolCount":0,"capabilities":["env-access","exec","fs-read","fs-write","net-egress","secret-access"],"gates":["gate/exfil-capability"]}
+{"target":"@arivie/source-mcp","verdict":"pass","score":0,"toolCount":0,"capabilities":["dynamic-eval","exec"],"gates":[]}
+{"target":"aiquila-mcp","verdict":"pass","score":0,"toolCount":296,"capabilities":["env-access","exec","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"@contenthero/mcp","verdict":"warn","score":9,"toolCount":66,"capabilities":["env-access","net-egress"],"gates":[]}
+{"target":"@cyanheads/git-mcp-server","verdict":"pass","score":0,"toolCount":0,"capabilities":["exec"],"gates":[]}
+{"target":"@pasympa/discord-mcp","error":"mcp-audit: Command failed: npm pack @pasympa/discord-mcp --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-f"}
+{"target":"@zeroheight/mcp-server","error":"mcp-audit: Command failed: npm pack @zeroheight/mcp-server --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm"}
+{"target":"@vibe-agent-toolkit/gateway-mcp","error":"mcp-audit: Command failed: npm pack @vibe-agent-toolkit/gateway-mcp --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-"}
+{"target":"@grepmind/mcp","error":"mcp-audit: Command failed: npm pack @grepmind/mcp --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-8xpDLx"}
+{"target":"@yolk-sdk/mcp","error":"mcp-audit: Command failed: npm pack @yolk-sdk/mcp --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-zRFWwd"}
+{"target":"terra-mcp-google","error":"mcp-audit: Command failed: npm pack terra-mcp-google --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-JA1pN"}
+{"target":"@datacules/agent-identity-mcp","error":"mcp-audit: Command failed: npm pack @datacules/agent-identity-mcp --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-au"}
+{"target":"@arikusi/deepseek-mcp-server","error":"mcp-audit: Command failed: npm pack @arikusi/deepseek-mcp-server --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-aud"}
+{"target":"@clipform/mcp-server","error":"mcp-audit: Command failed: npm pack @clipform/mcp-server --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-x"}
+{"target":"@ziwansi/mcp-firewall","verdict":"warn","score":22,"toolCount":7,"capabilities":["fs-read","fs-write","net-egress","secret-access"],"gates":[]}
+{"target":"@mcp-b/react-webmcp","verdict":"pass","score":0,"toolCount":6,"capabilities":[],"gates":[]}
+{"target":"@elizaos/plugin-mcp","verdict":"warn","score":22,"toolCount":3,"capabilities":["dynamic-eval","env-access","exec","net-egress"],"gates":[]}
+{"target":"@haven_ai/mcp","verdict":"pass","score":0,"toolCount":0,"capabilities":["env-access","fs-read","fs-write"],"gates":[]}
+{"target":"shopify-mcp","verdict":"pass","score":0,"toolCount":15,"capabilities":["dotenv-access","env-access","net-egress"],"gates":[]}
+{"target":"@codemem/mcp","verdict":"warn","score":22,"toolCount":26,"capabilities":["env-access","exec","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"@abhiz123/todoist-mcp-server","verdict":"pass","score":0,"toolCount":5,"capabilities":["env-access"],"gates":[]}
+{"target":"mcp-sync-tool","verdict":"pass","score":0,"toolCount":0,"capabilities":["env-access","exec","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"@upstash/mcp-server","verdict":"pass","score":0,"toolCount":0,"capabilities":["dotenv-access","env-access","fs-write","net-egress"],"gates":[]}
+{"target":"sfcc-dev-mcp","verdict":"pass","score":0,"toolCount":36,"capabilities":["env-access","exec","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"@genkit-ai/mcp","verdict":"pass","score":0,"toolCount":15,"capabilities":["net-egress"],"gates":[]}
+{"target":"boss-mcp-assistant","verdict":"warn","score":31,"toolCount":0,"capabilities":["env-access","exec","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"@meshy-ai/meshy-mcp-server","verdict":"warn","score":44,"toolCount":24,"capabilities":["dotenv-access","env-access","exec","fs-read","fs-write","net-egress","secret-access"],"gates":[]}
+{"target":"@tomtom-org/tomtom-mcp","verdict":"pass","score":0,"toolCount":17,"capabilities":["dotenv-access","env-access","exec","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"@dopplerhq/mcp-server","verdict":"pass","score":0,"toolCount":0,"capabilities":["env-access","exec","fs-read","net-egress"],"gates":[]}
+{"target":"@ergut/mcp-bigquery-server","verdict":"pass","score":0,"toolCount":1,"capabilities":["exec","fs-read","fs-write"],"gates":[]}
+{"target":"@ctxlite/mcp","error":"mcp-audit: Command failed: npm pack @ctxlite/mcp --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-3z678e"}
+{"target":"@okx_ai/okx-trade-mcp","error":"mcp-audit: Command failed: npm pack @okx_ai/okx-trade-mcp --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-"}
+{"target":"open-computer-use-mcp","verdict":"warn","score":9,"toolCount":0,"capabilities":["fs-read","fs-write"],"gates":[]}
+{"target":"@burtthecoder/mcp-virustotal","verdict":"warn","score":9,"toolCount":11,"capabilities":["dotenv-access","env-access","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"@task-boards/mcp-server","error":"mcp-audit: Command failed: npm pack @task-boards/mcp-server --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-np"}
+{"target":"mcp-rapideticket","error":"mcp-audit: Command failed: npm pack mcp-rapideticket --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-7bDYe"}
+{"target":"@agiflowai/architect-mcp","error":"mcp-audit: Command failed: npm pack @agiflowai/architect-mcp --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-n"}
+{"target":"@zigrivers/surface-mcp","error":"mcp-audit: Command failed: npm pack @zigrivers/surface-mcp --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm"}
+{"target":"@kumikijs/mcp","error":"mcp-audit: Command failed: npm pack @kumikijs/mcp --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-brkZf6"}
+{"target":"@snokam/mcp-api","error":"mcp-audit: Command failed: npm pack @snokam/mcp-api --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-NeeyVJ"}
+{"target":"@piprail/mcp","verdict":"pass","score":0,"toolCount":1,"capabilities":["env-access","exec","fs-write"],"gates":[]}
+{"target":"@agent-infra/mcp-client","verdict":"pass","score":0,"toolCount":0,"capabilities":["env-access","net-egress"],"gates":[]}
+{"target":"lucide-icons-mcp","verdict":"pass","score":0,"toolCount":14,"capabilities":["env-access"],"gates":[]}
+{"target":"influxdb-mcp-server","verdict":"pass","score":0,"toolCount":4,"capabilities":["env-access","net-egress"],"gates":[]}
+{"target":"mcp-sanitizer","verdict":"warn","score":44,"toolCount":0,"capabilities":["dotenv-access","env-access","fs-read","fs-write","net-egress","secret-access"],"gates":[]}
+{"target":"@patternfly/patternfly-mcp","verdict":"warn","score":44,"toolCount":12,"capabilities":["dynamic-eval","env-access","exec","fs-read","net-egress"],"gates":[]}
+{"target":"search-mcp-server","verdict":"warn","score":9,"toolCount":9,"capabilities":["env-access","fs-write"],"gates":[]}
+{"target":"@fractalizer/mcp-core","verdict":"pass","score":0,"toolCount":0,"capabilities":["fs-read"],"gates":[]}
+{"target":"@terasky/backstage-plugin-catalog-mcp-backend","verdict":"pass","score":0,"toolCount":5,"capabilities":["net-egress"],"gates":[]}
+{"target":"cli-to-mcp","verdict":"pass","score":0,"toolCount":10,"capabilities":["env-access","exec","fs-read","net-egress"],"gates":[]}
+{"target":"@kolbo/mcp","verdict":"warn","score":31,"toolCount":79,"capabilities":["env-access","exec","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"signupgenius-mcp","verdict":"warn","score":44,"toolCount":9,"capabilities":["dotenv-access","dynamic-eval","env-access","exec","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"@get-technology-inc/jamf-docs-mcp-server","verdict":"warn","score":44,"toolCount":18,"capabilities":["env-access","exec","fs-read","fs-write","net-egress","secret-access"],"gates":[]}
+{"target":"mcp-server-axiom","verdict":"warn","score":31,"toolCount":3,"capabilities":["dotenv-access","env-access","fs-read","net-egress"],"gates":[]}
+{"target":"omnifocus-mcp","verdict":"pass","score":0,"toolCount":12,"capabilities":["exec","fs-read","fs-write"],"gates":[]}
+{"target":"@echomem/mcp","error":"mcp-audit: ENOENT: no such file or directory, scandir '/var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-VXGRWU'"}
+{"target":"@infineon/design-system-mcp","verdict":"pass","score":0,"toolCount":5,"capabilities":["fs-read","fs-write"],"gates":[]}
+{"target":"@sensinum/strapi-plugin-mcp","error":"mcp-audit: Command failed: npm pack @sensinum/strapi-plugin-mcp --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audi"}
+{"target":"@storybook/addon-mcp","error":"mcp-audit: Command failed: npm pack @storybook/addon-mcp --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-y"}
+{"target":"devmind-mcp","error":"mcp-audit: ENOENT: no such file or directory, scandir '/var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-dZHKcy'"}
+{"target":"mcp-echarts","error":"mcp-audit: Command failed: npm pack mcp-echarts --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-KgqdEA"}
+{"target":"zuora-mcp","error":"mcp-audit: Command failed: npm pack zuora-mcp --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-MzpPjG"}
+{"target":"@shayanline/msteams-mcp","error":"mcp-audit: Command failed: npm pack @shayanline/msteams-mcp --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-np"}
+{"target":"@peac/mappings-mcp","error":"mcp-audit: Command failed: npm pack @peac/mappings-mcp --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-TYR"}
+{"target":"@abhaybabbar/retellai-mcp-server","error":"mcp-audit: Command failed: npm pack @abhaybabbar/retellai-mcp-server --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp"}
+{"target":"@mozilla/firefox-devtools-mcp","error":"mcp-audit: Command failed: npm pack @mozilla/firefox-devtools-mcp --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-au"}
+{"target":"mcp-sequential-thinking","verdict":"pass","score":0,"toolCount":1,"capabilities":[],"gates":[]}
+{"target":"mcp-server-yandex-wiki","verdict":"pass","score":0,"toolCount":0,"capabilities":[],"gates":[]}
+{"target":"@alemdarlabs/sage-mcp","verdict":"warn","score":31,"toolCount":0,"capabilities":["env-access","exec","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"covenant-mcp","verdict":"pass","score":0,"toolCount":0,"capabilities":["fs-read","fs-write"],"gates":[]}
+{"target":"nuvex-mcp-server","verdict":"warn","score":25,"toolCount":2,"capabilities":["env-access","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"a11y-mcp","verdict":"pass","score":0,"toolCount":2,"capabilities":["net-egress"],"gates":[]}
+{"target":"ncloud-mcp-server","verdict":"pass","score":0,"toolCount":0,"capabilities":["env-access","exec","net-egress"],"gates":[]}
+{"target":"@mailagent/mcp","verdict":"pass","score":0,"toolCount":37,"capabilities":["env-access","net-egress"],"gates":[]}
+{"target":"ollama-mcp-server","verdict":"pass","score":0,"toolCount":10,"capabilities":["env-access","fs-read","fs-write"],"gates":[]}
+{"target":"@mastergo/vibe-mcp","verdict":"warn","score":22,"toolCount":2,"capabilities":["env-access","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"cograph-mcp","verdict":"pass","score":0,"toolCount":12,"capabilities":[],"gates":[]}
+{"target":"@dsazz/mcp-jira","verdict":"warn","score":22,"toolCount":16,"capabilities":["dotenv-access","env-access","exec","fs-read","net-egress"],"gates":[]}
+{"target":"tiny-stdio-mcp-server","verdict":"pass","score":0,"toolCount":0,"capabilities":["net-egress"],"gates":[]}
+{"target":"google-sheets-mcp","verdict":"pass","score":0,"toolCount":12,"capabilities":["env-access","net-egress"],"gates":[]}
+{"target":"@arabold/docs-mcp-server","verdict":"warn","score":9,"toolCount":0,"capabilities":["dotenv-access","env-access","exec","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"webcake-landing-mcp","error":"mcp-audit: ENOENT: no such file or directory, scandir '/var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-4mhVju'"}
+{"target":"confluence-mcp-server","verdict":"warn","score":9,"toolCount":50,"capabilities":["env-access","fs-read","net-egress"],"gates":[]}
+{"target":"mcp-memory-graph","error":"mcp-audit: ENOENT: no such file or directory, scandir '/var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-3VDW1F'"}
+{"target":"fdic-mcp-server","error":"mcp-audit: Command failed: npm pack fdic-mcp-server --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-FJKNt5"}
+{"target":"@agiflowai/scaffold-mcp","error":"mcp-audit: Command failed: npm pack @agiflowai/scaffold-mcp --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-np"}
+{"target":"@oneuptime/mcp-server","error":"mcp-audit: Command failed: npm pack @oneuptime/mcp-server --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-"}
+{"target":"@zencoderai/slack-mcp-server","error":"mcp-audit: Command failed: npm pack @zencoderai/slack-mcp-server --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-aud"}
+{"target":"@azure/mcp-darwin-x64","verdict":"pass","score":0,"toolCount":0,"capabilities":["env-access","exec"],"gates":[]}
+{"target":"mcp-insomnia","verdict":"pass","score":0,"toolCount":30,"capabilities":["env-access","exec","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"mcp-server-ticktick","error":"mcp-audit: Command failed: npm pack mcp-server-ticktick --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-3k"}
+{"target":"zd-mcp-server","verdict":"pass","score":0,"toolCount":16,"capabilities":["env-access","fs-read"],"gates":[]}
+{"target":"sdl-mcp-watchman-linux-x64","verdict":"pass","score":0,"toolCount":0,"capabilities":[],"gates":[]}
+{"target":"godot-mcp-server","verdict":"warn","score":31,"toolCount":70,"capabilities":["env-access","exec","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"@atrib/mcp","verdict":"warn","score":22,"toolCount":1,"capabilities":["env-access","exec","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"@coding-solo/godot-mcp","verdict":"pass","score":0,"toolCount":14,"capabilities":["env-access","exec","fs-read","net-egress"],"gates":[]}
+{"target":"local-mcp","verdict":"warn","score":31,"toolCount":0,"capabilities":["env-access","exec","fs-read","fs-write","net-egress","secret-access"],"gates":[]}
+{"target":"@peekview/mcp-server","verdict":"warn","score":22,"toolCount":5,"capabilities":["dotenv-access","env-access","exec","fs-read","fs-write","net-egress","secret-access"],"gates":[]}
+{"target":"@components-kit/open-workbook-mcp-server","verdict":"pass","score":0,"toolCount":1,"capabilities":["env-access","net-egress"],"gates":[]}
+{"target":"@aipermission/mcp","verdict":"warn","score":22,"toolCount":5,"capabilities":["env-access","exec","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"@polarity-lab/cosmos-mcp","verdict":"warn","score":62,"toolCount":11,"capabilities":["env-access","exec","fs-read","fs-write","net-egress","secret-access"],"gates":[]}
+{"target":"@usejunior/docx-mcp","verdict":"pass","score":0,"toolCount":23,"capabilities":["env-access","exec","fs-read","fs-write"],"gates":[]}
+{"target":"@weppy/roblox-mcp","verdict":"pass","score":0,"toolCount":1,"capabilities":["dotenv-access","exec","fs-write","net-egress"],"gates":[]}
+{"target":"mcp-graphql-tools","verdict":"warn","score":22,"toolCount":2,"capabilities":["env-access","fs-read","net-egress"],"gates":[]}
+{"target":"questrade-mcp-server","verdict":"pass","score":0,"toolCount":15,"capabilities":["dotenv-access","env-access","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"@prom.codes/memory-mcp","error":"mcp-audit: Command failed: npm pack @prom.codes/memory-mcp --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm"}
+{"target":"@retell-ai/mcp-server","error":"mcp-audit: Command failed: npm pack @retell-ai/mcp-server --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-"}
+{"target":"hourei-mcp-server","verdict":"pass","score":0,"toolCount":3,"capabilities":["net-egress"],"gates":[]}
+{"target":"microsandbox-mcp","error":"mcp-audit: Command failed: npm pack microsandbox-mcp --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-119Yg"}
+{"target":"@page-agent/mcp","error":"mcp-audit: Command failed: npm pack @page-agent/mcp --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-DjjXRs"}
+{"target":"@syntrologie/adapt-mcp","error":"mcp-audit: Command failed: npm pack @syntrologie/adapt-mcp --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm"}
+{"target":"google-chat-webhook-mcp","error":"mcp-audit: Command failed: npm pack google-chat-webhook-mcp --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-np"}
+{"target":"@modelcontextprotocol/server-pdf","error":"mcp-audit: Command failed: npm pack @modelcontextprotocol/server-pdf --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp"}
+{"target":"@roottale/cms-mcp","error":"mcp-audit: Command failed: npm pack @roottale/cms-mcp --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-ESBJ"}
+{"target":"@debugbundle/mcp","error":"mcp-audit: Command failed: npm pack @debugbundle/mcp --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-C1aZ5"}
+{"target":"creative-pipeline-mcp","verdict":"warn","score":22,"toolCount":104,"capabilities":["env-access","exec","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"mirroir-mcp","verdict":"warn","score":31,"toolCount":0,"capabilities":["env-access","exec","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"reddit-mcp-buddy","verdict":"pass","score":0,"toolCount":6,"capabilities":["env-access","exec","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"mcp-content","verdict":"pass","score":0,"toolCount":18,"capabilities":["env-access","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"dero-mcp-server","verdict":"warn","score":22,"toolCount":0,"capabilities":["env-access","exec","fs-read","net-egress"],"gates":[]}
+{"target":"@thadeu/trello-mcp","verdict":"pass","score":0,"toolCount":0,"capabilities":["exec"],"gates":[]}
+{"target":"@lark-project/mcp","verdict":"pass","score":0,"toolCount":0,"capabilities":["dotenv-access","env-access","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"@josephyan/qingflow-app-builder-mcp","verdict":"warn","score":9,"toolCount":0,"capabilities":["env-access","exec","fs-read","fs-write"],"gates":[]}
+{"target":"@nbakka/mcp-appium","verdict":"warn","score":44,"toolCount":43,"capabilities":["env-access","exec","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"@iqai/defillama-mcp","verdict":"warn","score":31,"toolCount":26,"capabilities":["dotenv-access","dynamic-eval","env-access","exec","net-egress"],"gates":[]}
+{"target":"computer-use-mcp","verdict":"pass","score":0,"toolCount":1,"capabilities":["env-access","exec","fs-read","fs-write"],"gates":[]}
+{"target":"@varun-ai07/covenant-mcp","verdict":"warn","score":62,"toolCount":33,"capabilities":["dotenv-access","dynamic-eval","env-access","exec","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"debreu-mcp","verdict":"warn","score":22,"toolCount":67,"capabilities":["env-access","exec","fs-read","net-egress"],"gates":[]}
+{"target":"mcp-node-mssql","verdict":"pass","score":0,"toolCount":0,"capabilities":[],"gates":[]}
+{"target":"@ontosdk/mcp","verdict":"pass","score":0,"toolCount":6,"capabilities":["env-access","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"webcake-storefront-mcp","error":"scan failed"}
+{"target":"@sap/mdk-mcp-server","error":"mcp-audit: Command failed: tar -xzf /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-sz1uAA/sap-mdk-mcp-server-0.3.7.tgz -C /v"}
+{"target":"sanchong-mcp-cocos","verdict":"warn","score":22,"toolCount":90,"capabilities":["env-access","exec","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"@edgeimpulse/mcp-server","error":"mcp-audit: ENOENT: no such file or directory, scandir '/var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm-W0llQP'"}
+{"target":"quickbooks-mcp","verdict":"pass","score":3,"toolCount":34,"capabilities":["dotenv-access","env-access","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"claudeus-wp-mcp","verdict":"warn","score":22,"toolCount":156,"capabilities":["dotenv-access","env-access","exec","fs-read","net-egress"],"gates":[]}
+{"target":"@gfsecurities/mcp-base","error":"mcp-audit: Command failed: npm pack @gfsecurities/mcp-base --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit-npm"}
+{"target":"@lhtdeg/ssh-mcp-server","verdict":"pass","score":0,"toolCount":12,"capabilities":["env-access","exec","fs-read","fs-write","secret-access"],"gates":[]}
+{"target":"langchain-mcp-adapters","verdict":"pass","score":0,"toolCount":0,"capabilities":["dotenv-access","env-access","exec","fs-write","net-egress"],"gates":[]}
+{"target":"@cimpress/react-components","error":"mcp-audit: Command failed: npm pack @cimpress/react-components --pack-destination /var/folders/hy/4wzf35jd7yv_cvhd21ptyccw0000gn/T/mcp-audit"}
+{"target":"@ao-mcp/setup","verdict":"warn","score":22,"toolCount":0,"capabilities":["env-access","exec","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"mcp-ffmpeg","verdict":"pass","score":0,"toolCount":8,"capabilities":["env-access","exec"],"gates":[]}
+{"target":"functype-mcp-server","verdict":"pass","score":0,"toolCount":5,"capabilities":["env-access","exec","fs-read"],"gates":[]}
+{"target":"caelus-mcp","verdict":"pass","score":0,"toolCount":35,"capabilities":["env-access"],"gates":[]}
+{"target":"graphlit-mcp-server","verdict":"warn","score":31,"toolCount":73,"capabilities":["env-access","fs-read","net-egress"],"gates":[]}
+{"target":"@oml/mcp","verdict":"warn","score":22,"toolCount":11,"capabilities":["fs-read","net-egress"],"gates":[]}
+{"target":"@midscene/computer-mcp","verdict":"pass","score":0,"toolCount":39,"capabilities":["env-access","exec","fs-read","fs-write"],"gates":[]}
+{"target":"@josephyan/qingflow-app-user-mcp","verdict":"warn","score":9,"toolCount":0,"capabilities":["env-access","exec","fs-read","fs-write"],"gates":[]}
+{"target":"@shipeasy/mcp","verdict":"warn","score":31,"toolCount":107,"capabilities":["env-access","exec","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"apple-notes-mcp","verdict":"pass","score":0,"toolCount":40,"capabilities":["env-access","exec","fs-read","fs-write"],"gates":[]}
+{"target":"boondmanager-mcp-server","verdict":"pass","score":0,"toolCount":93,"capabilities":["env-access","fs-read","net-egress"],"gates":[]}
+{"target":"@findagent/mcp","verdict":"warn","score":22,"toolCount":3,"capabilities":["env-access","exec","fs-read","net-egress"],"gates":[]}
+{"target":"@yawlabs/tailscale-mcp","verdict":"warn","score":69,"toolCount":94,"capabilities":["dynamic-eval","env-access","exec","fs-read","net-egress"],"gates":[]}
+{"target":"@salesforce/pwa-kit-mcp","verdict":"pass","score":3,"toolCount":3,"capabilities":["env-access","exec","fs-read","fs-write","net-egress"],"gates":[]}
+{"target":"@seed-ship/duckdb-mcp-native","verdict":"warn","score":22,"toolCount":55,"capabilities":["dotenv-access","env-access","exec","fs-read","fs-write","net-egress"],"gates":[]}

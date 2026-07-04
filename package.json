@@ -1,0 +1,61 @@
+{
+  "name": "mcp-heimdall",
+  "version": "0.1.0",
+  "description": "Heimdall — a security scanner for Model Context Protocol (MCP) servers. Vet a server, or a whole agent config, before your agent trusts it.",
+  "type": "module",
+  "license": "MIT",
+  "author": "Caglar Bozkurt <tokiyashi@gmail.com>",
+  "homepage": "https://github.com/caglarbozkurt/mcp-heimdall#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/caglarbozkurt/mcp-heimdall.git"
+  },
+  "bugs": {
+    "url": "https://github.com/caglarbozkurt/mcp-heimdall/issues"
+  },
+  "bin": {
+    "heimdall": "dist/cli.js"
+  },
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": "./dist/index.js"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "security",
+    "scanner",
+    "prompt-injection",
+    "supply-chain",
+    "agent",
+    "heimdall"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsx src/cli.ts",
+    "scan": "tsx src/cli.ts",
+    "ui": "tsx ui/server.ts",
+    "build:pages": "node browser/build.mjs",
+    "eval": "tsx src/eval-cli.ts",
+    "test": "node --import tsx --test test/*.test.ts",
+    "prepublishOnly": "npm run build"
+  },
+  "engines": {
+    "node": ">=18.17"
+  },
+  "dependencies": {
+    "acorn": "^8.12.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.0",
+    "esbuild": "^0.28.1",
+    "tsx": "^4.16.0",
+    "typescript": "^5.5.0"
+  }
+}

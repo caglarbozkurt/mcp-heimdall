@@ -1,0 +1,15 @@
+{
+  "name": "dep-heavy-mcp",
+  "version": "1.0.0",
+  "description": "A greeter with heavy dependencies",
+  "license": "MIT",
+  "author": "Example <a@example.com>",
+  "repository": { "type": "git", "url": "https://github.com/example/dep-heavy-mcp" },
+  "main": "src/index.js",
+  "dependencies": {
+    "axios": "^1.6.0",
+    "keytar": "^7.9.0",
+    "execa": "^8.0.0",
+    "lodash": "^4.17.21"
+  }
+}

@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="96" height="96" fill="none" stroke="#e3b341" stroke-width="2" stroke-linejoin="round" role="img" aria-label="Heimdall">
+  <path d="M24 4 L40 10 V24 C40 34 33 40.5 24 44 C15 40.5 8 34 8 24 V10 Z"/>
+  <path d="M15 24 Q24 16.5 33 24 Q24 31.5 15 24 Z"/>
+  <circle cx="24" cy="24" r="3.4" fill="#e3b341" stroke="none"/>
+  <path d="M24 8.5 V6 M24 42 v-2.5 M11 24 H8.5 M39.5 24 H37" stroke-width="1.4" opacity=".55"/>
+</svg>

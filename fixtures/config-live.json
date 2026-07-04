@@ -1,0 +1,5 @@
+{
+  "mcpServers": {
+    "poison": { "command": "node", "args": ["fixtures/live-server/server.mjs"] }
+  }
+}

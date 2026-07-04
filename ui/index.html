@@ -1,0 +1,449 @@
+<!doctype html>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Heimdall — the watchman at your agent's gate</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48' fill='none' stroke='%23e3b341' stroke-width='3' stroke-linejoin='round'%3E%3Cpath d='M24 4 L40 10 V24 C40 34 33 40.5 24 44 C15 40.5 8 34 8 24 V10 Z'/%3E%3Cpath d='M15 24 Q24 16.5 33 24 Q24 31.5 15 24 Z'/%3E%3Ccircle cx='24' cy='24' r='3.4' fill='%23e3b341' stroke='none'/%3E%3C/svg%3E" />
+<style>
+  :root {
+    --bg: #0d1117; --panel: #161b22; --border: #30363d; --text: #e6edf3;
+    --muted: #8b949e; --accent: #58a6ff; --gold: #e3b341;
+    --pass: #3fb950; --warn: #d29922; --fail: #f85149;
+    --crit: #f85149; --high: #ff7b72; --med: #d29922; --low: #58a6ff; --info: #8b949e;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font: 15px/1.6 ui-monospace, SFMono-Regular, Menlo, monospace;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .wrap { max-width: 900px; margin: 0 auto; padding: 8px 20px 90px; }
+  .topbar { display: flex; justify-content: space-between; align-items: center; padding: 12px 0 0; }
+  .topbar .brand { display: flex; align-items: center; gap: 7px; color: var(--muted); font-size: 13px; }
+  .topbar .brand svg { width: 18px; height: 18px; }
+  .ghlink { display: inline-flex; align-items: center; gap: 7px; color: var(--text); font-size: 13px;
+    border: 1px solid var(--border); border-radius: 8px; padding: 6px 12px; text-decoration: none; }
+  .ghlink:hover { border-color: var(--accent); }
+  .ghlink svg { width: 16px; height: 16px; fill: currentColor; }
+  section { margin-top: 64px; }
+  h2 { font-size: 20px; font-weight: 600; margin: 0 0 6px; }
+  h2 + .lead { color: var(--muted); margin: 0 0 22px; font-size: 14px; }
+
+  /* hero */
+  .hero { text-align: center; padding: 20px 0 8px; }
+  .logo { width: 56px; height: 56px; }
+  .hero h1 { font-size: 30px; margin: 12px 0 4px; letter-spacing: .5px; }
+  .hero .tag { color: var(--gold); font-size: 15px; margin: 0 0 10px; }
+  .hero .desc { color: var(--muted); max-width: 620px; margin: 0 auto; font-size: 14px; }
+
+  /* scanner tool */
+  .tool { margin-top: 34px; background: var(--panel); border: 1px solid var(--border);
+    border-radius: 12px; padding: 22px; }
+  .tool .kicker { color: var(--muted); font-size: 12px; text-transform: uppercase;
+    letter-spacing: .6px; margin: 0 0 12px; }
+  form { display: flex; gap: 10px; }
+  input, select, button { font: inherit; }
+  input { flex: 1; padding: 12px 14px; background: var(--bg); color: var(--text);
+    border: 1px solid var(--border); border-radius: 8px; }
+  input:focus, select:focus { outline: none; border-color: var(--accent); }
+  select { padding: 12px 10px; background: var(--bg); color: var(--text);
+    border: 1px solid var(--border); border-radius: 8px; cursor: pointer; }
+  button { padding: 12px 20px; background: var(--accent); color: #0d1117; border: 0;
+    border-radius: 8px; font-weight: 600; cursor: pointer; }
+  button:disabled { opacity: .6; cursor: default; }
+  .editor { margin: 12px 0 0; border: 1px solid var(--border); border-radius: 10px; padding: 0 16px; background: var(--bg); }
+  .editor summary { cursor: pointer; padding: 12px 0; color: var(--accent); font-size: 13px; user-select: none; }
+  .pol-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; padding: 4px 0 16px; }
+  .pol-grid fieldset { border: 1px solid var(--border); border-radius: 8px; margin: 0; padding: 10px 12px; }
+  .pol-grid legend { font-size: 12px; color: var(--text); padding: 0 6px; }
+  .pol-grid legend .hint { color: var(--muted); font-weight: normal; }
+  .editor-intro { color: var(--muted); font-size: 13px; margin: 2px 2px 14px; }
+  .editor-intro b { color: var(--text); }
+  .checks { display: flex; flex-direction: column; align-items: flex-start; gap: 9px; }
+  .checks label { font-size: 13px; display: flex; align-items: center; justify-content: flex-start;
+    gap: 8px; text-align: left; cursor: pointer; width: 100%; }
+  .checks label input { flex: 0 0 auto; margin: 0; }
+  .checks .cl { color: var(--text); }
+  .checks .k { color: var(--muted); font-size: 11px; }
+  .row { display: flex; justify-content: space-between; align-items: center; font-size: 13px; color: var(--muted); margin: 6px 0; gap: 10px; }
+  .row select { padding: 6px 8px; }
+  .examples { margin: 12px 0 0; color: var(--muted); font-size: 13px; }
+  .examples a { margin-right: 12px; cursor: pointer; }
+
+  /* results */
+  #out { margin-top: 20px; }
+  .card { background: var(--bg); border: 1px solid var(--border); border-radius: 10px; padding: 18px; }
+  .summary { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+  .verdict { font-size: 18px; font-weight: 700; padding: 3px 12px; border-radius: 8px; }
+  .verdict.sm { font-size: 11px; padding: 1px 7px; vertical-align: middle; }
+  .verdict.pass { background: rgba(63,185,80,.15); color: var(--pass); }
+  .verdict.warn { background: rgba(210,153,34,.15); color: var(--warn); }
+  .verdict.fail { background: rgba(248,81,73,.15); color: var(--fail); }
+  .meta { color: var(--muted); font-size: 13px; } .meta b { color: var(--text); }
+  .bar { height: 8px; background: var(--border); border-radius: 4px; overflow: hidden; margin-top: 14px; }
+  .bar > span { display: block; height: 100%; }
+  .reasons, .caps { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 14px; align-items: center; }
+  .reasons .lbl, .caps .lbl { color: var(--muted); font-size: 12px; margin-right: 4px; }
+  .reason { font-size: 12px; background: rgba(210,153,34,.12); border: 1px solid rgba(210,153,34,.4); color: var(--warn); border-radius: 6px; padding: 2px 8px; }
+  .cap { font-size: 12px; background: var(--panel); border: 1px solid var(--border); border-radius: 6px; padding: 2px 8px; }
+  .section-label { color: var(--muted); font-size: 12px; text-transform: uppercase; letter-spacing: .5px; margin: 22px 0 4px; }
+  .findings { list-style: none; padding: 0; margin: 8px 0 0; }
+  .profile-list .finding { opacity: .7; }
+  .finding { border-top: 1px solid var(--border); padding: 12px 0; }
+  .fhead { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+  .sev { font-size: 11px; font-weight: 700; padding: 2px 7px; border-radius: 5px; letter-spacing: .5px; }
+  .sev.critical { background: rgba(248,81,73,.2); color: var(--crit); }
+  .sev.high { background: rgba(255,123,114,.2); color: var(--high); }
+  .sev.medium { background: rgba(210,153,34,.2); color: var(--med); }
+  .sev.low { background: rgba(88,166,255,.2); color: var(--low); }
+  .sev.info { background: rgba(139,148,158,.2); color: var(--info); }
+  .gate { font-size: 11px; font-weight: 700; color: var(--fail); border: 1px solid var(--fail); border-radius: 5px; padding: 1px 6px; }
+  .conf { font-size: 11px; color: var(--muted); }
+  .ftitle { font-weight: 600; } .fid { color: var(--muted); font-size: 12px; }
+  .fdetail { margin: 6px 0 0; font-size: 14px; }
+  .floc { color: var(--muted); font-size: 12px; margin-top: 4px; }
+  .fev { color: var(--muted); font-size: 12px; margin-top: 4px; white-space: pre-wrap; background: var(--panel); border: 1px solid var(--border); border-radius: 6px; padding: 6px 8px; }
+  .error { color: var(--fail); } .empty { color: var(--muted); }
+
+  /* content sections */
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; }
+  .fcard { background: var(--panel); border: 1px solid var(--border); border-radius: 12px; padding: 16px 18px; }
+  .fcard h3 { font-size: 15px; margin: 0 0 6px; font-weight: 600; }
+  .fcard p { margin: 0; color: var(--muted); font-size: 13.5px; }
+  .fcard.accent { border-color: rgba(227,179,65,.5); }
+  .fcard .k { color: var(--gold); font-size: 12px; letter-spacing: .5px; text-transform: uppercase; }
+  .metrics { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; }
+  .metric { background: var(--panel); border: 1px solid var(--border); border-radius: 10px; padding: 16px; }
+  .metric .n { font-size: 26px; font-weight: 700; }
+  .metric .n.good { color: var(--pass); }
+  .metric .l { color: var(--muted); font-size: 12.5px; margin-top: 2px; }
+  .note { color: var(--muted); font-size: 13px; margin-top: 14px; }
+  pre { position: relative; background: var(--panel); border: 1px solid var(--border); border-radius: 10px; padding: 14px 16px; overflow-x: auto; font-size: 13px; line-height: 1.7; margin: 0 0 14px; }
+  pre.prompt { white-space: pre-wrap; overflow-x: visible; color: var(--text); border-left: 2px solid var(--gold); }
+  .copybtn { position: absolute; top: 8px; right: 8px; background: var(--bg); color: var(--muted);
+    border: 1px solid var(--border); border-radius: 6px; font: inherit; font-size: 11px; padding: 3px 9px; cursor: pointer; }
+  .copybtn:hover { color: var(--text); border-color: var(--accent); }
+  .sub { color: var(--muted); font-size: 13.5px; margin: 18px 0 8px; }
+  pre .c { color: var(--muted); }
+  ul.plain { list-style: none; padding: 0; margin: 0; }
+  ul.plain li { padding: 8px 0; border-top: 1px solid var(--border); color: var(--muted); font-size: 14px; }
+  ul.plain li b { color: var(--text); }
+  .lore { text-align: center; margin-top: 76px; }
+  .lore svg { width: 100%; max-width: 560px; height: auto; display: block; margin: 0 auto 10px; }
+  .lore h2 { text-align: center; }
+  .lore p { color: var(--muted); max-width: 560px; margin: 8px auto 0; font-size: 14px; }
+  footer { margin-top: 56px; padding-top: 22px; border-top: 1px solid var(--border); color: var(--muted); font-size: 13px; text-align: center; }
+  @media (max-width: 640px) { .pol-grid { grid-template-columns: 1fr; } }
+</style>
+
+<div class="wrap">
+  <nav class="topbar">
+    <span class="brand">
+      <svg viewBox="0 0 48 48" fill="none" stroke="#e3b341" stroke-width="2.6" stroke-linejoin="round" aria-hidden="true"><path d="M24 4 L40 10 V24 C40 34 33 40.5 24 44 C15 40.5 8 34 8 24 V10 Z"/><circle cx="24" cy="24" r="4" fill="#e3b341" stroke="none"/></svg>
+      heimdall
+    </span>
+    <a class="ghlink" href="https://github.com/caglarbozkurt/mcp-heimdall" target="_blank" rel="noopener">
+      <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+      GitHub
+    </a>
+  </nav>
+
+  <header class="hero">
+    <svg class="logo" viewBox="0 0 48 48" fill="none" stroke="#e3b341" stroke-width="2" stroke-linejoin="round" aria-label="Heimdall" role="img">
+      <path d="M24 4 L40 10 V24 C40 34 33 40.5 24 44 C15 40.5 8 34 8 24 V10 Z" />
+      <path d="M15 24 Q24 16.5 33 24 Q24 31.5 15 24 Z" />
+      <circle cx="24" cy="24" r="3.4" fill="#e3b341" stroke="none" />
+      <path d="M24 8.5 V6 M24 42 v-2.5 M11 24 H8.5 M39.5 24 H37" stroke-width="1.4" opacity=".55" />
+    </svg>
+    <h1>Heimdall</h1>
+    <p class="tag">The watchman at your agent's gate.</p>
+    <p class="desc">Vet a Model Context Protocol server — or your whole agent config —
+      before your agent trusts it.</p>
+  </header>
+
+  <div class="tool">
+    <p class="kicker">Scan a server</p>
+    <form id="f">
+      <input id="target" placeholder="npm package, ./local/path, github URL, or tools.json" autofocus />
+      <select id="preset" title="Starting policy">
+        <option value="default">default policy</option>
+        <option value="strict">strict policy</option>
+      </select>
+      <button id="go" type="submit">Scan</button>
+    </form>
+    <details id="editor" class="editor">
+      <summary>Adjust policy criteria</summary>
+      <p class="editor-intro">A policy decides <b>pass</b>, <b>warn</b>, or <b>fail</b>. Pick a preset above,
+        then tweak below — hover any item to see what it means. Hard red flags (“gates”, like a proven
+        credential leak) always fail no matter what you set here.</p>
+      <div class="pol-grid">
+        <fieldset>
+          <legend>Block servers that can… <span class="hint">fail if the server can do it</span></legend>
+          <div id="deny-caps" class="checks"></div>
+        </fieldset>
+        <fieldset>
+          <legend>Only allow servers that… <span class="hint">fail if missing</span></legend>
+          <div id="require" class="checks"></div>
+        </fieldset>
+        <fieldset>
+          <legend>How strict? <span class="hint">gates always fail; this controls softer findings</span></legend>
+          <label class="row" title="Any reviewable finding at this severity or worse fails the scan.">Fail if a finding is at least
+            <select id="failOn">
+              <option value="none">— off (gates only)</option>
+              <option value="critical">critical</option><option value="high">high</option>
+              <option value="medium">medium</option><option value="low">low</option>
+            </select>
+          </label>
+          <label class="row" title="Any reviewable finding at this severity or worse warns.">Warn if a finding is at least
+            <select id="warnOn">
+              <option value="critical">critical</option><option value="high">high</option>
+              <option value="medium">medium</option><option value="low">low</option><option value="info">info</option>
+            </select>
+          </label>
+        </fieldset>
+      </div>
+    </details>
+    <p class="examples">Try:
+      <a data-ex="@modelcontextprotocol/server-filesystem">server-filesystem</a>
+      <a data-ex="firecrawl-mcp">firecrawl-mcp</a>
+      <a data-ex="./fixtures/note-keeper-mcp">malicious fixture</a>
+    </p>
+    <div id="out"></div>
+  </div>
+
+  <section class="getstarted">
+    <h2>Connect it to your agent</h2>
+    <p class="lead">No install. Run it yourself, or hand the setup to your coding agent.</p>
+    <pre data-copy><span class="c"># scan any server, or audit your whole agent config</span>
+npx mcp-heimdall firecrawl-mcp
+npx mcp-heimdall ./claude_desktop_config.json</pre>
+
+    <p class="sub">Paste this to your coding agent (Claude Code, etc.) and let it do the setup:</p>
+    <pre class="prompt" data-copy>Set up Heimdall (https://github.com/caglarbozkurt/mcp-heimdall) to vet my MCP servers before I trust them.
+
+1. Install it: run `npm i -g mcp-heimdall` (or use `npx mcp-heimdall`).
+2. Add it as a skill using the definition at skill/SKILL.md in that repo.
+3. Locate my MCP client config (e.g. claude_desktop_config.json) and run
+   `heimdall &lt;that config&gt;` to audit every server configured in it.
+4. Report anything that WARNs or FAILs with the reason, and tell me whether
+   each server is safe to keep before I let my agent use it.</pre>
+
+    <p class="note">Prefer a hard gate in CI? <code>heimdall &lt;target&gt; --policy strict --sarif</code>.
+      <a href="https://github.com/caglarbozkurt/mcp-heimdall" target="_blank" rel="noopener">Docs &amp; skill →</a></p>
+  </section>
+
+  <section>
+    <h2>What Heimdall checks</h2>
+    <p class="lead">Every finding cites concrete evidence — file:line or tool:name — so it's reproducible, not an opinion.</p>
+    <div class="grid">
+      <div class="fcard"><h3>Prompt injection</h3><p>Instruction-override, concealment, fake authority tags, hidden characters — across tools, resources, and prompts, not just tools.</p></div>
+      <div class="fcard"><h3>Capability &amp; credentials</h3><p>Filesystem, network, shell, eval, and specific credential access (SSH, AWS, keychain), plus hardcoded secrets.</p></div>
+      <div class="fcard"><h3>Proven exfil / RCE paths</h3><p>Data-flow analysis proves a secret read flows into a network call — file:line → file:line — instead of guessing from co-presence.</p></div>
+      <div class="fcard"><h3>Provenance &amp; dependencies</h3><p>Install-time scripts, missing repository/license, and capabilities inherited from declared dependencies.</p></div>
+      <div class="fcard"><h3>Rug-pull drift</h3><p>Fingerprints the surface; diff a later scan against a baseline and a silently-changed tool description is a hard fail.</p></div>
+      <div class="fcard"><h3>Live handshake</h3><p>Optionally runs the server, completes the MCP handshake, and reads the real tool list — catching runtime-built descriptions.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Why it's different</h2>
+    <p class="lead">Single-server scanning is table stakes. These are the parts most scanners miss.</p>
+    <div class="grid">
+      <div class="fcard accent"><span class="k">Composition</span><h3>Sees the whole gate</h3><p>Audits your entire agent config together. One server ingests untrusted content, another has egress → a cross-server exfiltration path neither shows alone.</p></div>
+      <div class="fcard accent"><span class="k">Precision</span><h3>Proves the path</h3><p>Taint/data-flow turns "reads files AND has network = fail" into a concrete, located path — so it doesn't cry wolf on a config read plus an unrelated API call.</p></div>
+      <div class="fcard accent"><span class="k">Governance</span><h3>A gate you control</h3><p>Detectors emit facts; a policy you define turns them into pass/warn/fail. Deny capabilities, require provenance, add audited waivers, gate CI with SARIF.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Tested at scale</h2>
+    <p class="lead">Run against 1000 real MCP packages harvested from the npm registry.</p>
+    <div class="metrics">
+      <div class="metric"><div class="n">1000</div><div class="l">real MCP packages scanned</div></div>
+      <div class="metric"><div class="n">742</div><div class="l">analyzed (rest 404 / private)</div></div>
+      <div class="metric"><div class="n">0.8%</div><div class="l">flagged for review</div></div>
+      <div class="metric"><div class="n">~2 min</div><div class="l">to scan all of them</div></div>
+    </div>
+    <p class="note"><b>56% pass · 43% warn · 0.8% fail.</b> A robustness run on unlabeled servers — a
+      flag means <i>review this</i>, not proven malicious. Full log: <code>benchmarks/field-run.md</code>.</p>
+
+    <h2 style="margin-top:38px">Accuracy on labeled cases</h2>
+    <p class="lead">Precision and recall need ground truth, so this is measured separately on a labeled set.</p>
+    <div class="metrics">
+      <div class="metric"><div class="n good">100%</div><div class="l">precision</div></div>
+      <div class="metric"><div class="n good">100%</div><div class="l">recall</div></div>
+      <div class="metric"><div class="n">0 / 0</div><div class="l">false positives / negatives</div></div>
+      <div class="metric"><div class="n">10</div><div class="l">labeled cases so far</div></div>
+    </div>
+    <p class="note">Known-good servers cleared, known-vulnerable ones (incl. the Damn Vulnerable MCP
+      project) failed. Small labeled corpus — early, and meant to grow (<code>npm run eval</code>).</p>
+  </section>
+
+  <section>
+    <h2>Honest limits</h2>
+    <ul class="plain">
+      <li>Static analysis (intra-file data-flow). <code>--handshake</code> adds live fidelity but is not a true sandbox.</li>
+      <li>Capability and taint analysis are JS/TS; injection analysis is language-agnostic.</li>
+      <li>Thresholds are rule-based and the benchmark is early — it's a pre-flight check, not runtime protection.</li>
+    </ul>
+  </section>
+
+  <section class="lore">
+    <svg viewBox="0 0 640 200" fill="none" stroke="#e3b341" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <g fill="#e3b341" stroke="none" opacity=".7">
+        <circle cx="60" cy="34" r="1.6"/><circle cx="130" cy="20" r="1.6"/><circle cx="205" cy="46" r="1.6"/>
+        <circle cx="290" cy="24" r="1.6"/><circle cx="350" cy="54" r="1.6"/><circle cx="415" cy="30" r="1.6"/>
+        <circle cx="560" cy="40" r="1.6"/><circle cx="600" cy="22" r="1.6"/><circle cx="602" cy="70" r="1.6"/>
+      </g>
+      <path d="M448 60 Q470 46 492 60 Q470 74 448 60 Z"/>
+      <circle cx="470" cy="60" r="4.5" fill="#e3b341" stroke="none"/>
+      <path d="M470 44 v-6 M452 50 l-5 -3 M488 50 l5 -3" opacity=".65"/>
+      <path d="M20 182 Q250 96 452 120" opacity=".9"/>
+      <path d="M20 178 Q250 90 452 114" opacity=".55"/>
+      <path d="M20 174 Q250 84 452 108" opacity=".3"/>
+      <path d="M448 120 V88 M492 120 V88 M448 88 Q470 74 492 88"/>
+      <path d="M512 124 V80 M540 124 V80 M512 80 h28 M514 80 v-5 h5 v5 M535 80 v-5 h5 v5" opacity=".85"/>
+      <circle cx="526" cy="98" r="3" opacity=".8"/>
+      <path d="M0 184 H640" opacity=".22"/>
+    </svg>
+    <h2>Standing watch at the gate</h2>
+    <p>In the old stories, Heimdall kept the Bifröst — the burning bridge to Asgard — and could see to
+      the ends of the nine realms and hear the grass grow. He let nothing cross unseen. This tool keeps
+      the same watch over the bridge between your agent and the code it's about to trust.</p>
+  </section>
+
+  <footer>
+    Built by <a href="https://github.com/caglarbozkurt" target="_blank" rel="noopener">Caglar</a>
+    · <a href="https://github.com/caglarbozkurt/mcp-heimdall" target="_blank" rel="noopener">GitHub repo</a>
+    · open source (MIT)
+  </footer>
+</div>
+
+<script>
+  const $ = (s) => document.querySelector(s);
+  const out = $("#out"), input = $("#target"), btn = $("#go");
+  const esc = (s) => String(s ?? "").replace(/[&<>]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;" }[c]));
+
+  // click-to-copy on code and prompt blocks (with a legacy fallback for restricted contexts)
+  async function copyText(text) {
+    try { await navigator.clipboard.writeText(text); return true; } catch {}
+    try {
+      const ta = document.createElement("textarea");
+      ta.value = text; ta.style.position = "fixed"; ta.style.top = "0"; ta.style.opacity = "0";
+      document.body.appendChild(ta); ta.focus(); ta.select();
+      const ok = document.execCommand("copy"); document.body.removeChild(ta); return ok;
+    } catch { return false; }
+  }
+  document.querySelectorAll("pre[data-copy]").forEach((pre) => {
+    const text = pre.textContent;
+    const btn = document.createElement("button");
+    btn.type = "button"; btn.className = "copybtn"; btn.textContent = "copy";
+    btn.addEventListener("click", async () => {
+      btn.textContent = (await copyText(text)) ? "copied ✓" : "select & copy";
+      setTimeout(() => (btn.textContent = "copy"), 1600);
+    });
+    pre.appendChild(btn);
+  });
+
+  const CAP_INFO = {
+    "fs-read": ["read files", "Can read files from your machine."],
+    "fs-write": ["write files", "Can create, change, or delete files."],
+    "net-egress": ["access the network", "Can send data out to the internet."],
+    "exec": ["run commands", "Can execute shell commands or spawn processes."],
+    "dynamic-eval": ["evaluate code", "Can run code assembled at runtime (eval)."],
+    "secret-access": ["read credentials", "Touches SSH keys, cloud credentials, or the keychain."],
+    "env-access": ["read env vars", "Reads environment variables."],
+  };
+  const REQ_INFO = {
+    "has_repository": ["have a public source repo", "Links to a source repository you can inspect."],
+    "has_license": ["declare a license", "States a license."],
+    "has_author": ["name an author", "Declares an author or maintainer."],
+    "no_install_scripts": ["have no install scripts", "Runs no install-time scripts (a code-execution vector)."],
+    "tools_extracted": ["expose readable tools", "Its tool definitions could actually be read."],
+  };
+  const CAPS = Object.keys(CAP_INFO);
+  const REQS = Object.keys(REQ_INFO);
+  const PRESETS = {
+    default: { denyCapabilities: [], require: [], failOnSeverity: "none", warnOnSeverity: "medium" },
+    strict: { denyCapabilities: ["exec", "dynamic-eval", "secret-access"], require: ["has_repository", "has_license"], failOnSeverity: "high", warnOnSeverity: "low" },
+  };
+  function mkChecks(container, info, cls) {
+    container.innerHTML = Object.entries(info)
+      .map(([k, [label, help]]) => `<label title="${help}"><input type="checkbox" class="${cls}" value="${k}"> <span class="cl">${label}</span> <span class="k">${k}</span></label>`)
+      .join("");
+  }
+  mkChecks($("#deny-caps"), CAP_INFO, "deny");
+  mkChecks($("#require"), REQ_INFO, "req");
+  function applyPreset(name) {
+    const p = PRESETS[name];
+    document.querySelectorAll(".deny").forEach((c) => (c.checked = p.denyCapabilities.includes(c.value)));
+    document.querySelectorAll(".req").forEach((c) => (c.checked = p.require.includes(c.value)));
+    $("#failOn").value = p.failOnSeverity; $("#warnOn").value = p.warnOnSeverity;
+  }
+  applyPreset("default");
+  $("#preset").addEventListener("change", () => applyPreset($("#preset").value));
+  const eqSet = (a, b) => a.length === b.length && a.every((x) => b.includes(x));
+  function policyPayload() {
+    const presetName = $("#preset").value, p = PRESETS[presetName];
+    const deny = [...document.querySelectorAll(".deny:checked")].map((c) => c.value);
+    const req = [...document.querySelectorAll(".req:checked")].map((c) => c.value);
+    const failOn = $("#failOn").value, warnOn = $("#warnOn").value;
+    const unchanged = eqSet(deny, p.denyCapabilities) && eqSet(req, p.require) && failOn === p.failOnSeverity && warnOn === p.warnOnSeverity;
+    if (unchanged) return presetName;
+    return { name: "custom", denyCapabilities: deny, require: req, failOnSeverity: failOn, warnOnSeverity: warnOn };
+  }
+  document.querySelectorAll(".examples a").forEach((a) =>
+    a.addEventListener("click", () => { input.value = a.dataset.ex; run(); }));
+  $("#f").addEventListener("submit", (e) => { e.preventDefault(); run(); });
+
+  async function run() {
+    const target = input.value.trim();
+    if (!target) return;
+    btn.disabled = true;
+    out.innerHTML = '<div class="card empty">Scanning ' + esc(target) + '… (npm/github targets download first)</div>';
+    try {
+      const res = await fetch("/api/scan", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ target, policy: policyPayload() }) });
+      const data = await res.json();
+      out.innerHTML = data.error ? errorCard(data.error) : reportCard(data);
+    } catch (err) {
+      out.innerHTML = errorCard(err.message || String(err));
+    } finally { btn.disabled = false; }
+  }
+  function errorCard(msg) { return '<div class="card"><div class="error">Scan failed:</div><div class="fev">' + esc(msg) + "</div></div>"; }
+  const scoreColor = (s) => (s >= 70 ? "var(--fail)" : s >= 25 ? "var(--warn)" : "var(--pass)");
+
+  function reportCard(r) {
+    const risk = r.findings.filter((f) => !f.profile);
+    const profile = r.findings.filter((f) => f.profile);
+    const caps = (r.capabilities && r.capabilities.length)
+      ? '<div class="caps"><span class="lbl">capabilities</span>' + r.capabilities.map((cp) => '<span class="cap">' + esc(cp) + "</span>").join("") + "</div>"
+      : '<div class="caps"><span class="lbl">capabilities</span><span class="cap">none detected</span></div>';
+    const riskSection = risk.length
+      ? '<div class="section-label">Risk findings</div><ul class="findings">' + risk.map(findingItem).join("") + "</ul>"
+      : '<p class="empty" style="margin-top:16px">No risk findings.</p>';
+    const profileSection = profile.length
+      ? '<div class="section-label">Profile — informational, does not affect verdict</div><ul class="findings profile-list">' + profile.map(findingItem).join("") + "</ul>"
+      : "";
+    return '<div class="card"><div class="summary">' +
+        '<span class="verdict ' + r.verdict + '">' + r.verdict.toUpperCase() + "</span>" +
+        '<span class="meta">risk <b>' + r.score + "</b>/100</span>" +
+        '<span class="meta">tools <b>' + r.toolCount + "</b></span>" +
+        '<span class="meta">' + esc(r.kind) + "</span>" +
+        '<span class="meta">policy <b>' + esc(r.policy) + "</b></span>" +
+        '<span class="meta">fingerprint <b>' + esc(r.fingerprint) + "</b></span></div>" +
+      '<div class="bar"><span style="width:' + r.score + "%;background:" + scoreColor(r.score) + '"></span></div>' +
+      (r.reasons && r.reasons.length ? '<div class="reasons"><span class="lbl">why</span> ' + r.reasons.map((x) => '<span class="reason">' + esc(x) + "</span>").join("") + "</div>" : "") +
+      caps + riskSection + profileSection + "</div>";
+  }
+  function findingItem(f) {
+    const conf = f.confidence && f.confidence !== "high" ? '<span class="conf">(' + esc(f.confidence) + " confidence)</span>" : "";
+    return '<li class="finding"><div class="fhead">' +
+        '<span class="sev ' + f.severity + '">' + f.severity.toUpperCase() + "</span>" +
+        (f.gate ? '<span class="gate">GATE</span>' : "") +
+        '<span class="ftitle">' + esc(f.title) + "</span>" + conf +
+        '<span class="fid">' + esc(f.id) + "</span></div>" +
+      '<div class="fdetail">' + esc(f.detail) + "</div>" +
+      (f.location ? '<div class="floc">at ' + esc(f.location) + "</div>" : "") +
+      (f.evidence ? '<div class="fev">' + esc(f.evidence) + "</div>" : "") + "</li>";
+  }
+</script>

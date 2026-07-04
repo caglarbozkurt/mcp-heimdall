@@ -1,0 +1,8 @@
+{
+  "name": "acme-procurement",
+  "denyCapabilities": ["exec", "dynamic-eval", "secret-access"],
+  "require": ["has_repository", "has_license"],
+  "failOnSeverity": "high",
+  "warnOnSeverity": "low",
+  "allow": []
+}

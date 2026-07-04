@@ -1,0 +1,6 @@
+{
+  "servers": [
+    { "name": "web", "target": "./fixtures/weather-mcp" },
+    { "name": "notes", "target": "./fixtures/note-keeper-mcp" }
+  ]
+}
