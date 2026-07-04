@@ -38,7 +38,7 @@ Initial release.
 
 ### Surfaces
 
-- CLI, library (`mcp-heimdall`), a Claude Code skill, and a local web UI.
+- CLI, library (`mcp-heimdall-scan`), a Claude Code skill, and a local web UI.
 - Live **`--handshake`** mode (runs the server for the real tool list; see `SECURITY.md`).
 - **SARIF 2.1.0** output for CI / code scanning.
 - Calibration harness (`npm run eval`) over a labeled corpus.

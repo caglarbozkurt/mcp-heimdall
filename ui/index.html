@@ -215,13 +215,13 @@
     <h2>Connect it to your agent</h2>
     <p class="lead">No install. Run it yourself, or hand the setup to your coding agent.</p>
     <pre data-copy><span class="c"># scan any server, or audit your whole agent config</span>
-npx mcp-heimdall firecrawl-mcp
-npx mcp-heimdall ./claude_desktop_config.json</pre>
+npx mcp-heimdall-scan firecrawl-mcp
+npx mcp-heimdall-scan ./claude_desktop_config.json</pre>
 
     <p class="sub">Paste this to your coding agent (Claude Code, etc.) and let it do the setup:</p>
     <pre class="prompt" data-copy>Set up Heimdall (https://github.com/caglarbozkurt/mcp-heimdall) to vet my MCP servers before I trust them.
 
-1. Install it: run `npm i -g mcp-heimdall` (or use `npx mcp-heimdall`).
+1. Install it: run `npm i -g mcp-heimdall-scan` (or use `npx mcp-heimdall-scan`).
 2. Add it as a skill using the definition at skill/SKILL.md in that repo.
 3. Locate my MCP client config (e.g. claude_desktop_config.json) and run
    `heimdall &lt;that config&gt;` to audit every server configured in it.

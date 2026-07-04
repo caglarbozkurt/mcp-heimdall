@@ -26,9 +26,9 @@ exact evidence.
 ## Quickstart
 
 ```bash
-npx mcp-heimdall firecrawl-mcp                   # scan a published server
-npx mcp-heimdall ./claude_desktop_config.json    # audit your whole agent config
-npx mcp-heimdall ./my-server --policy strict     # gate it in CI
+npx mcp-heimdall-scan firecrawl-mcp                   # scan a published server
+npx mcp-heimdall-scan ./claude_desktop_config.json    # audit your whole agent config
+npx mcp-heimdall-scan ./my-server --policy strict     # gate it in CI
 ```
 
 No install, runs locally, nothing leaves your machine.
@@ -114,7 +114,7 @@ Waivers carry a reason and optional expiry — an expired waiver lapses and re-f
 ## Library
 
 ```ts
-import { scan } from "mcp-heimdall";
+import { scan } from "mcp-heimdall-scan";
 
 const report = await scan("some-mcp-server", { policy: "strict" });
 if (report.verdict === "fail") throw new Error(report.reasons.join("; "));
