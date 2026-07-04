@@ -127,6 +127,25 @@ if (report.verdict === "fail") throw new Error(report.reasons.join("; "));
 
 Also ships as a **Claude Code skill** (`skill/`) — vet a server in-conversation before installing.
 
+## Validate (behavioral cross-check)
+
+Static analysis says what a server *can* do. `heimdall validate` checks that against what it
+*actually does* — it runs the server with a capability recorder preloaded (hooking
+`fs` / `net` / `http(s)` / `child_process` / `vm` / `fetch` / `process.env`), drives each tool,
+and diffs observed runtime behavior against the static flags:
+
+```bash
+heimdall validate ./my-server            # one server: confirmed / missed / not-exercised
+heimdall validate --list servers.txt     # batch: a recall number over observed behavior
+```
+
+- **confirmed** — flagged *and* observed (the static claim held up).
+- **not exercised** — flagged but not triggered by naive args (a *lower bound*, **not** proof the flag is wrong).
+- **missed** — observed but **not** flagged → a real static gap to review (or an incidental library side effect).
+
+So it's trustworthy for finding false **negatives** (static misses); it does not disprove a flag.
+⚠️ It **runs the server and calls its tools** (side effects possible) — use a disposable VM/container.
+
 ## Tested at scale
 
 Run against **2,500 real MCP packages** from the npm registry (`benchmarks/`): **1,726 scanned**

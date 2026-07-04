@@ -5,12 +5,16 @@ import { test } from "node:test";
 import {
   analyzeVulnerabilities,
   coerceVersion,
+  compareCaps,
   evaluateCorpus,
   handshake,
   mapSeverity,
+  observedCaps,
   resolveDeps,
+  sampleValue,
   scan,
   scanConfig,
+  synthArgs,
   vulnerabilityFinding,
 } from "../src/index.js";
 import type { AnalysisContext } from "../src/index.js";
@@ -121,6 +125,36 @@ test("CVE check: a network failure degrades to an informational finding, never a
   } finally {
     globalThis.fetch = realFetch;
   }
+});
+
+test("validate: synthesizes tool args from an inputSchema", () => {
+  assert.equal(sampleValue({ type: "number" }), 1);
+  assert.equal(sampleValue({ type: "boolean" }), true);
+  assert.equal(sampleValue({ enum: ["a", "b"] }), "a");
+  assert.equal(sampleValue({ default: "x" }), "x");
+  assert.equal(sampleValue({ type: "string" }), "test");
+  const args = synthArgs({ properties: { path: { type: "string" }, n: { type: "integer" } }, required: ["path"] });
+  assert.deepEqual(args, { path: "test" }); // only required props are filled
+});
+
+test("validate: observed capabilities respect the bootstrap cutoff", () => {
+  const events = [
+    { t: 100, cap: "fs-write" }, // before cutoff (npx bootstrap) → excluded
+    { t: 200, cap: "net-egress" },
+    { t: 250, cap: "exec" },
+  ];
+  const caps = observedCaps(events, 150);
+  assert.ok(caps.has("net-egress") && caps.has("exec"));
+  assert.ok(!caps.has("fs-write"), "events before the cutoff are excluded");
+});
+
+test("validate: compareCaps classifies confirmed / missed / not-exercised", () => {
+  const rows = compareCaps(new Set(["net-egress", "exec"]), new Set(["net-egress", "fs-read"]));
+  const by = Object.fromEntries(rows.map((r) => [r.cap, r.status]));
+  assert.equal(by["net-egress"], "confirmed"); // flagged AND observed
+  assert.equal(by["exec"], "not-exercised"); // flagged, not observed (lower-bound, not wrong)
+  assert.equal(by["fs-read"], "missed"); // observed, NOT flagged → a real static gap
+  assert.equal(by["fs-write"], "clean"); // neither
 });
 
 test("a custom policy changes the verdict on the same facts", async () => {

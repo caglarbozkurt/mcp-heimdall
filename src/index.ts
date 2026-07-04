@@ -22,6 +22,15 @@ export {
 export { handshake } from "./handshake.js";
 export { evaluateCorpus } from "./corpus.js";
 export {
+  validateServer,
+  validateBatch,
+  compareCaps,
+  observedCaps,
+  synthArgs,
+  sampleValue,
+  OBSERVABLE_CAPS,
+} from "./validate.js";
+export {
   parseToolsDump,
   parseSurfaceDump,
   extractTools,

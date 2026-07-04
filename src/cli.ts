@@ -3,9 +3,10 @@ import { existsSync, readFileSync } from "node:fs";
 import { parseArgs } from "node:util";
 import { looksLikeConfig, scanConfig } from "./composition.js";
 import { handshake } from "./handshake.js";
-import { formatCompositionReport, formatReport } from "./report.js";
+import { formatBatchReport, formatCompositionReport, formatReport, formatValidateReport } from "./report.js";
 import { toSarif } from "./sarif.js";
 import { scan } from "./scan.js";
+import { validateBatch, validateServer } from "./validate.js";
 
 /** True if the input is a JSON MCP *client config* (a set of servers) rather than one server. */
 function isConfig(input: string): boolean {
@@ -22,6 +23,7 @@ heimdall — a security scanner for MCP servers
 
 Usage:
   heimdall <target> [options]
+  heimdall validate <target> [--list <file>] [--max-tools N]   behavioral cross-check
 
 Target can be:
   ./path/to/server      a local directory containing an MCP server
@@ -43,6 +45,10 @@ Options:
   -h, --help         show this help
 
 Exit codes: 0 pass/warn, 1 fail (unless --no-fail), 2 error.
+
+'heimdall validate' RUNS the server and CALLS its tools to observe real behavior,
+then compares it to the static flags. It executes untrusted code with side effects —
+run it ONLY inside a disposable VM or container.
 `;
 
 async function main() {
@@ -54,6 +60,8 @@ async function main() {
       baseline: { type: "string" },
       handshake: { type: "boolean", default: false },
       online: { type: "boolean", default: false },
+      list: { type: "string" },
+      "max-tools": { type: "string" },
       json: { type: "boolean", default: false },
       sarif: { type: "boolean", default: false },
       "no-fail": { type: "boolean", default: false },
@@ -75,6 +83,32 @@ async function main() {
   if (values.help || positionals.length === 0) {
     process.stdout.write(HELP);
     process.exit(values.help ? 0 : 2);
+  }
+
+  // `heimdall validate <target>` — behavioral cross-check (runs the server + calls its tools).
+  if (positionals[0] === "validate") {
+    process.stderr.write(
+      "⚠ validate RUNS the server AND calls its tools (side effects possible). Use a disposable VM/container only.\n",
+    );
+    const maxTools = values["max-tools"] ? Number(values["max-tools"]) : undefined;
+    if (values.list) {
+      const inputs = readFileSync(values.list, "utf8")
+        .split("\n")
+        .map((l) => l.trim())
+        .filter((l) => l && !l.startsWith("#"));
+      const batch = await validateBatch(inputs, { maxTools });
+      process.stdout.write(values.json ? JSON.stringify(batch, null, 2) + "\n" : formatBatchReport(batch));
+      process.exit(0);
+    }
+    const target = positionals[1];
+    if (!target) {
+      process.stderr.write("heimdall validate: provide a <target> or --list <file>.\n");
+      process.exit(2);
+    }
+    const vr = await validateServer(target, { maxTools });
+    process.stdout.write(values.json ? JSON.stringify(vr, null, 2) + "\n" : formatValidateReport(vr));
+    // Diagnostic, not a gate: only a run error is non-zero (MISSED can be incidental noise).
+    process.exit(vr.error ? 2 : 0);
   }
 
   // A client config → audit the whole configured set together (composition analysis).

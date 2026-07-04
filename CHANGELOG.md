@@ -19,6 +19,16 @@ All notable changes to Heimdall are documented here. This project adheres to
   is not a lockfile). Works in the CLI and the browser build (OSV.dev is CORS-enabled). New
   policy fact `no_known_vulnerabilities`. Network failures degrade to an informational notice.
 - **CVE toggle in both web UIs** — "Also check dependencies for known CVEs" (off by default).
+- **Behavioral validation (`heimdall validate`)** — the missing third leg after the
+  distribution run and the labeled corpus. It runs the server with a capability recorder
+  preloaded (hooks `fs`/`net`/`http(s)`/`dns`/`child_process`/`vm`/`fetch`/`process.env`),
+  drives each tool with synthesized arguments, and diffs the *observed* runtime capabilities
+  against the static `report.capabilities`: **confirmed** (flagged and observed), **not
+  exercised** (flagged, not triggered — a lower bound, not proof of a false positive), and
+  **missed** (observed but not flagged — a real static gap to review). Reads own-package
+  file access and npx bootstrap as noise and filters them. Single-server and `--list` batch
+  (recall metric). Runs untrusted code with side effects — VM/container only. Diagnostic,
+  not a CI gate.
 
 ### Changed
 

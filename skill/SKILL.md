@@ -37,6 +37,11 @@ Add `--online` when the user wants supply-chain coverage: it checks declared dep
 against the OSV.dev advisory database and reports real CVE IDs. It sends only dependency
 names + versions (never source); leave it off to stay fully offline.
 
+For a behavioral cross-check, `heimdall validate <target>` runs the server and calls its
+tools to observe what it *actually* does, then compares that to the static flags (confirmed
+/ missed / not-exercised). It executes untrusted code with side effects — only suggest it in
+a disposable VM/container, never on the user's real machine.
+
 To analyze injection with full fidelity when tool descriptions can't be read from
 source, capture the server's `tools/list` output to a file and pass `--tools <file>`.
 
