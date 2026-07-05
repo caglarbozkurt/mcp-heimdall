@@ -1,5 +1,5 @@
 name: "Heimdall MCP Scanner"
-description: "Vet an MCP server — or your whole agent config — for prompt-injection, data-exfiltration, and risky capabilities. Fails the build on a risky verdict."
+description: "Scan an MCP server or agent config for injection, exfiltration, and risky capabilities - fail CI on a risky verdict."
 author: "Çağlar Bozkurt"
 
 branding:
