@@ -1,0 +1,24 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json",
+  "name": "io.github.caglarbozkurt/heimdall",
+  "description": "Scan an MCP server or agent config for injection, exfiltration, and risky capabilities before your agent trusts it.",
+  "repository": {
+    "url": "https://github.com/caglarbozkurt/mcp-heimdall",
+    "source": "github"
+  },
+  "version": "0.5.0",
+  "packages": [
+    {
+      "registryType": "npm",
+      "registryBaseUrl": "https://registry.npmjs.org",
+      "identifier": "mcp-heimdall-scan",
+      "version": "0.5.0",
+      "transport": { "type": "stdio" },
+      "runtimeHint": "npx",
+      "runtimeArguments": [
+        { "type": "named", "name": "--package", "value": "mcp-heimdall-scan" },
+        { "type": "positional", "value": "heimdall-mcp" }
+      ]
+    }
+  ]
+}
