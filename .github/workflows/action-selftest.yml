@@ -1,0 +1,31 @@
+name: Action self-test
+
+# Dogfood the composite action (action.yml) against the fixtures, so the published
+# GitHub Action is always known-good and this doubles as a copy-paste example.
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  benign-passes:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      # A benign server should pass and keep the job green.
+      - uses: ./
+        with:
+          target: fixtures/weather-mcp
+          policy: default
+
+  malicious-detected:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      # A malicious fixture is detected; fail-on-findings:false keeps the demo green
+      # while the risky verdict + gates show in the job log.
+      - uses: ./
+        with:
+          target: fixtures/note-keeper-mcp
+          policy: strict
+          fail-on-findings: "false"

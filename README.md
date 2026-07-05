@@ -128,6 +128,31 @@ if (report.verdict === "fail") throw new Error(report.reasons.join("; "));
 
 Also ships as a **Claude Code skill** (`skill/`) — vet a server in-conversation before installing.
 
+## Use it in CI (GitHub Action)
+
+Gate every pull request — scan your MCP config (or a server) and **fail the build** if it's
+risky. Add this to `.github/workflows/`:
+
+```yaml
+- uses: caglarbozkurt/mcp-heimdall@v1
+  with:
+    target: ./claude_desktop_config.json   # a path, npm/pypi package, github URL, or tools.json
+    policy: strict                          # "default", "strict", or a JSON policy file
+    online: true                            # also check deps for known CVEs (OSV.dev)
+    sarif: heimdall.sarif                   # optional: emit SARIF for code scanning
+```
+
+| Input | Default | Description |
+|---|---|---|
+| `target` | — | what to scan (required) |
+| `policy` | `default` | `default`, `strict`, or a path to a JSON policy |
+| `online` | `false` | check dependencies for known CVEs via OSV.dev |
+| `sarif` | — | write SARIF to this path (for `github/codeql-action/upload-sarif`) |
+| `fail-on-findings` | `true` | fail the job on a `FAIL` verdict (set `false` to report only) |
+| `version` | `latest` | pin the `mcp-heimdall-scan` version for reproducible CI |
+
+Runs entirely on your own CI runner — no backend, and free on public repos.
+
 ## Validate (behavioral cross-check)
 
 Static analysis says what a server *can* do. `heimdall validate` checks that against what it

@@ -1,0 +1,64 @@
+name: "Heimdall MCP Scanner"
+description: "Vet an MCP server — or your whole agent config — for prompt-injection, data-exfiltration, and risky capabilities. Fails the build on a risky verdict."
+author: "Çağlar Bozkurt"
+
+branding:
+  icon: "shield"
+  color: "yellow"
+
+inputs:
+  target:
+    description: "What to scan: a path, an npm package, pypi:<name>, a github URL, a tools.json dump, or an MCP client config file."
+    required: true
+  policy:
+    description: 'Policy to gate against: "default", "strict", or a path to a JSON policy file.'
+    required: false
+    default: "default"
+  online:
+    description: "Also check dependencies for known CVEs via OSV.dev (makes a network call; sends dep names + versions, never source)."
+    required: false
+    default: "false"
+  sarif:
+    description: "If set to a file path (e.g. heimdall.sarif), also write SARIF 2.1.0 there for GitHub code-scanning upload. Does not affect pass/fail."
+    required: false
+    default: ""
+  fail-on-findings:
+    description: 'Fail the job when the verdict is FAIL. Set to "false" to report without failing the build.'
+    required: false
+    default: "true"
+  version:
+    description: 'npm version of mcp-heimdall-scan to run (e.g. "0.4.0"). Pin it for reproducible CI; "latest" tracks the newest release.'
+    required: false
+    default: "latest"
+
+runs:
+  using: "composite"
+  steps:
+    - name: Run Heimdall
+      shell: bash
+      # Inputs are passed via env (never interpolated into the script body) so a crafted
+      # target/policy value can't inject shell commands — this is a security tool's own action.
+      env:
+        HEIMDALL_TARGET: ${{ inputs.target }}
+        HEIMDALL_POLICY: ${{ inputs.policy }}
+        HEIMDALL_ONLINE: ${{ inputs.online }}
+        HEIMDALL_SARIF: ${{ inputs.sarif }}
+        HEIMDALL_FAIL: ${{ inputs.fail-on-findings }}
+        HEIMDALL_VERSION: ${{ inputs.version }}
+      run: |
+        set -uo pipefail
+        pkg="mcp-heimdall-scan@${HEIMDALL_VERSION}"
+        args=(--policy "$HEIMDALL_POLICY")
+        [ "$HEIMDALL_ONLINE" = "true" ] && args+=(--online)
+        [ "$HEIMDALL_FAIL" != "true" ] && args+=(--no-fail)
+
+        # Human-readable report to the job log — its exit code gates the build.
+        npx --yes "$pkg" "$HEIMDALL_TARGET" "${args[@]}"
+        code=$?
+
+        # Optional SARIF for code scanning (never affects the verdict/exit).
+        if [ -n "$HEIMDALL_SARIF" ]; then
+          npx --yes "$pkg" "$HEIMDALL_TARGET" --policy "$HEIMDALL_POLICY" --sarif > "$HEIMDALL_SARIF" || true
+        fi
+
+        exit $code
