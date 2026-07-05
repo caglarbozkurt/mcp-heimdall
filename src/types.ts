@@ -48,7 +48,10 @@ export interface SourceFile {
   content: string;
 }
 
-export type TargetKind = "dir" | "npm" | "github" | "tools";
+export type TargetKind = "dir" | "npm" | "pypi" | "github" | "tools";
+
+/** Which language's deep analyzers (capability, provenance, deps, CVE) to run. */
+export type Language = "js" | "python" | "unknown";
 
 export interface Target {
   kind: TargetKind;
@@ -57,6 +60,8 @@ export interface Target {
   /** Resolved local directory, when applicable. */
   rootDir?: string;
   packageJson?: Record<string, any>;
+  /** Detected implementation language — selects the capability/provenance/CVE dialect. */
+  language?: Language;
   sourceFiles: SourceFile[];
   tools: ToolDef[];
   /** Resources exposed by the server (their contents get fed to the model). */

@@ -1,0 +1,8 @@
+[project]
+name = "py-tool-mcp"
+version = "1.0.0"
+license = { text = "MIT" }
+dependencies = ["httpx>=0.24.0", "python-dotenv>=1.0"]
+
+[project.urls]
+Repository = "https://github.com/example/py-tool-mcp"

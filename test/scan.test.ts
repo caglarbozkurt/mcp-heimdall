@@ -4,16 +4,20 @@ import { dirname, join } from "node:path";
 import { test } from "node:test";
 import {
   analyzeVulnerabilities,
+  capForDep,
   coerceVersion,
   compareCaps,
   evaluateCorpus,
   handshake,
   mapSeverity,
   observedCaps,
+  parsePyDeps,
+  pyCapForDep,
   resolveDeps,
   sampleValue,
   scan,
   scanConfig,
+  stripPyComments,
   synthArgs,
   vulnerabilityFinding,
 } from "../src/index.js";
@@ -125,6 +129,47 @@ test("CVE check: a network failure degrades to an informational finding, never a
   } finally {
     globalThis.fetch = realFetch;
   }
+});
+
+test("Python: capability detection runs on a .py MCP server", async () => {
+  const report = await scan(join(fixtures, "py-tool-mcp"));
+  // Python analyzers fired (py-* rule ids), not the JS ones.
+  assert.ok(report.findings.some((f) => f.id.startsWith("capability/py-")), "python capability rules ran");
+  for (const cap of ["exec", "net-egress", "env-access", "dynamic-eval"]) {
+    assert.ok(report.capabilities.includes(cap), `detects ${cap} in Python source`);
+  }
+  // fetch + eval co-present with no Python taint → conservative RCE gate.
+  assert.equal(report.verdict, "fail");
+});
+
+test("Python: parses deps from pyproject and maps latent capabilities", () => {
+  const target = {
+    kind: "dir",
+    ref: "x",
+    language: "python",
+    sourceFiles: [
+      { path: "pyproject.toml", content: 'dependencies = ["httpx>=0.24", "python-dotenv", "requests[socks]>=2.0"]' },
+    ],
+    tools: [],
+    resources: [],
+    prompts: [],
+  } as const;
+  const deps = parsePyDeps(target as never).map((d) => d.name);
+  assert.deepEqual(deps.sort(), ["httpx", "python-dotenv", "requests"]);
+  assert.equal(pyCapForDep("requests"), "net-egress");
+  assert.equal(pyCapForDep("keyring"), "secret-access");
+  assert.equal(pyCapForDep("rich"), undefined); // benign lib
+  assert.equal(stripPyComments("x = 1  # subprocess.run here").includes("subprocess"), false);
+});
+
+test("dependency→capability handles exact, family, and scoped-fork names", () => {
+  assert.equal(capForDep("axios"), "net-egress");
+  assert.equal(capForDep("googleapis"), "net-egress"); // SDK the behavioral run caught us missing
+  assert.equal(capForDep("@google-cloud/logging"), "net-egress"); // family prefix
+  assert.equal(capForDep("@aws-sdk/client-s3"), "net-egress");
+  assert.equal(capForDep("keytar"), "secret-access");
+  assert.equal(capForDep("@github/keytar"), "secret-access"); // scoped fork — was the miss
+  assert.equal(capForDep("left-pad"), undefined); // benign lib → no capability
 });
 
 test("validate: synthesizes tool args from an inputSchema", () => {

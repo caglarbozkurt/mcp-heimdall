@@ -21,8 +21,8 @@ From the Heimdall project directory:
 # local server directory
 npx tsx src/cli.ts <path-to-server>
 
-# npm package name, GitHub URL, or a tools/list JSON dump
-npx tsx src/cli.ts <npm-package | github-url | tools.json>
+# npm package, PyPI package (pypi:name), GitHub URL, or a tools/list JSON dump
+npx tsx src/cli.ts <npm-package | pypi:name | github-url | tools.json>
 
 # machine-readable
 npx tsx src/cli.ts <target> --json

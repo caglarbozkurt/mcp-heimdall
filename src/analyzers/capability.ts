@@ -59,8 +59,8 @@ const CAP_RULES: CapRule[] = [
     severity: "high",
     confidence: "high",
     title: "Dynamic code evaluation",
-    detail: "Evaluates code at runtime (eval / new Function).",
-    test: /\beval\s*\(|new\s+Function\s*\(/,
+    detail: "Evaluates code at runtime (eval / new Function / vm).",
+    test: /\beval\s*\(|new\s+Function\s*\(|\bvm\.(runInThisContext|runInNewContext|runInContext|compileFunction)\s*\(|new\s+vm\.Script\b/,
   },
   // --- credential/secret access, split into concrete detectors (all flag "secret-access") ---
   {

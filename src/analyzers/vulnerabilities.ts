@@ -1,5 +1,6 @@
 import { SEVERITY_RANK } from "../score.js";
 import type { AnalysisContext, Finding, Severity } from "../types.js";
+import { parsePyDeps } from "./python.js";
 
 /**
  * Known-CVE check for declared dependencies, via the OSV.dev advisory database.
@@ -115,13 +116,26 @@ export function resolveDeps(pkg: Record<string, any> | undefined): DepVersion[] 
   return out;
 }
 
+/** Resolve declared Python deps to concrete versions we can query. */
+function resolvePyDeps(target: AnalysisContext["target"]): DepVersion[] {
+  const out: DepVersion[] = [];
+  for (const dep of parsePyDeps(target)) {
+    const version = coerceVersion(dep.spec);
+    if (version) out.push({ name: dep.name, range: dep.spec, version });
+  }
+  return out;
+}
+
 /**
  * Query OSV.dev for known vulnerabilities in the target's declared dependencies and push
  * a finding per (dependency, advisory). Network failures degrade to an informational
- * profile finding — they never break the scan or change the verdict.
+ * profile finding — they never break the scan or change the verdict. Ecosystem follows the
+ * target language: npm for JS/TS, PyPI for Python (OSV covers both with the same API).
  */
 export async function analyzeVulnerabilities(ctx: AnalysisContext): Promise<void> {
-  const deps = resolveDeps(ctx.target.packageJson);
+  const python = ctx.target.language === "python";
+  const ecosystem = python ? "PyPI" : "npm";
+  const deps = python ? resolvePyDeps(ctx.target) : resolveDeps(ctx.target.packageJson);
   if (deps.length === 0) return;
 
   let batch: any;
@@ -130,7 +144,7 @@ export async function analyzeVulnerabilities(ctx: AnalysisContext): Promise<void
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify({
-        queries: deps.map((d) => ({ package: { ecosystem: "npm", name: d.name }, version: d.version })),
+        queries: deps.map((d) => ({ package: { ecosystem, name: d.name }, version: d.version })),
       }),
     });
   } catch (err) {

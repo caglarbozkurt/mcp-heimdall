@@ -4,6 +4,7 @@ import { analyzeDependencies } from "./analyzers/dependencies.js";
 import { analyzeGates } from "./analyzers/gates.js";
 import { analyzeInjection } from "./analyzers/injection.js";
 import { analyzeProvenance } from "./analyzers/provenance.js";
+import { analyzePythonCapability, analyzePythonProvenance } from "./analyzers/python.js";
 import { analyzeVulnerabilities } from "./analyzers/vulnerabilities.js";
 import { diffSurface } from "./drift.js";
 import { extractPrompts, extractResources, extractTools } from "./extract.js";
@@ -32,11 +33,17 @@ export async function scan(input: string, opts: ScanOptions = {}): Promise<Repor
   }
 
   const ctx: AnalysisContext = { target, caps: new Set(), depCaps: new Set(), findings: [] };
-  analyzeInjection(ctx);
-  analyzeCapability(ctx);
-  analyzeDependencies(ctx);
-  analyzeProvenance(ctx);
-  analyzeGates(ctx, analyzeTaint(target.sourceFiles)); // taint-aware: proven flows vs co-presence
+  analyzeInjection(ctx); // language-agnostic (reads description text)
+  if (target.language === "python") {
+    // Python dialect: regex capability + manifest provenance (no AST taint — co-presence gates).
+    analyzePythonCapability(ctx);
+    analyzePythonProvenance(ctx);
+  } else {
+    analyzeCapability(ctx);
+    analyzeDependencies(ctx);
+    analyzeProvenance(ctx);
+  }
+  analyzeGates(ctx, analyzeTaint(target.sourceFiles)); // taint-aware for JS; Python → co-presence
   if (opts.online) await analyzeVulnerabilities(ctx); // opt-in OSV.dev CVE lookup (network)
 
   // Reported capabilities = proven (source) ∪ latent (dependencies). Gates used ctx.caps

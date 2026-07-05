@@ -6,10 +6,18 @@ All notable changes to Heimdall are documented here. This project adheres to
 
 ## [Unreleased]
 
-## [0.3.0] — 2026-07-04
+## [0.3.0] — 2026-07-05
 
 ### Added
 
+- **Python coverage.** Capability, provenance, dependency, and CVE analysis now cover Python
+  MCP servers, not just JS/TS. A Python dialect of the capability rules (regex over `.py`:
+  `subprocess`/`os.system` → exec, `requests`/`httpx`/`aiohttp` → net, `os.environ` → env,
+  `eval`/`exec`/`compile` → dynamic-eval, credential paths → secret-access), provenance from
+  `pyproject.toml` / `requirements.txt` / `setup.py` (dangerous `setup.py` gates like an npm
+  install script), and CVE lookups via OSV's **PyPI** ecosystem. Resolve a published server
+  with `heimdall pypi:<name>`. Injection was already language-agnostic. (Proven taint stays
+  JS/TS-only — Python falls back to capability co-presence, a conservative gate.)
 - **Behavioral validation (`heimdall validate`)** — the missing third leg after the
   distribution run and the labeled corpus. It runs the server with a capability recorder
   preloaded (hooks `fs`/`net`/`http(s)`/`dns`/`child_process`/`vm`/`fetch`/`process.env`),
@@ -24,13 +32,23 @@ All notable changes to Heimdall are documented here. This project adheres to
   reusing the real npm cache for speed. Still runs untrusted code with network/exec side
   effects — VM/container only for anything beyond a curated list.
 
+### Changed
+
+- **Wider capability detection** (driven by the behavioral run's misses): expanded the
+  dependency→capability map with service SDKs and HTTP clients (`googleapis`,
+  `google-auth-library`, `isomorphic-fetch`, `@mendable/firecrawl-js`, …), added family/scoped
+  matching (`@aws-sdk/*`, `@google-cloud/*`, `@octokit/*`, and the scoped `@github/keytar` fork
+  the exact-name map was missing), and added `vm` (`runInContext` / `compileFunction` / `new
+  vm.Script`) to dynamic-eval detection.
+
 ### Validated
 
-- **Behavioral field run over 200 real MCP packages** (`benchmarks/validate-run.md`): 46 booted,
-  27 exercised an observable capability. Of capabilities servers actually exercised at runtime,
-  static analysis flagged **75.8%** (47/62). The 15 misses were a mix of incidental library /
-  child-process side effects and genuine gaps (network egress via some dependency HTTP clients,
-  credential-file reads via CLI deps, partial `dynamic-eval` detection) — now a tracked fix-list.
+- **Behavioral field run over 200 real MCP packages** (`benchmarks/validate-run.md`): 55 booted,
+  34 exercised an observable capability. Of capabilities servers actually exercised at runtime,
+  static analysis flagged **80.9%** (55/68) — up from 75.8% in the first run after the recall
+  fixes above (network misses roughly halved). The misses that remain are structural — a
+  capability exercised inside a dependency's internals or a subprocess, which static analysis
+  can't see (the reason `validate` exists as a backstop).
 
 ## [0.2.0] — 2026-07-04
 

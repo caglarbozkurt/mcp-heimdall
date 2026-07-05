@@ -12,6 +12,14 @@ export { diffSurface } from "./drift.js";
 export { toSarif } from "./sarif.js";
 export { scanConfig, analyzeComposition, parseConfig, looksLikeConfig } from "./composition.js";
 export { analyzeTaint, analyzeFileTaint } from "./taint.js";
+export { capForDep } from "./analyzers/dependencies.js";
+export {
+  analyzePythonCapability,
+  analyzePythonProvenance,
+  parsePyDeps,
+  pyCapForDep,
+  stripPyComments,
+} from "./analyzers/python.js";
 export {
   analyzeVulnerabilities,
   coerceVersion,

@@ -74,6 +74,7 @@ heimdall <target> [options]
 |---|---|
 | local directory | `heimdall ./servers/my-mcp` |
 | npm package | `heimdall some-mcp-package` |
+| PyPI package | `heimdall pypi:some-mcp-server` |
 | git repository | `heimdall https://github.com/user/repo` |
 | tools/list dump | `heimdall tools.json` |
 | MCP client config | `heimdall ./claude_desktop_config.json` |
@@ -148,12 +149,13 @@ Each server runs in a throwaway `HOME` + working directory with no inherited sec
 still **runs the server and calls its tools** (network/exec side effects) — use a disposable VM/container.
 
 **Behavioral run over 200 real packages** ([`benchmarks/validate-run.md`](benchmarks/validate-run.md)):
-46 booted, 27 exercised an observable capability. Of the capabilities servers *actually
-exercised at runtime*, the static scan had flagged **75.8%** (47/62). The misses were part
-incidental (a child process reading env, a browser server writing cache) and part genuine —
-network egress through some dependency HTTP clients, credential-file reads via CLI deps, and
-partial `dynamic-eval` detection — which is now a tracked fix-list. Honest recall, not a claim
-of perfection.
+55 booted, 34 exercised an observable capability. Of the capabilities servers *actually
+exercised at runtime*, the static scan flagged **80.9%** (55/68) — up from 75.8% after the
+first run's misses became a fix-list (we widened dependency-based network detection, which
+roughly halved the network misses). The misses that remain are **structural**: a capability
+exercised *inside a dependency's internals or a subprocess*, which static analysis fundamentally
+can't see — which is exactly why `validate` exists as the backstop. Honest recall, openly
+reported, improving run over run.
 
 ## Tested at scale
 
@@ -182,7 +184,9 @@ kind of stealth tool-poisoning a keyword scanner sails past.
 ## Security & limitations
 
 Heimdall is a **heuristic pre-flight check, not a guarantee** — a PASS isn't proof of safety.
-Deep analysis (capability, taint, provenance) is **JS/TS only**; injection is language-agnostic.
+Capability, provenance, and CVE analysis cover **JS/TS and Python**; injection is
+language-agnostic. Proven **taint/data-flow is JS/TS only** — Python falls back to
+capability co-presence (a conservative gate, not a proven flow).
 Everything runs offline by default; `--online` is the one network call (it sends dependency
 names + versions to OSV.dev, never your source), and the CVE match is against the declared
 range, not a lockfile. `--handshake` **runs untrusted code** and is not a real sandbox. See
