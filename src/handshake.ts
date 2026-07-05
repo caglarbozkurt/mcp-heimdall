@@ -1,5 +1,6 @@
 import { spawn } from "node:child_process";
 import { normalizeItem, normalizeTool } from "./extract.js";
+import { VERSION } from "./version.js";
 import type { ToolDef } from "./types.js";
 
 export interface HandshakeResult {
@@ -99,7 +100,7 @@ export function handshake(
       const init = await request("initialize", {
         protocolVersion: "2024-11-05",
         capabilities: {},
-        clientInfo: { name: "heimdall", version: "0.1.0" },
+        clientInfo: { name: "heimdall", version: VERSION },
       });
       if (!init) return finish({ ...empty, error: "no initialize response" });
       notify("notifications/initialized");

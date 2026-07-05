@@ -5,6 +5,7 @@ import { join, resolve } from "node:path";
 import { scan } from "./scan.js";
 import type { Report, Target, ToolDef } from "./types.js";
 import { resolveTarget } from "./resolve.js";
+import { VERSION } from "./version.js";
 
 /**
  * Behavioral validation: run the server for real, observe what it *actually does*, and
@@ -340,7 +341,7 @@ function driveServer(
       const init = await request("initialize", {
         protocolVersion: "2024-11-05",
         capabilities: {},
-        clientInfo: { name: "heimdall-validate", version: "0.2.0" },
+        clientInfo: { name: "heimdall-validate", version: VERSION },
       });
       if (!init) return finish({ initAt: 0, toolsCalled: 0, error: "no initialize response" });
       const initAt = Date.now(); // events at/after this exclude npx bootstrap

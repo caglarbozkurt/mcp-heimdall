@@ -1,10 +1,9 @@
 #!/usr/bin/env node
 import { createInterface } from "node:readline";
 import { existsSync, readFileSync } from "node:fs";
-import { dirname, join } from "node:path";
-import { fileURLToPath } from "node:url";
 import { looksLikeConfig, scanConfig } from "./composition.js";
 import { scan } from "./scan.js";
+import { VERSION } from "./version.js";
 import type { CompositionReport, Report } from "./types.js";
 
 /**
@@ -16,14 +15,6 @@ import type { CompositionReport, Report } from "./types.js";
  * executes it. The code-execution paths (`--handshake`, `validate`) are deliberately NOT
  * exposed here; an agent must not be able to trigger untrusted-code execution.
  */
-
-const VERSION = (() => {
-  try {
-    return JSON.parse(readFileSync(join(dirname(fileURLToPath(import.meta.url)), "..", "package.json"), "utf8")).version;
-  } catch {
-    return "0.0.0";
-  }
-})();
 
 const TOOL = {
   name: "scan_mcp_server",

@@ -164,12 +164,31 @@
 
   <section class="getstarted">
     <h2>Connect it to your agent</h2>
-    <p class="lead">Prefer the CLI, or let your coding agent set it up.</p>
-    <pre data-copy><span class="c"># scan any server, or audit your whole agent config</span>
-npx mcp-heimdall-scan firecrawl-mcp
-npx mcp-heimdall-scan ./claude_desktop_config.json</pre>
+    <p class="lead">Run it as a tool your agent calls, from the CLI, or in CI.</p>
 
-    <p class="sub">Paste this to your coding agent (Claude Code, etc.) and let it do the setup:</p>
+    <p class="sub"><b>As an MCP server</b> — give your agent a <code>scan_mcp_server</code> tool to vet a server before it connects. Add to your MCP client config:</p>
+    <pre data-copy>{
+  "mcpServers": {
+    "heimdall": {
+      "command": "npx",
+      "args": ["-y", "--package", "mcp-heimdall-scan", "heimdall-mcp"]
+    }
+  }
+}</pre>
+
+    <p class="sub"><b>From the CLI</b> — scan an npm or PyPI package, a path, a GitHub URL, or your whole agent config:</p>
+    <pre data-copy><span class="c"># static, runs locally, nothing leaves your machine</span>
+npx mcp-heimdall-scan firecrawl-mcp
+npx mcp-heimdall-scan pypi:mcp-server-fetch
+npx mcp-heimdall-scan ./claude_desktop_config.json --online</pre>
+
+    <p class="sub"><b>In CI</b> — gate every pull request with the GitHub Action:</p>
+    <pre data-copy>- uses: caglarbozkurt/mcp-heimdall@v1
+  with:
+    target: ./claude_desktop_config.json
+    policy: strict</pre>
+
+    <p class="sub">Or paste this to your coding agent (Claude Code, etc.) and let it set up the skill:</p>
     <pre class="prompt" data-copy>Set up Heimdall (https://github.com/caglarbozkurt/mcp-heimdall) to vet my MCP servers before I trust them.
 
 1. Install it: run `npm i -g mcp-heimdall-scan` (or use `npx mcp-heimdall-scan`).
@@ -179,13 +198,12 @@ npx mcp-heimdall-scan ./claude_desktop_config.json</pre>
 4. Report anything that WARNs or FAILs with the reason, and tell me whether
    each server is safe to keep before I let my agent use it.</pre>
 
-    <p class="note">Prefer a hard gate in CI? <code>heimdall &lt;target&gt; --policy strict --sarif</code>.
-      <a href="https://github.com/caglarbozkurt/mcp-heimdall" target="_blank" rel="noopener">Docs &amp; skill →</a></p>
+    <p class="note"><a href="https://github.com/caglarbozkurt/mcp-heimdall" target="_blank" rel="noopener">Docs, MCP server, Action &amp; skill →</a></p>
   </section>
 
   <section>
     <h2>What it checks</h2>
-    <p class="lead">Every finding cites file:line or tool:name — reproducible, not an opinion.</p>
+    <p class="lead">Every finding cites file:line or tool:name — reproducible, not an opinion. Deep analysis covers <b>JavaScript/TypeScript and Python</b>; injection is language-agnostic.</p>
     <div class="grid">
       <div class="fcard"><h3>Prompt injection</h3><p>Override, concealment, fake authority tags, hidden characters — across tools, resources, and prompts.</p></div>
       <div class="fcard"><h3>Capability &amp; credentials</h3><p>Filesystem, network, shell, eval, and specific credential access — plus hardcoded secrets.</p></div>
