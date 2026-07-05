@@ -12,7 +12,9 @@ permissions:
 
 concurrency:
   group: pages
-  cancel-in-progress: true
+  # Do NOT cancel an in-flight Pages deployment — cancelling mid-deploy is a known cause of
+  # "Deployment failed, try again later". Queue the newest run instead (GitHub's Pages default).
+  cancel-in-progress: false
 
 jobs:
   deploy:
