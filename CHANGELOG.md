@@ -6,6 +6,20 @@ All notable changes to Heimdall are documented here. This project adheres to
 
 ## [Unreleased]
 
+## [0.5.0] — 2026-07-05
+
+### Added
+
+- **Heimdall as an MCP server** — a `scan_mcp_server` tool so an agent can vet a server
+  before connecting to it ("scan this before you add it"). Hand-rolled stdio JSON-RPC (no SDK
+  dependency). **Static-only** — it downloads but never executes; the code-execution paths
+  (`--handshake`, `validate`) are deliberately not exposed to the agent. New bin
+  `heimdall-mcp`; add via `npx -y --package mcp-heimdall-scan heimdall-mcp`.
+- **GitHub Action** (`action.yml`) — a composite action so any repo can gate PRs on an MCP
+  scan in a few lines (`uses: caglarbozkurt/mcp-heimdall@v1`). Inputs: `target`, `policy`,
+  `online`, `sarif`, `fail-on-findings`, `version`. Inputs are passed via env, never
+  interpolated into the shell (no script-injection). A self-test workflow dogfoods it.
+
 ## [0.4.0] — 2026-07-05
 
 ### Added
@@ -18,10 +32,6 @@ All notable changes to Heimdall are documented here. This project adheres to
   install script), and CVE lookups via OSV's **PyPI** ecosystem. Resolve a published server
   with `heimdall pypi:<name>`. Injection was already language-agnostic. (Proven taint stays
   JS/TS-only — Python falls back to capability co-presence, a conservative gate.)
-- **GitHub Action** (`action.yml`) — a composite action so any repo can gate PRs on an MCP
-  scan in a few lines (`uses: caglarbozkurt/mcp-heimdall@v1`). Inputs: `target`, `policy`,
-  `online`, `sarif`, `fail-on-findings`, `version`. Inputs are passed via env, never
-  interpolated into the shell (no script-injection). A self-test workflow dogfoods it.
 
 ### Changed
 

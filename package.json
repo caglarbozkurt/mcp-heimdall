@@ -1,6 +1,6 @@
 {
   "name": "mcp-heimdall-scan",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "description": "Heimdall — a security scanner for Model Context Protocol (MCP) servers. Vet a server, or a whole agent config, before your agent trusts it.",
   "type": "module",
   "license": "MIT",
