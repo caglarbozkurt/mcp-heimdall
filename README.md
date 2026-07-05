@@ -128,6 +128,27 @@ if (report.verdict === "fail") throw new Error(report.reasons.join("; "));
 
 Also ships as a **Claude Code skill** (`skill/`) — vet a server in-conversation before installing.
 
+## Use it as an MCP server
+
+Give your agent a `scan_mcp_server` tool so it can vet a server **before** connecting to it —
+"scan this before you add it." Add Heimdall to your MCP client config:
+
+```json
+{
+  "mcpServers": {
+    "heimdall": {
+      "command": "npx",
+      "args": ["-y", "--package", "mcp-heimdall-scan", "heimdall-mcp"]
+    }
+  }
+}
+```
+
+The tool takes `target` (npm package, `pypi:<name>`, path, GitHub URL, tools.json, or a client
+config), plus optional `policy` and `online`. It's **static-only** — it downloads but never
+executes the server, and the code-execution modes (`--handshake`, `validate`) are intentionally
+not exposed to the agent.
+
 ## Use it in CI (GitHub Action)
 
 Gate every pull request — scan your MCP config (or a server) and **fail the build** if it's

@@ -131,6 +131,13 @@ test("CVE check: a network failure degrades to an informational finding, never a
   }
 });
 
+test("MCP server: exposes scan_mcp_server over the stdio protocol", async () => {
+  // Reuse handshake (the JSON-RPC *client*) to verify Heimdall's own MCP *server* responds.
+  const res = await handshake("node", ["--import", "tsx", "src/mcp-server.ts"], { timeoutMs: 15_000 });
+  assert.ok(!res.error, `handshake failed: ${res.error}`);
+  assert.ok(res.tools.some((t) => t.name === "scan_mcp_server"), "server lists the scan tool");
+});
+
 test("Python: capability detection runs on a .py MCP server", async () => {
   const report = await scan(join(fixtures, "py-tool-mcp"));
   // Python analyzers fired (py-* rule ids), not the JS ones.
