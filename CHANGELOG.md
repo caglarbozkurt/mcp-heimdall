@@ -6,6 +6,19 @@ All notable changes to Heimdall are documented here. This project adheres to
 
 ## [Unreleased]
 
+## [0.5.1] — 2026-07-05
+
+### Added
+
+- **Official MCP registry support** — an `mcpName` (`io.github.caglarbozkurt/heimdall`) field
+  in `package.json` and a `server.json` manifest, so Heimdall can be published to
+  registry.modelcontextprotocol.io (and, downstream, PulseMCP).
+
+### Fixed
+
+- handshake / validate / MCP-server now report the real package version (read from
+  `package.json`) instead of a hardcoded string.
+
 ## [0.5.0] — 2026-07-05
 
 ### Added
