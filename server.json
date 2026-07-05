@@ -1,5 +1,5 @@
 {
-  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json",
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
   "name": "io.github.caglarbozkurt/heimdall",
   "description": "Scan an MCP server or agent config for injection, exfiltration, and risky capabilities before your agent trusts it.",
   "repository": {
