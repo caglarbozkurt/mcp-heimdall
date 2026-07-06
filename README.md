@@ -71,33 +71,6 @@ an informational profile and never fails the scan — only hard **gates** and re
 - **A gate you control.** Detectors emit facts; a **policy** you define turns them into
   pass / warn / fail. Deny capabilities, require provenance, add audited waivers, gate CI.
 
-## How it compares
-
-Heimdall isn't the only MCP scanner — [Snyk](https://github.com/snyk/agent-scan),
-[Cisco](https://github.com/cisco-ai-defense/mcp-scanner), and
-[Invariant](https://github.com/invariantlabs-ai/mcp-scan) all have one, with more brand and
-cloud intelligence behind them. Heimdall's wedge is being the **lightweight, fully local,
-evidence-citing, CI-gateable** one that **doesn't execute servers by default**.
-
-| | **Heimdall** | Snyk agent-scan | Invariant MCP-Scan | Cisco MCP Scanner |
-|---|---|---|---|---|
-| Fully local, nothing shared | ✅ | ❌ shares data w/ cloud | ❌ calls their API | ⚠️ offline YARA; LLM engine is cloud |
-| Runs the server by default | ❌ static-first | scans installed | ⚠️ runtime proxy mode | ⚠️ live modes available |
-| Reads source → **proven taint** | ✅ | — | — | — |
-| Cross-server composition | ✅ | ~ toxic flows | ~ cross-origin | — |
-| Drift / rug-pull | ✅ | — | ✅ tool pinning | — |
-| Dependency CVEs | ✅ OSV.dev | ✅ | — | ✅ |
-| SARIF / CI gate | ✅ | — | — | ✅ |
-| No account / backend | ✅ | ❌ | ❌ | ⚠️ |
-
-**Where the incumbents win:** cloud intelligence (Snyk's vuln DB, Cisco's LLM-as-judge + AI
-Defense, Invariant's guardrail models), machine-wide inventory, and real adoption. If you want
-a hosted, all-in-one enterprise product, use those. Heimdall is for when you want a **fast,
-private, evidence-based pre-flight check you run yourself and gate in CI** — with nothing
-leaving your machine.
-
-> Competitor details are from their public docs/repos (mid-2026) and may change. `~` = partial, `—` = not clearly documented.
-
 ## Usage
 
 ```bash
