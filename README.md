@@ -16,6 +16,8 @@ or a whole agent config, before your agent trusts it.
 [![node](https://img.shields.io/badge/node-%E2%89%A518.17-3fb950)](package.json)
 [![try in your browser](https://img.shields.io/badge/try-in%20your%20browser-e3b341)](https://caglarbozkurt.github.io/mcp-heimdall)
 
+[![mcp-heimdall MCP server](https://glama.ai/mcp/servers/caglarbozkurt/mcp-heimdall/badges/card.svg)](https://glama.ai/mcp/servers/caglarbozkurt/mcp-heimdall)
+
 </div>
 
 ---
