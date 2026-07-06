@@ -1,0 +1,31 @@
+## Heimdall 0.4.0 — Python coverage
+
+Heimdall now covers **Python** MCP servers, and the behavioral validation from 0.3.0 already paid off — recall is up.
+
+### 🐍 New: Python coverage
+
+Capability, provenance, dependency, and CVE analysis now cover Python servers, not just JS/TS:
+
+```
+heimdall pypi:some-mcp-server            # resolve + scan a PyPI package
+heimdall ./my-python-server              # or a local directory
+```
+
+- **Capability detection** over `.py` — `subprocess`/`os.system` → exec, `requests`/`httpx`/`aiohttp` → network, `os.environ` → env, `eval`/`exec`/`compile` → dynamic-eval, credential paths → secret-access.
+- **Provenance** from `pyproject.toml` / `requirements.txt` / `setup.py` — a dangerous `setup.py` gates like an npm install script.
+- **CVE lookups** via OSV's PyPI ecosystem (`--online`).
+- Injection was already language-agnostic. Proven taint stays JS/TS-only — Python falls back to a conservative capability co-presence gate.
+
+### 📈 Recall: 75.8% → 80.9%
+
+0.3.0 shipped `heimdall validate` and an honest 75.8% recall, with the misses turned into a fix-list. This release works through it:
+
+- **Wider capability detection** — expanded the dependency→capability map with service SDKs and HTTP clients (`googleapis`, `google-auth-library`, `isomorphic-fetch`, `@mendable/firecrawl-js`, …), added family/scoped matching (`@aws-sdk/*`, `@google-cloud/*`, `@octokit/*`, and the scoped `@github/keytar` fork the exact-name map was missing), and added `vm` (`runInContext` / `compileFunction` / `new vm.Script`) to dynamic-eval detection.
+
+Re-running the 200-package behavioral validation: **static analysis flagged 80.9% (55/68) of the capabilities servers actually exercised at runtime — up from 75.8%**. Network misses roughly halved. The misses that remain are structural — a capability exercised inside a dependency's internals or a subprocess, which static analysis can't see. That's the point of `validate`. Full run: [`benchmarks/validate-run.md`](https://github.com/caglarbozkurt/mcp-heimdall/blob/main/benchmarks/validate-run.md).
+
+### Note
+
+Python is covered *statically* here; it isn't yet covered *behaviorally* — the `validate` recorder hooks Node, not `uvx`/`python`. That's a tracked follow-up.
+
+**Full diff:** https://github.com/caglarbozkurt/mcp-heimdall/compare/v0.3.0...v0.4.0

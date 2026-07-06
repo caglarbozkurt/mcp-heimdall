@@ -51,7 +51,8 @@ export function parseConfig(json: any): ServerEntry[] {
 }
 
 // Tool-name hints that a server ingests external / attacker-influenceable content.
-const EXTERNAL_INGEST = /web|search|fetch|browse|scrape|crawl|url|http|email|inbox|mail|ticket|issue|rss|feed|slack|comment|review/i;
+const EXTERNAL_INGEST =
+  /web|search|fetch|browse|scrape|crawl|url|http|email|inbox|mail|ticket|issue|rss|feed|slack|comment|review/i;
 
 function ingestsUntrusted(r: Report): boolean {
   if (r.capabilities.includes("net-egress") || r.capabilities.includes("fs-read")) return true;

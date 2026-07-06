@@ -127,7 +127,8 @@ const HARDCODED_KEY =
   /\b(AKIA[0-9A-Z]{16}|ghp_[A-Za-z0-9]{36}|gho_[A-Za-z0-9]{36}|xox[baprs]-[A-Za-z0-9-]{10,}|sk-[A-Za-z0-9]{20,}|AIza[0-9A-Za-z_\-]{35})\b/;
 
 /** Words in the package name/description that legitimately imply broad reach. */
-const NETWORK_PURPOSE = /(http|api|web|fetch|download|url|proxy|search|weather|cloud|remote|sync|scrape|browser)/i;
+const NETWORK_PURPOSE =
+  /(http|api|web|fetch|download|url|proxy|search|weather|cloud|remote|sync|scrape|browser)/i;
 
 export function analyzeCapability(ctx: AnalysisContext): void {
   const seen = new Set<string>();
@@ -178,7 +179,12 @@ export function analyzeCapability(ctx: AnalysisContext): void {
     .filter(Boolean)
     .join(" ");
   const purposeImpliesNetwork = NETWORK_PURPOSE.test(purposeText);
-  if (ctx.caps.has("fs-read") && ctx.caps.has("net-egress") && purposeText && !purposeImpliesNetwork) {
+  if (
+    ctx.caps.has("fs-read") &&
+    ctx.caps.has("net-egress") &&
+    purposeText &&
+    !purposeImpliesNetwork
+  ) {
     ctx.findings.push({
       // NOT a profile item: capability contradicting stated purpose is a real anomaly.
       id: "capability/scope-mismatch",

@@ -122,14 +122,20 @@ export function formatValidateReport(r: ValidateReport): string {
     lines.push("");
     return lines.join("\n");
   }
-  lines.push(`  ${c("2", `drove ${r.toolsCalled} tool call(s); compared static flags vs. observed runtime behavior`)}`);
+  lines.push(
+    `  ${c("2", `drove ${r.toolsCalled} tool call(s); compared static flags vs. observed runtime behavior`)}`,
+  );
   lines.push("");
-  lines.push(`  ${c("1", "capability")}        ${c("1", "static")}   ${c("1", "observed")}   ${c("1", "result")}`);
+  lines.push(
+    `  ${c("1", "capability")}        ${c("1", "static")}   ${c("1", "observed")}   ${c("1", "result")}`,
+  );
   for (const cap of r.comparison) {
     if (cap.status === "clean") continue;
     const s = cap.static ? c("32", "yes") : c("2", "no ");
     const o = cap.observed ? c("32", "yes") : c("2", "no ");
-    lines.push(`  ${cap.cap.padEnd(16)}  ${s}      ${o}       ${STATUS_STYLE[cap.status](STATUS_LABEL[cap.status])}`);
+    lines.push(
+      `  ${cap.cap.padEnd(16)}  ${s}      ${o}       ${STATUS_STYLE[cap.status](STATUS_LABEL[cap.status])}`,
+    );
   }
   const anyShown = r.comparison.some((c) => c.status !== "clean");
   if (!anyShown) lines.push(`  ${c("2", "no capabilities flagged or observed")}`);
@@ -140,8 +146,12 @@ export function formatValidateReport(r: ValidateReport): string {
       `${c("2", r.notExercised + " flagged-but-not-exercised")}`,
   );
   if (r.missed) {
-    lines.push(`  ${c("1;31", "⚠ MISSED = observed at runtime but not statically flagged — review it.")}`);
-    lines.push(`  ${c("2", "  (a genuine static gap, or an incidental library / child-process side effect)")}`);
+    lines.push(
+      `  ${c("1;31", "⚠ MISSED = observed at runtime but not statically flagged — review it.")}`,
+    );
+    lines.push(
+      `  ${c("2", "  (a genuine static gap, or an incidental library / child-process side effect)")}`,
+    );
   }
   lines.push(
     `  ${c("2", "'not exercised' ≠ wrong: naive tool inputs may not trigger a real capability.")}`,
@@ -157,19 +167,25 @@ export function formatBatchReport(b: BatchReport): string {
   lines.push("");
   lines.push(`  ${c("1", "heimdall validate")}  ${b.servers.length} server(s) (${ran.length} ran)`);
   lines.push("");
-  lines.push(`  ${c("1", "capability")}        ${c("1", "confirmed")}   ${c("1", "missed")}   ${c("1", "not-exercised")}`);
+  lines.push(
+    `  ${c("1", "capability")}        ${c("1", "confirmed")}   ${c("1", "missed")}   ${c("1", "not-exercised")}`,
+  );
   for (const cap of Object.keys(b.perCap)) {
     const v = b.perCap[cap];
     if (!v.confirmed && !v.missed && !v.notExercised) continue;
     const miss = v.missed ? c("1;31", String(v.missed).padStart(6)) : String(v.missed).padStart(6);
-    lines.push(`  ${cap.padEnd(16)}  ${String(v.confirmed).padStart(9)}   ${miss}   ${String(v.notExercised).padStart(13)}`);
+    lines.push(
+      `  ${cap.padEnd(16)}  ${String(v.confirmed).padStart(9)}   ${miss}   ${String(v.notExercised).padStart(13)}`,
+    );
   }
   lines.push("");
   lines.push(
     `  ${c("1", "recall")} (observed behavior that static flagged): ` +
       `${c("1;36", (b.recall * 100).toFixed(1) + "%")}  ${c("2", `(${b.totalConfirmed}/${b.totalConfirmed + b.totalMissed})`)}`,
   );
-  lines.push(`  ${c("2", "recall is the trustworthy metric here; precision is a lower bound (non-triggering ≠ absence).")}`);
+  lines.push(
+    `  ${c("2", "recall is the trustworthy metric here; precision is a lower bound (non-triggering ≠ absence).")}`,
+  );
   lines.push("");
   return lines.join("\n");
 }
@@ -177,7 +193,8 @@ export function formatBatchReport(b: BatchReport): string {
 function formatFinding(f: Finding): string {
   const tag = SEVERITY_STYLE[f.severity](SEVERITY_LABEL[f.severity]);
   const gate = f.gate ? c("1;31", " [GATE]") : "";
-  const conf = f.confidence && f.confidence !== "high" ? c("2", ` (${f.confidence} confidence)`) : "";
+  const conf =
+    f.confidence && f.confidence !== "high" ? c("2", ` (${f.confidence} confidence)`) : "";
   const head = `  ${tag}${gate}  ${f.title}${conf}  ${c("2", f.id)}`;
   const parts = [head, `        ${f.detail}`];
   if (f.location) parts.push(`        ${c("2", "at " + f.location)}`);

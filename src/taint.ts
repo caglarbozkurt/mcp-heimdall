@@ -10,13 +10,21 @@ export interface TaintFlow {
   sinkLine: number;
 }
 
-const READ_FNS = new Set(["readFileSync", "readFile", "readdir", "readdirSync", "createReadStream"]);
+const READ_FNS = new Set([
+  "readFileSync",
+  "readFile",
+  "readdir",
+  "readdirSync",
+  "createReadStream",
+]);
 // A named HTTP client whose call sends data out. Kept tight to avoid matching e.g. Map.get.
-const NET_CALLEE = /^(fetch$|axios(\.|$)|got(\.|$)|ky(\.|$)|superagent(\.|$)|needle(\.|$)|phin(\.|$)|undici(\.|$))|(^|\.)(http|https)\.(request|get|post)$/;
+const NET_CALLEE =
+  /^(fetch$|axios(\.|$)|got(\.|$)|ky(\.|$)|superagent(\.|$)|needle(\.|$)|phin(\.|$)|undici(\.|$))|(^|\.)(http|https)\.(request|get|post)$/;
 // Assigns a variable that IS an http request object (so req.end/.write/.send is a real sink).
 const REQUEST_MAKER = /(^|\.)(http|https)\.(request|get)$/;
 const REQ_BODY = new Set(["end", "write", "send"]);
-const SECRET_PATH = /\.ssh\/|id_rsa|id_ed25519|\.aws\/credentials|\.netrc|\.npmrc|\.docker\/config/i;
+const SECRET_PATH =
+  /\.ssh\/|id_rsa|id_ed25519|\.aws\/credentials|\.netrc|\.npmrc|\.docker\/config/i;
 
 type Node = any;
 type Origin = { kind: TaintFlow["sourceKind"]; line: number };
@@ -54,7 +62,8 @@ function sourceOf(node: Node): Origin | null {
       let secret = false;
       for (const a of node.arguments ?? [])
         walk(a, (x: Node) => {
-          if (x.type === "Literal" && typeof x.value === "string" && SECRET_PATH.test(x.value)) secret = true;
+          if (x.type === "Literal" && typeof x.value === "string" && SECRET_PATH.test(x.value))
+            secret = true;
         });
       return { kind: secret ? "secret" : "fs", line: line(node) };
     }
@@ -67,7 +76,8 @@ function walk(node: Node, cb: (n: Node) => void): void {
   if (!node || typeof node.type !== "string") return;
   cb(node);
   for (const key of Object.keys(node)) {
-    if (key === "type" || key === "loc" || key === "start" || key === "end" || key === "range") continue;
+    if (key === "type" || key === "loc" || key === "start" || key === "end" || key === "range")
+      continue;
     const child = node[key];
     if (Array.isArray(child)) child.forEach((c) => walk(c, cb));
     else if (child && typeof child.type === "string") walk(child, cb);
@@ -80,7 +90,8 @@ function scopedWalk(node: Node, cb: (n: Node) => void, root: Node): void {
   if (/Function/.test(node.type) && node !== root) return; // nested function = its own scope
   cb(node);
   for (const key of Object.keys(node)) {
-    if (key === "type" || key === "loc" || key === "start" || key === "end" || key === "range") continue;
+    if (key === "type" || key === "loc" || key === "start" || key === "end" || key === "range")
+      continue;
     const child = node[key];
     if (Array.isArray(child)) child.forEach((c) => scopedWalk(c, cb, root));
     else if (child && typeof child.type === "string") scopedWalk(child, cb, root);
@@ -90,7 +101,11 @@ function scopedWalk(node: Node, cb: (n: Node) => void, root: Node): void {
 /** Returns null if the file could not be parsed (e.g. TS syntax), else its taint flows. */
 export function analyzeFileTaint(file: SourceFile): TaintFlow[] | null {
   let ast: Node;
-  const opts = { ecmaVersion: "latest" as const, locations: true, allowReturnOutsideFunction: true };
+  const opts = {
+    ecmaVersion: "latest" as const,
+    locations: true,
+    allowReturnOutsideFunction: true,
+  };
   try {
     ast = parse(file.content, { ...opts, sourceType: "module" });
   } catch {
@@ -107,7 +122,9 @@ export function analyzeFileTaint(file: SourceFile): TaintFlow[] | null {
   // variable name in one function can't taint a sink in an unrelated function — the FP
   // that made bundled dist/index.js files fail (a fetch and an eval thousands of lines apart).
   const scopes: Node[] = [ast];
-  walk(ast, (n) => { if (/Function/.test(n.type)) scopes.push(n); });
+  walk(ast, (n) => {
+    if (/Function/.test(n.type)) scopes.push(n);
+  });
 
   const isNetSink = (n: Node, requestObjects: Set<string>): boolean => {
     if (NET_CALLEE.test(calleeStr(n.callee))) return true;
@@ -123,7 +140,8 @@ export function analyzeFileTaint(file: SourceFile): TaintFlow[] | null {
   // RCE sinks kept narrow (eval / new Function) — matching child_process/.exec by name
   // produces too many false positives (e.g. regex.exec).
   const isExecSink = (n: Node): boolean =>
-    calleeStr(n.callee) === "eval" || (n.type === "NewExpression" && calleeStr(n.callee) === "Function");
+    calleeStr(n.callee) === "eval" ||
+    (n.type === "NewExpression" && calleeStr(n.callee) === "Function");
 
   for (const scope of scopes) {
     const tainted = new Map<string, Origin>();
@@ -142,43 +160,69 @@ export function analyzeFileTaint(file: SourceFile): TaintFlow[] | null {
 
     // Propagate taint through assignments in this scope; two passes catch forward refs.
     for (let pass = 0; pass < 2; pass++) {
-      scopedWalk(scope, (n) => {
-        if (n.type === "VariableDeclarator" && n.id?.type === "Identifier") {
-          if (n.init) {
-            const o = originIn(n.init);
-            if (o) tainted.set(n.id.name, o);
-            if (
-              (n.init.type === "CallExpression" || n.init.type === "NewExpression") &&
-              REQUEST_MAKER.test(calleeStr(n.init.callee))
-            ) {
-              requestObjects.add(n.id.name);
+      scopedWalk(
+        scope,
+        (n) => {
+          if (n.type === "VariableDeclarator" && n.id?.type === "Identifier") {
+            if (n.init) {
+              const o = originIn(n.init);
+              if (o) tainted.set(n.id.name, o);
+              if (
+                (n.init.type === "CallExpression" || n.init.type === "NewExpression") &&
+                REQUEST_MAKER.test(calleeStr(n.init.callee))
+              ) {
+                requestObjects.add(n.id.name);
+              }
             }
+          } else if (
+            n.type === "AssignmentExpression" &&
+            n.left?.type === "Identifier" &&
+            n.right
+          ) {
+            const o = originIn(n.right);
+            if (o) tainted.set(n.left.name, o);
           }
-        } else if (n.type === "AssignmentExpression" && n.left?.type === "Identifier" && n.right) {
-          const o = originIn(n.right);
-          if (o) tainted.set(n.left.name, o);
-        }
-      }, scope);
+        },
+        scope,
+      );
     }
 
-    scopedWalk(scope, (n) => {
-      if (n.type !== "CallExpression" && n.type !== "NewExpression") return;
-      const net = isNetSink(n, requestObjects);
-      const exec = isExecSink(n);
-      if (!net && !exec) return;
-      for (const arg of n.arguments ?? []) {
-        const o = originIn(arg);
-        if (!o) continue;
-        if (net && (o.kind === "fs" || o.kind === "secret")) {
-          flows.push({ kind: "exfil", sourceKind: o.kind, sink: calleeStr(n.callee) || "request", file: file.path, sourceLine: o.line, sinkLine: line(n) });
-          break;
+    scopedWalk(
+      scope,
+      (n) => {
+        if (n.type !== "CallExpression" && n.type !== "NewExpression") return;
+        const net = isNetSink(n, requestObjects);
+        const exec = isExecSink(n);
+        if (!net && !exec) return;
+        for (const arg of n.arguments ?? []) {
+          const o = originIn(arg);
+          if (!o) continue;
+          if (net && (o.kind === "fs" || o.kind === "secret")) {
+            flows.push({
+              kind: "exfil",
+              sourceKind: o.kind,
+              sink: calleeStr(n.callee) || "request",
+              file: file.path,
+              sourceLine: o.line,
+              sinkLine: line(n),
+            });
+            break;
+          }
+          if (exec && o.kind === "net") {
+            flows.push({
+              kind: "rce",
+              sourceKind: o.kind,
+              sink: calleeStr(n.callee) || "eval",
+              file: file.path,
+              sourceLine: o.line,
+              sinkLine: line(n),
+            });
+            break;
+          }
         }
-        if (exec && o.kind === "net") {
-          flows.push({ kind: "rce", sourceKind: o.kind, sink: calleeStr(n.callee) || "eval", file: file.path, sourceLine: o.line, sinkLine: line(n) });
-          break;
-        }
-      }
-    }, scope);
+      },
+      scope,
+    );
   }
 
   return flows;

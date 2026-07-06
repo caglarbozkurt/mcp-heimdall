@@ -46,6 +46,8 @@
     "build:pages": "node browser/build.mjs",
     "eval": "tsx src/eval-cli.ts",
     "test": "node --import tsx --test test/*.test.ts",
+    "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\" \"browser/**/*.ts\"",
+    "format:check": "prettier --check \"src/**/*.ts\" \"test/**/*.ts\" \"browser/**/*.ts\"",
     "prepublishOnly": "npm run build"
   },
   "engines": {
@@ -57,6 +59,7 @@
   "devDependencies": {
     "@types/node": "^20.14.0",
     "esbuild": "^0.28.1",
+    "prettier": "^3.9.4",
     "tsx": "^4.16.0",
     "typescript": "^5.5.0"
   }

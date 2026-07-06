@@ -36,7 +36,8 @@ const TOOL = {
       policy: {
         type: "string",
         enum: ["default", "strict"],
-        description: "Policy to gate against. 'strict' also fails on high-severity CVEs and denies exec/eval/secret caps.",
+        description:
+          "Policy to gate against. 'strict' also fails on high-severity CVEs and denies exec/eval/secret caps.",
       },
       online: {
         type: "boolean",
@@ -61,12 +62,17 @@ function formatReport(r: Report): string {
   if (risk.length) {
     lines.push("", "Risk findings:");
     for (const f of risk.slice(0, 20)) {
-      lines.push(`- [${f.severity.toUpperCase()}]${f.gate ? "[GATE]" : ""} ${f.title} (${f.id})${f.location ? ` at ${f.location}` : ""}`);
+      lines.push(
+        `- [${f.severity.toUpperCase()}]${f.gate ? "[GATE]" : ""} ${f.title} (${f.id})${f.location ? ` at ${f.location}` : ""}`,
+      );
     }
   } else {
     lines.push("", "No risk findings.");
   }
-  lines.push("", "Static heuristic check — a PASS is not proof of safety. It downloaded but did not run the server.");
+  lines.push(
+    "",
+    "Static heuristic check — a PASS is not proof of safety. It downloaded but did not run the server.",
+  );
   return lines.join("\n");
 }
 
@@ -74,7 +80,9 @@ function formatReport(r: Report): string {
 function formatComposition(cr: CompositionReport): string {
   const lines = [`VERDICT: ${cr.verdict.toUpperCase()}  (${cr.serverCount} servers)`, ""];
   for (const s of cr.servers) {
-    lines.push(`- ${s.error ? "ERROR" : s.verdict.toUpperCase()}  ${s.name} (${s.target})${s.error ? ` — ${s.error}` : ` — ${s.capabilities.join(",") || "no caps"}`}`);
+    lines.push(
+      `- ${s.error ? "ERROR" : s.verdict.toUpperCase()}  ${s.name} (${s.target})${s.error ? ` — ${s.error}` : ` — ${s.capabilities.join(",") || "no caps"}`}`,
+    );
   }
   if (cr.findings.length) {
     lines.push("", "Cross-server findings:");
@@ -134,7 +142,11 @@ rl.on("line", async (line) => {
       return;
     }
     if (!args.target || typeof args.target !== "string") {
-      send({ jsonrpc: "2.0", id, result: { content: [{ type: "text", text: "Provide a 'target' to scan." }], isError: true } });
+      send({
+        jsonrpc: "2.0",
+        id,
+        result: { content: [{ type: "text", text: "Provide a 'target' to scan." }], isError: true },
+      });
       return;
     }
     try {
@@ -142,7 +154,11 @@ rl.on("line", async (line) => {
       send({ jsonrpc: "2.0", id, result: { content: [{ type: "text", text }] } });
     } catch (err) {
       const message = err instanceof Error ? err.message : String(err);
-      send({ jsonrpc: "2.0", id, result: { content: [{ type: "text", text: `Scan failed: ${message}` }], isError: true } });
+      send({
+        jsonrpc: "2.0",
+        id,
+        result: { content: [{ type: "text", text: `Scan failed: ${message}` }], isError: true },
+      });
     }
   } else if (id != null) {
     send({ jsonrpc: "2.0", id, error: { code: -32601, message: `method not found: ${method}` } });

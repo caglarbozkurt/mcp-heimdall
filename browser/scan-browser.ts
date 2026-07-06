@@ -8,7 +8,12 @@ import { analyzeInjection } from "../src/analyzers/injection.js";
 import { analyzeProvenance } from "../src/analyzers/provenance.js";
 import { analyzeVulnerabilities } from "../src/analyzers/vulnerabilities.js";
 import { analyzeComposition, looksLikeConfig, parseConfig, RANK } from "../src/composition-core.js";
-import { extractPrompts, extractResources, extractTools, parseSurfaceDump } from "../src/extract.js";
+import {
+  extractPrompts,
+  extractResources,
+  extractTools,
+  parseSurfaceDump,
+} from "../src/extract.js";
 import { fingerprintTools, surfaceItems } from "../src/fingerprint.js";
 import { evaluate, resolvePolicy } from "../src/policy.js";
 import { sortFindings } from "../src/score.js";
@@ -27,8 +32,10 @@ const SKIP_DIR = /(^|\/)(node_modules|test|tests|__tests__|examples?|coverage)\/
 const MAX_FILES = 40;
 const MAX_BYTES = 2_000_000;
 
-const getJSON = (url: string) => fetch(url).then((r) => (r.ok ? r.json() : Promise.reject(new Error(`${r.status}`))));
-const getText = (url: string) => fetch(url).then((r) => (r.ok ? r.text() : Promise.reject(new Error(`${r.status}`))));
+const getJSON = (url: string) =>
+  fetch(url).then((r) => (r.ok ? r.json() : Promise.reject(new Error(`${r.status}`))));
+const getText = (url: string) =>
+  fetch(url).then((r) => (r.ok ? r.text() : Promise.reject(new Error(`${r.status}`))));
 
 /** Resolve an npm package's source over jsDelivr into a scannable Target. */
 async function resolveNpm(pkg: string): Promise<Target> {
@@ -41,7 +48,9 @@ async function resolveNpm(pkg: string): Promise<Target> {
   const version = meta.tags?.latest ?? meta.versions?.[0]?.version;
   if (!version) throw new Error(`no published version for "${pkg}"`);
 
-  const flat = await getJSON(`https://data.jsdelivr.com/v1/packages/npm/${pkg}@${version}?structure=flat`);
+  const flat = await getJSON(
+    `https://data.jsdelivr.com/v1/packages/npm/${pkg}@${version}?structure=flat`,
+  );
   const paths: string[] = (flat.files ?? []).map((f: any) => f.name);
 
   let packageJson: Record<string, any> | undefined;
@@ -65,7 +74,15 @@ async function resolveNpm(pkg: string): Promise<Target> {
     )
   ).filter((f): f is { path: string; content: string } => f !== null);
 
-  return { kind: "npm", ref: `${pkg}@${version}`, packageJson, sourceFiles, tools: [], resources: [], prompts: [] };
+  return {
+    kind: "npm",
+    ref: `${pkg}@${version}`,
+    packageJson,
+    sourceFiles,
+    tools: [],
+    resources: [],
+    prompts: [],
+  };
 }
 
 function isGithub(input: string): boolean {
@@ -96,7 +113,13 @@ async function runPipeline(target: Target, refLabel: string, opts: ScanOptions):
   const surface = surfaceItems(target.tools, target.resources, target.prompts);
   const now = new Date().toISOString();
   const policy = resolvePolicy(opts.policy);
-  const { verdict, score, reasons, notices } = evaluate(ctx.findings, capabilities, target.tools.length, policy, now);
+  const { verdict, score, reasons, notices } = evaluate(
+    ctx.findings,
+    capabilities,
+    target.tools.length,
+    policy,
+    now,
+  );
   ctx.findings.push(...notices);
 
   return {
@@ -126,28 +149,61 @@ async function scanConfigBrowser(json: any, opts: ScanOptions): Promise<Composit
           throw new Error("only npm servers can be scanned in the browser");
         }
         const target = await resolveNpm(e.target);
-        return { name: e.name, target: e.target, report: await runPipeline(target, e.target, { policy: opts.policy, online: opts.online }) };
+        return {
+          name: e.name,
+          target: e.target,
+          report: await runPipeline(target, e.target, { policy: opts.policy, online: opts.online }),
+        };
       } catch (err) {
-        return { name: e.name, target: e.target, error: err instanceof Error ? err.message : String(err) };
+        return {
+          name: e.name,
+          target: e.target,
+          error: err instanceof Error ? err.message : String(err),
+        };
       }
     }),
   );
 
-  const ok = scanned.filter((s): s is { name: string; target: string; report: Report } => "report" in s);
+  const ok = scanned.filter(
+    (s): s is { name: string; target: string; report: Report } => "report" in s,
+  );
   const findings = analyzeComposition(ok);
   const servers: ServerSummary[] = scanned.map((s) =>
     "report" in s
-      ? { name: s.name, target: s.target, verdict: s.report.verdict, score: s.report.score, capabilities: s.report.capabilities, toolCount: s.report.toolCount }
-      : { name: s.name, target: s.target, verdict: "fail", score: 0, capabilities: [], toolCount: 0, error: (s as any).error },
+      ? {
+          name: s.name,
+          target: s.target,
+          verdict: s.report.verdict,
+          score: s.report.score,
+          capabilities: s.report.capabilities,
+          toolCount: s.report.toolCount,
+        }
+      : {
+          name: s.name,
+          target: s.target,
+          verdict: "fail",
+          score: 0,
+          capabilities: [],
+          toolCount: 0,
+          error: (s as any).error,
+        },
   );
   let verdict: Report["verdict"] = "pass";
   for (const s of servers) if (RANK[s.verdict] > RANK[verdict]) verdict = s.verdict;
   if (findings.length && verdict === "pass") verdict = "warn";
 
-  return { target: "config", scannedAt: new Date().toISOString(), serverCount: servers.length, servers, findings, verdict };
+  return {
+    target: "config",
+    scannedAt: new Date().toISOString(),
+    serverCount: servers.length,
+    servers,
+    findings,
+    verdict,
+  };
 }
 
-export type BrowserResult = (Report & { composition?: false }) | (CompositionReport & { composition: true });
+export type BrowserResult =
+  (Report & { composition?: false }) | (CompositionReport & { composition: true });
 
 /**
  * Scan a target entirely in the browser. Accepts an npm package name, or pasted JSON
@@ -165,17 +221,22 @@ export async function scanBrowser(input: string, opts: ScanOptions = {}): Promis
     } catch {
       throw new Error("that looks like JSON but didn't parse");
     }
-    if (looksLikeConfig(json)) return { ...(await scanConfigBrowser(json, opts)), composition: true };
+    if (looksLikeConfig(json))
+      return { ...(await scanConfigBrowser(json, opts)), composition: true };
     const surface = parseSurfaceDump(json);
     const target: Target = { kind: "tools", ref: "pasted", sourceFiles: [], ...surface };
     return { ...(await runPipeline(target, "pasted JSON", opts)), composition: false };
   }
 
   if (isGithub(trimmed)) {
-    throw new Error("GitHub scanning isn't available in the browser yet — use the npm package name, or run the CLI");
+    throw new Error(
+      "GitHub scanning isn't available in the browser yet — use the npm package name, or run the CLI",
+    );
   }
   if (trimmed.startsWith(".") || trimmed.startsWith("/")) {
-    throw new Error("local paths can't be scanned in the browser — run the CLI, or scan the npm package name");
+    throw new Error(
+      "local paths can't be scanned in the browser — run the CLI, or scan the npm package name",
+    );
   }
 
   const target = await resolveNpm(trimmed);

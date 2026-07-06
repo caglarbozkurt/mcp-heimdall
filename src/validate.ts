@@ -270,7 +270,11 @@ function driveServer(
         },
       });
     } catch (err) {
-      return resolve({ initAt: 0, toolsCalled: 0, error: err instanceof Error ? err.message : String(err) });
+      return resolve({
+        initAt: 0,
+        toolsCalled: 0,
+        error: err instanceof Error ? err.message : String(err),
+      });
     }
 
     const pending = new Map<number, (msg: any) => void>();
@@ -289,7 +293,10 @@ function driveServer(
       }
       resolve(res);
     };
-    const timer = setTimeout(() => finish({ initAt: 0, toolsCalled: 0, error: "validate timed out" }), timeoutMs);
+    const timer = setTimeout(
+      () => finish({ initAt: 0, toolsCalled: 0, error: "validate timed out" }),
+      timeoutMs,
+    );
 
     child.on("error", (e: Error) => finish({ initAt: 0, toolsCalled: 0, error: e.message }));
     child.stdout!.on("data", (d: Buffer) => {
@@ -397,7 +404,10 @@ export interface ValidateOptions {
 }
 
 /** Validate one server: run it, observe behavior, and diff against the static scan. */
-export async function validateServer(input: string, opts: ValidateOptions = {}): Promise<ValidateReport> {
+export async function validateServer(
+  input: string,
+  opts: ValidateOptions = {},
+): Promise<ValidateReport> {
   let target: Target;
   let report: Report;
   try {
@@ -447,7 +457,9 @@ export async function validateServer(input: string, opts: ValidateOptions = {}):
   }
 
   const observed = observedCaps(events, plan.filterBootstrap ? drive.initAt : 0);
-  const staticSet = new Set(report.capabilities.filter((c) => (OBSERVABLE_CAPS as readonly string[]).includes(c)));
+  const staticSet = new Set(
+    report.capabilities.filter((c) => (OBSERVABLE_CAPS as readonly string[]).includes(c)),
+  );
   const comparison = compareCaps(staticSet, observed);
 
   return {
@@ -455,7 +467,9 @@ export async function validateServer(input: string, opts: ValidateOptions = {}):
     kind: target.kind,
     toolsCalled: drive.toolsCalled,
     staticCaps: [...staticSet].sort(),
-    observedCaps: [...observed].filter((c) => (OBSERVABLE_CAPS as readonly string[]).includes(c)).sort(),
+    observedCaps: [...observed]
+      .filter((c) => (OBSERVABLE_CAPS as readonly string[]).includes(c))
+      .sort(),
     comparison,
     confirmed: comparison.filter((c) => c.status === "confirmed").length,
     missed: comparison.filter((c) => c.status === "missed").length,
@@ -475,7 +489,10 @@ export interface BatchReport {
 }
 
 /** Validate a list of servers and aggregate a recall number over observed behavior. */
-export async function validateBatch(inputs: string[], opts: ValidateOptions = {}): Promise<BatchReport> {
+export async function validateBatch(
+  inputs: string[],
+  opts: ValidateOptions = {},
+): Promise<BatchReport> {
   const servers: ValidateReport[] = [];
   for (const input of inputs) servers.push(await validateServer(input, opts));
 
@@ -491,5 +508,11 @@ export async function validateBatch(inputs: string[], opts: ValidateOptions = {}
   const totalConfirmed = Object.values(perCap).reduce((n, v) => n + v.confirmed, 0);
   const totalMissed = Object.values(perCap).reduce((n, v) => n + v.missed, 0);
   const denom = totalConfirmed + totalMissed;
-  return { servers, perCap, recall: denom ? totalConfirmed / denom : 1, totalConfirmed, totalMissed };
+  return {
+    servers,
+    perCap,
+    recall: denom ? totalConfirmed / denom : 1,
+    totalConfirmed,
+    totalMissed,
+  };
 }

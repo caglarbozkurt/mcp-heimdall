@@ -7,10 +7,14 @@ import type { Target, ToolDef, ToolParam } from "./types.js";
 export function normalizeTool(raw: any): ToolDef | null {
   if (!raw || typeof raw.name !== "string") return null;
   const params: ToolParam[] = [];
-  const props = raw.inputSchema?.properties ?? raw.parameters?.properties ?? raw.input_schema?.properties;
+  const props =
+    raw.inputSchema?.properties ?? raw.parameters?.properties ?? raw.input_schema?.properties;
   if (props && typeof props === "object") {
     for (const [name, schema] of Object.entries<any>(props)) {
-      params.push({ name, description: typeof schema?.description === "string" ? schema.description : undefined });
+      params.push({
+        name,
+        description: typeof schema?.description === "string" ? schema.description : undefined,
+      });
     }
   }
   return {
@@ -23,12 +27,16 @@ export function normalizeTool(raw: any): ToolDef | null {
 /** Normalize a resource or prompt entry. Resources use uri if unnamed; prompts carry arguments. */
 export function normalizeItem(raw: any): ToolDef | null {
   if (!raw || typeof raw !== "object") return null;
-  const name = typeof raw.name === "string" ? raw.name : typeof raw.uri === "string" ? raw.uri : null;
+  const name =
+    typeof raw.name === "string" ? raw.name : typeof raw.uri === "string" ? raw.uri : null;
   if (!name) return null;
   const params: ToolParam[] = Array.isArray(raw.arguments)
     ? raw.arguments
         .filter((a: any) => a && typeof a.name === "string")
-        .map((a: any) => ({ name: a.name, description: typeof a.description === "string" ? a.description : undefined }))
+        .map((a: any) => ({
+          name: a.name,
+          description: typeof a.description === "string" ? a.description : undefined,
+        }))
     : [];
   return {
     name,
@@ -41,7 +49,7 @@ export function normalizeItem(raw: any): ToolDef | null {
 export function parseToolsDump(json: unknown): ToolDef[] {
   const arr = Array.isArray(json)
     ? json
-    : (json as any)?.tools ?? (json as any)?.result?.tools ?? [];
+    : ((json as any)?.tools ?? (json as any)?.result?.tools ?? []);
   if (!Array.isArray(arr)) return [];
   return arr.map(normalizeTool).filter((t): t is ToolDef => t !== null);
 }
@@ -57,8 +65,12 @@ export function parseSurfaceDump(json: unknown): {
   const promptArr = j?.prompts ?? j?.result?.prompts ?? [];
   return {
     tools: parseToolsDump(json),
-    resources: (Array.isArray(resArr) ? resArr : []).map(normalizeItem).filter((t): t is ToolDef => !!t),
-    prompts: (Array.isArray(promptArr) ? promptArr : []).map(normalizeItem).filter((t): t is ToolDef => !!t),
+    resources: (Array.isArray(resArr) ? resArr : [])
+      .map(normalizeItem)
+      .filter((t): t is ToolDef => !!t),
+    prompts: (Array.isArray(promptArr) ? promptArr : [])
+      .map(normalizeItem)
+      .filter((t): t is ToolDef => !!t),
   };
 }
 
@@ -68,15 +80,22 @@ export function parseSurfaceDump(json: unknown): {
 // Find the nearest description literal within a window of an object.
 const DESC_NEAR = /description\s*:\s*(['"`])((?:\\.|[^\\])*?)\1/;
 // Tools/resources/prompts array form: { name: "...", description: "...", ... }
-const GENERIC_OBJECT = /name\s*:\s*(['"`])(.+?)\1[\s\S]{0,400}?description\s*:\s*(['"`])([\s\S]+?)\3/g;
+const GENERIC_OBJECT =
+  /name\s*:\s*(['"`])(.+?)\1[\s\S]{0,400}?description\s*:\s*(['"`])([\s\S]+?)\3/g;
 
 function unescape(s: string): string {
-  return s.replace(/\\n/g, " ").replace(/\\t/g, " ").replace(/\\(["'`\\])/g, "$1");
+  return s
+    .replace(/\\n/g, " ")
+    .replace(/\\t/g, " ")
+    .replace(/\\(["'`\\])/g, "$1");
 }
 
 /** Extract registrations for a surface given its registration verbs (e.g. tool|registerTool). */
 function extractSurface(target: Target, verbs: string, includeGeneric: boolean): ToolDef[] {
-  const stringForm = new RegExp(`\\b(?:${verbs})\\(\\s*(['"\`])(.+?)\\1\\s*,\\s*(['"\`])([\\s\\S]*?)\\3`, "g");
+  const stringForm = new RegExp(
+    `\\b(?:${verbs})\\(\\s*(['"\`])(.+?)\\1\\s*,\\s*(['"\`])([\\s\\S]*?)\\3`,
+    "g",
+  );
   const objectForm = new RegExp(`\\b(?:${verbs})\\(\\s*(['"\`])(.+?)\\1\\s*,\\s*\\{`, "g");
 
   const byName = new Map<string, ToolDef>();

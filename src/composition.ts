@@ -12,7 +12,10 @@ type Scanned =
   | { name: string; target: string; error: string };
 
 /** Audit a configured set of MCP servers together. */
-export async function scanConfig(input: string, opts: ScanOptions = {}): Promise<CompositionReport> {
+export async function scanConfig(
+  input: string,
+  opts: ScanOptions = {},
+): Promise<CompositionReport> {
   const json = JSON.parse(readFileSync(input, "utf8"));
   const entries = parseConfig(json);
 
@@ -23,11 +26,20 @@ export async function scanConfig(input: string, opts: ScanOptions = {}): Promise
         let surface: ScanOptions["surface"];
         if (opts.handshake && e.command) {
           const live = await handshake(e.command, e.args ?? []);
-          if (!live.error) surface = { tools: live.tools, resources: live.resources, prompts: live.prompts };
+          if (!live.error)
+            surface = { tools: live.tools, resources: live.resources, prompts: live.prompts };
         }
-        return { name: e.name, target: e.target, report: await scan(e.target, { policy: opts.policy, surface, online: opts.online }) };
+        return {
+          name: e.name,
+          target: e.target,
+          report: await scan(e.target, { policy: opts.policy, surface, online: opts.online }),
+        };
       } catch (err) {
-        return { name: e.name, target: e.target, error: err instanceof Error ? err.message : String(err) };
+        return {
+          name: e.name,
+          target: e.target,
+          error: err instanceof Error ? err.message : String(err),
+        };
       }
     }),
   );
@@ -45,7 +57,15 @@ export async function scanConfig(input: string, opts: ScanOptions = {}): Promise
           capabilities: s.report.capabilities,
           toolCount: s.report.toolCount,
         }
-      : { name: s.name, target: s.target, verdict: "fail", score: 0, capabilities: [], toolCount: 0, error: s.error },
+      : {
+          name: s.name,
+          target: s.target,
+          verdict: "fail",
+          score: 0,
+          capabilities: [],
+          toolCount: 0,
+          error: s.error,
+        },
   );
 
   // Aggregate verdict: worst per-server verdict, raised to at least WARN by composition findings.

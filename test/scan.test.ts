@@ -45,10 +45,7 @@ test("malicious server fails with gates", async () => {
 
   const gates = report.findings.filter((f) => f.gate).map((f) => f.id);
   assert.ok(gates.includes("gate/exfil-flow"), "detects the proven fs→network exfil path");
-  assert.ok(
-    gates.includes("provenance/install-script-exec"),
-    "detects code exec in postinstall",
-  );
+  assert.ok(gates.includes("provenance/install-script-exec"), "detects code exec in postinstall");
   assert.ok(
     report.findings.some((f) => f.id === "injection/instruction-override"),
     "detects instruction-override phrasing",
@@ -133,15 +130,23 @@ test("CVE check: a network failure degrades to an informational finding, never a
 
 test("MCP server: exposes scan_mcp_server over the stdio protocol", async () => {
   // Reuse handshake (the JSON-RPC *client*) to verify Heimdall's own MCP *server* responds.
-  const res = await handshake("node", ["--import", "tsx", "src/mcp-server.ts"], { timeoutMs: 15_000 });
+  const res = await handshake("node", ["--import", "tsx", "src/mcp-server.ts"], {
+    timeoutMs: 15_000,
+  });
   assert.ok(!res.error, `handshake failed: ${res.error}`);
-  assert.ok(res.tools.some((t) => t.name === "scan_mcp_server"), "server lists the scan tool");
+  assert.ok(
+    res.tools.some((t) => t.name === "scan_mcp_server"),
+    "server lists the scan tool",
+  );
 });
 
 test("Python: capability detection runs on a .py MCP server", async () => {
   const report = await scan(join(fixtures, "py-tool-mcp"));
   // Python analyzers fired (py-* rule ids), not the JS ones.
-  assert.ok(report.findings.some((f) => f.id.startsWith("capability/py-")), "python capability rules ran");
+  assert.ok(
+    report.findings.some((f) => f.id.startsWith("capability/py-")),
+    "python capability rules ran",
+  );
   for (const cap of ["exec", "net-egress", "env-access", "dynamic-eval"]) {
     assert.ok(report.capabilities.includes(cap), `detects ${cap} in Python source`);
   }
@@ -155,7 +160,10 @@ test("Python: parses deps from pyproject and maps latent capabilities", () => {
     ref: "x",
     language: "python",
     sourceFiles: [
-      { path: "pyproject.toml", content: 'dependencies = ["httpx>=0.24", "python-dotenv", "requests[socks]>=2.0"]' },
+      {
+        path: "pyproject.toml",
+        content: 'dependencies = ["httpx>=0.24", "python-dotenv", "requests[socks]>=2.0"]',
+      },
     ],
     tools: [],
     resources: [],
@@ -185,7 +193,10 @@ test("validate: synthesizes tool args from an inputSchema", () => {
   assert.equal(sampleValue({ enum: ["a", "b"] }), "a");
   assert.equal(sampleValue({ default: "x" }), "x");
   assert.equal(sampleValue({ type: "string" }), "test");
-  const args = synthArgs({ properties: { path: { type: "string" }, n: { type: "integer" } }, required: ["path"] });
+  const args = synthArgs({
+    properties: { path: { type: "string" }, n: { type: "integer" } },
+    required: ["path"],
+  });
   assert.deepEqual(args, { path: "test" }); // only required props are filled
 });
 
@@ -251,9 +262,18 @@ test("injection is detected in resources and prompts, not just tools", async () 
 
   const inResource = report.findings.filter((f) => f.location?.startsWith("resource:"));
   const inPrompt = report.findings.filter((f) => f.location?.startsWith("prompt:"));
-  assert.ok(inResource.some((f) => f.id === "injection/conceal-from-user"), "resource concealment payload");
-  assert.ok(inResource.some((f) => f.id === "injection/pseudo-instruction-tag"), "resource fake tag");
-  assert.ok(inPrompt.some((f) => f.id === "injection/instruction-override"), "prompt override payload");
+  assert.ok(
+    inResource.some((f) => f.id === "injection/conceal-from-user"),
+    "resource concealment payload",
+  );
+  assert.ok(
+    inResource.some((f) => f.id === "injection/pseudo-instruction-tag"),
+    "resource fake tag",
+  );
+  assert.ok(
+    inPrompt.some((f) => f.id === "injection/instruction-override"),
+    "prompt override payload",
+  );
 });
 
 test("credential access is reported with a specific detector", async () => {
@@ -271,7 +291,10 @@ test("drift diff flags a changed tool description (rug-pull)", async () => {
 
   const drifted = await scan(join(fixtures, "drift-v2.json"), { baseline });
   const drift = drifted.findings.filter((f) => f.category === "drift");
-  assert.ok(drift.some((f) => f.id === "drift/description-changed" && f.gate), "rug-pull gate fires");
+  assert.ok(
+    drift.some((f) => f.id === "drift/description-changed" && f.gate),
+    "rug-pull gate fires",
+  );
   assert.equal(drifted.verdict, "fail");
 });
 
@@ -286,10 +309,7 @@ test("taint proves an exfil path, and spares co-presence without a real flow", a
   // must NOT hard-fail (this is the co-presence false positive taint removes).
   const benign = await scan(join(fixtures, "cred-noflow"));
   assert.notEqual(benign.verdict, "fail", "no proven flow → not an auto-FAIL");
-  assert.ok(
-    !benign.findings.some((f) => f.id === "gate/exfil-flow"),
-    "no false exfil-flow gate",
-  );
+  assert.ok(!benign.findings.some((f) => f.id === "gate/exfil-flow"), "no false exfil-flow gate");
   assert.ok(
     benign.findings.some((f) => f.id === "capability/exfil-surface"),
     "still surfaced for human review",
@@ -392,5 +412,8 @@ test("waivers suppress a finding, and expired waivers lapse with a notice", asyn
     policy: mk([{ id: "injection/tool-shadowing", expires: "2000-01-01T00:00:00Z" }]) as never,
   });
   assert.equal(expired.verdict, "warn", "expired waiver no longer suppresses");
-  assert.ok(expired.findings.some((f) => f.id === "waiver/expired"), "expiry notice surfaced");
+  assert.ok(
+    expired.findings.some((f) => f.id === "waiver/expired"),
+    "expiry notice surfaced",
+  );
 });

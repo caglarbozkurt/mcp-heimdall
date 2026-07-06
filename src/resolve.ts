@@ -1,5 +1,12 @@
 import { execFileSync } from "node:child_process";
-import { existsSync, mkdtempSync, readdirSync, readFileSync, statSync, writeFileSync } from "node:fs";
+import {
+  existsSync,
+  mkdtempSync,
+  readdirSync,
+  readFileSync,
+  statSync,
+  writeFileSync,
+} from "node:fs";
 import { tmpdir } from "node:os";
 import { join, relative } from "node:path";
 import { parseSurfaceDump } from "./extract.js";
@@ -18,7 +25,16 @@ const SOURCE_EXT = new Set([".js", ".mjs", ".cjs", ".ts", ".mts", ".cts", ".py"]
 const MANIFEST_FILES = new Set(["pyproject.toml", "requirements.txt", "setup.cfg"]);
 // Note: we do NOT skip dist/build — published npm packages ship their compiled
 // code there, and analyzing what actually runs is the whole point.
-const SKIP_DIRS = new Set(["node_modules", ".git", "coverage", ".next", ".turbo", "__pycache__", ".venv", "venv"]);
+const SKIP_DIRS = new Set([
+  "node_modules",
+  ".git",
+  "coverage",
+  ".next",
+  ".turbo",
+  "__pycache__",
+  ".venv",
+  "venv",
+]);
 const MAX_FILES = 1000;
 const MAX_FILE_BYTES = 2 * 1024 * 1024;
 
@@ -31,8 +47,17 @@ function detectKind(input: string): TargetKind {
 }
 
 /** Decide which language's deep analyzers to run, from manifests then file mix. */
-function detectLanguage(root: string, packageJson: Record<string, any> | undefined, files: SourceFile[]): Language {
-  if (["pyproject.toml", "setup.py", "requirements.txt", "setup.cfg"].some((f) => existsSync(join(root, f)))) return "python";
+function detectLanguage(
+  root: string,
+  packageJson: Record<string, any> | undefined,
+  files: SourceFile[],
+): Language {
+  if (
+    ["pyproject.toml", "setup.py", "requirements.txt", "setup.cfg"].some((f) =>
+      existsSync(join(root, f)),
+    )
+  )
+    return "python";
   if (packageJson) return "js";
   const py = files.filter((f) => /\.py$/i.test(f.path)).length;
   const js = files.filter((f) => /\.(js|mjs|cjs|ts|mts|cts)$/i.test(f.path)).length;
@@ -66,7 +91,8 @@ function walkSource(root: string): SourceFile[] {
       }
       const dot = entry.lastIndexOf(".");
       const ext = dot >= 0 ? entry.slice(dot) : "";
-      if ((!SOURCE_EXT.has(ext) && !MANIFEST_FILES.has(entry)) || st.size > MAX_FILE_BYTES) continue;
+      if ((!SOURCE_EXT.has(ext) && !MANIFEST_FILES.has(entry)) || st.size > MAX_FILE_BYTES)
+        continue;
       try {
         files.push({ path: relative(root, full), content: readFileSync(full, "utf8") });
       } catch {
@@ -149,14 +175,17 @@ function cloneGithub(url: string): string {
 }
 
 export async function resolveTarget(input: string, opts: ScanOptions = {}): Promise<Target> {
-  const dump = opts.toolsFile ? parseSurfaceDump(JSON.parse(readFileSync(opts.toolsFile, "utf8"))) : EMPTY_SURFACE;
+  const dump = opts.toolsFile
+    ? parseSurfaceDump(JSON.parse(readFileSync(opts.toolsFile, "utf8")))
+    : EMPTY_SURFACE;
   const kind = opts.kind ?? detectKind(input);
 
   switch (kind) {
     case "tools": {
-      const surface = dump.tools.length || dump.resources.length || dump.prompts.length
-        ? dump
-        : parseSurfaceDump(JSON.parse(readFileSync(input, "utf8")));
+      const surface =
+        dump.tools.length || dump.resources.length || dump.prompts.length
+          ? dump
+          : parseSurfaceDump(JSON.parse(readFileSync(input, "utf8")));
       return { kind, ref: input, sourceFiles: [], ...surface };
     }
     case "npm":

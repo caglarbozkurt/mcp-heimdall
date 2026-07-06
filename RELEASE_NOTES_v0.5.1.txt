@@ -1,0 +1,13 @@
+## Heimdall 0.5.1 — official registry support
+
+A small release that makes Heimdall publishable to the official MCP registry.
+
+### Added
+
+- **Official MCP registry support** — adds an `mcpName` (`io.github.caglarbozkurt/heimdall`) field to `package.json` and a `server.json` manifest, so Heimdall can be published to [registry.modelcontextprotocol.io](https://registry.modelcontextprotocol.io) (and, downstream, aggregators like PulseMCP). The `mcpName` has to ship in the published npm package for the registry to verify ownership — hence this patch.
+
+### Fixed
+
+- `handshake` / `validate` / the MCP server now report the real package version (read from `package.json`) instead of a hardcoded string.
+
+**Full diff:** https://github.com/caglarbozkurt/mcp-heimdall/compare/v0.5.0...v0.5.1

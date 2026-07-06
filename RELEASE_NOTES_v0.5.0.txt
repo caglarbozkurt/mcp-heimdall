@@ -1,0 +1,42 @@
+## Heimdall 0.5.0 — meet Heimdall where you work
+
+Two ways to run Heimdall without touching the CLI: as an MCP server your agent can call, and as a GitHub Action that gates your PRs.
+
+### 🛡️ New: Heimdall as an MCP server
+
+Give your agent a `scan_mcp_server` tool so it can vet a server **before** connecting to it — "scan this before you add it." Add it to your MCP client config:
+
+```json
+{
+  "mcpServers": {
+    "heimdall": {
+      "command": "npx",
+      "args": ["-y", "--package", "mcp-heimdall-scan", "heimdall-mcp"]
+    }
+  }
+}
+```
+
+The tool takes `target` (npm package, `pypi:<name>`, path, GitHub URL, tools.json, or a client config) plus optional `policy` and `online`. It's **static-only** — it downloads but never executes the server, and the code-execution modes (`--handshake`, `validate`) are intentionally not exposed to the agent. Hand-rolled stdio JSON-RPC — no SDK dependency added.
+
+### ⚙️ New: GitHub Action
+
+Gate every pull request in a few lines:
+
+```yaml
+- uses: caglarbozkurt/mcp-heimdall@v1
+  with:
+    target: ./claude_desktop_config.json
+    policy: strict
+    online: true          # also check deps for known CVEs
+    sarif: heimdall.sarif # optional, for code scanning
+```
+
+Fails the build on a risky verdict. Runs entirely on your own CI runner — no backend, free on public repos. Inputs are passed via env, never interpolated into the shell (no script-injection in a security tool's own action). A self-test workflow dogfoods it.
+
+### 🔧 Also
+
+- Landing page now documents all four ways to run Heimdall (MCP server, CLI incl. `pypi:`, GitHub Action, skill) and notes JS/TS + Python coverage.
+- Version strings are sourced from `package.json` at runtime, so handshake/validate/MCP-server never report a stale version.
+
+**Full diff:** https://github.com/caglarbozkurt/mcp-heimdall/compare/v0.4.0...v0.5.0

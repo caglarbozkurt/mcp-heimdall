@@ -126,8 +126,7 @@ export function evaluate(
     if (worst === null || r < worst) worst = r;
   }
 
-  const failRank =
-    policy.failOnSeverity !== "none" ? SEVERITY_RANK[policy.failOnSeverity] : null;
+  const failRank = policy.failOnSeverity !== "none" ? SEVERITY_RANK[policy.failOnSeverity] : null;
   const warnRank = SEVERITY_RANK[policy.warnOnSeverity];
 
   const hardFail = deniedCaps.length > 0 || unmet.length > 0 || gates.length > 0;

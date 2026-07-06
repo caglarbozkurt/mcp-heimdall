@@ -9,7 +9,9 @@ async function main() {
 
   for (const r of results) {
     const mark = r.correct ? "✓" : "✗";
-    process.stdout.write(`  ${mark} ${r.label.padEnd(9)} ${r.verdict.toUpperCase().padEnd(4)}  ${r.target}\n`);
+    process.stdout.write(
+      `  ${mark} ${r.label.padEnd(9)} ${r.verdict.toUpperCase().padEnd(4)}  ${r.target}\n`,
+    );
   }
   const pct = (n: number) => (n * 100).toFixed(1) + "%";
   process.stdout.write(

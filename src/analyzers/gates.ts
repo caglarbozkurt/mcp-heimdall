@@ -98,7 +98,8 @@ export function analyzeGates(
       severity: "info",
       profile: true,
       title: "Read-and-send surface",
-      detail: "Reads local files AND makes outbound network requests. Informational blast-radius note.",
+      detail:
+        "Reads local files AND makes outbound network requests. Informational blast-radius note.",
     });
   }
 

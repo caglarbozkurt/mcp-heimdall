@@ -146,7 +146,10 @@ function parseRequirement(line: string): PyDep | undefined {
   const m = s.match(/^([A-Za-z0-9][A-Za-z0-9._-]*)/);
   if (!m) return undefined;
   const name = m[1];
-  const spec = s.slice(name.length).replace(/\[[^\]]*\]/, "").trim();
+  const spec = s
+    .slice(name.length)
+    .replace(/\[[^\]]*\]/, "")
+    .trim();
   return { name, spec };
 }
 
@@ -202,12 +205,14 @@ export function parsePyDeps(target: Target): PyDep[] {
   if (reqs) for (const line of reqs.split("\n")) add(parseRequirement(line));
 
   const setup = readFile(target, "setup.py");
-  if (setup) for (const q of extractArrayStrings(setup, "install_requires")) add(parseRequirement(q));
+  if (setup)
+    for (const q of extractArrayStrings(setup, "install_requires")) add(parseRequirement(q));
   return out;
 }
 
 /** Shell/code-exec patterns that make a setup.py dangerous (pip runs it on sdist install). */
-const DANGEROUS_SETUP = /\b(subprocess|os\.system|os\.popen|urllib|requests\.|socket|eval\s*\(|exec\s*\(|base64\.b64decode|__import__)\b/;
+const DANGEROUS_SETUP =
+  /\b(subprocess|os\.system|os\.popen|urllib|requests\.|socket|eval\s*\(|exec\s*\(|base64\.b64decode|__import__)\b/;
 
 export function analyzePythonProvenance(ctx: AnalysisContext): void {
   const t = ctx.target;
@@ -222,7 +227,8 @@ export function analyzePythonProvenance(ctx: AnalysisContext): void {
       severity: "critical",
       gate: true,
       title: "Code execution in setup.py",
-      detail: "setup.py runs on install (from an sdist) and executes code / fetches remote content.",
+      detail:
+        "setup.py runs on install (from an sdist) and executes code / fetches remote content.",
       evidence: snippet(m[0]),
       location: "setup.py",
     });
@@ -285,7 +291,11 @@ export function analyzePythonProvenance(ctx: AnalysisContext): void {
 /** Map a Python dependency to a latent capability. */
 export function pyCapForDep(name: string): string | undefined {
   const n = name.toLowerCase();
-  if (/^(requests|httpx|aiohttp|urllib3|websockets|boto3|botocore|google-api|google-cloud|openai|anthropic|firecrawl)/.test(n))
+  if (
+    /^(requests|httpx|aiohttp|urllib3|websockets|boto3|botocore|google-api|google-cloud|openai|anthropic|firecrawl)/.test(
+      n,
+    )
+  )
     return "net-egress";
   if (/^(keyring)/.test(n)) return "secret-access";
   if (/^(python-dotenv|dotenv)$/.test(n)) return "dotenv-access";

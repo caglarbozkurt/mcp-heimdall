@@ -2,7 +2,8 @@ import type { AnalysisContext, Finding } from "../types.js";
 import { snippet } from "../util.js";
 
 /** Shell/code-exec patterns that make an npm lifecycle script dangerous. */
-const DANGEROUS_SCRIPT = /\b(curl|wget|bash|sh\s+-c|node\s+-e|node\s+--eval|eval|base64\s+-d|powershell|iwr|invoke-webrequest)\b/i;
+const DANGEROUS_SCRIPT =
+  /\b(curl|wget|bash|sh\s+-c|node\s+-e|node\s+--eval|eval|base64\s+-d|powershell|iwr|invoke-webrequest)\b/i;
 
 const LIFECYCLE_HOOKS = ["preinstall", "install", "postinstall", "prepare"];
 
@@ -70,7 +71,8 @@ export function analyzeProvenance(ctx: AnalysisContext): void {
       severity: "info",
       profile: true,
       title: "No source repository declared",
-      detail: "Package does not declare a repository, so the source cannot be independently reviewed.",
+      detail:
+        "Package does not declare a repository, so the source cannot be independently reviewed.",
       location: "package.json",
     });
   }

@@ -22,5 +22,8 @@ export function snippet(text: string, max = 120): string {
 export function stripComments(src: string): string {
   return src
     .replace(/\/\*[\s\S]*?\*\//g, (m) => m.replace(/[^\n]/g, " "))
-    .replace(/(^|[^:])(\/\/[^\n]*)/g, (_all, p1: string, cmt: string) => p1 + cmt.replace(/./g, " "));
+    .replace(
+      /(^|[^:])(\/\/[^\n]*)/g,
+      (_all, p1: string, cmt: string) => p1 + cmt.replace(/./g, " "),
+    );
 }

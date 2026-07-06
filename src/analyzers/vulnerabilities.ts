@@ -39,7 +39,8 @@ export function coerceVersion(range: string): string | null {
   const alias = r.match(/^npm:[^@]+@(.+)$/i);
   const spec = alias ? alias[1] : r;
   // Non-registry specs can't be range-matched by OSV.
-  if (!alias && /^(git|https?|file|link|workspace|github|[\w.-]+\/[\w.-]+)/i.test(spec)) return null;
+  if (!alias && /^(git|https?|file|link|workspace|github|[\w.-]+\/[\w.-]+)/i.test(spec))
+    return null;
   const m = spec.match(/(\d+)(?:\.(\d+))?(?:\.(\d+))?/);
   if (!m) return null;
   const [, major, minor = "0", patch = "0"] = m;
@@ -76,7 +77,9 @@ export function mapSeverity(vuln: any): Severity {
 export function vulnerabilityFinding(dep: DepVersion, id: string, detail: any): Finding {
   const cve = (detail?.aliases ?? []).find((a: string) => /^CVE-/i.test(a));
   const summary =
-    detail?.summary || (typeof detail?.details === "string" ? detail.details.slice(0, 120) : "") || "known security advisory";
+    detail?.summary ||
+    (typeof detail?.details === "string" ? detail.details.slice(0, 120) : "") ||
+    "known security advisory";
   return {
     id: "provenance/known-vulnerability",
     category: "provenance",
@@ -107,7 +110,10 @@ async function fetchJSON(url: string, init?: RequestInit): Promise<any> {
 /** Resolve declared deps to concrete versions we can query. */
 export function resolveDeps(pkg: Record<string, any> | undefined): DepVersion[] {
   if (!pkg) return [];
-  const declared = { ...(pkg.dependencies ?? {}), ...(pkg.optionalDependencies ?? {}) } as Record<string, string>;
+  const declared = { ...(pkg.dependencies ?? {}), ...(pkg.optionalDependencies ?? {}) } as Record<
+    string,
+    string
+  >;
   const out: DepVersion[] = [];
   for (const [name, range] of Object.entries(declared)) {
     const version = coerceVersion(range);
@@ -189,7 +195,8 @@ export async function analyzeVulnerabilities(ctx: AnalysisContext): Promise<void
   for (const hit of hits) {
     // Surface the most severe advisories first; itemize up to PER_DEP_CAP, roll up the rest.
     const ranked = [...hit.ids].sort(
-      (a, b) => SEVERITY_RANK[mapSeverity(details.get(a))] - SEVERITY_RANK[mapSeverity(details.get(b))],
+      (a, b) =>
+        SEVERITY_RANK[mapSeverity(details.get(a))] - SEVERITY_RANK[mapSeverity(details.get(b))],
     );
     for (const id of ranked.slice(0, PER_DEP_CAP)) {
       ctx.findings.push(vulnerabilityFinding(hit.dep, id, details.get(id)));

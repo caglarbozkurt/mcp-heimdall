@@ -3,7 +3,12 @@ import { existsSync, readFileSync } from "node:fs";
 import { parseArgs } from "node:util";
 import { looksLikeConfig, scanConfig } from "./composition.js";
 import { handshake } from "./handshake.js";
-import { formatBatchReport, formatCompositionReport, formatReport, formatValidateReport } from "./report.js";
+import {
+  formatBatchReport,
+  formatCompositionReport,
+  formatReport,
+  formatValidateReport,
+} from "./report.js";
 import { toSarif } from "./sarif.js";
 import { scan } from "./scan.js";
 import { validateBatch, validateServer } from "./validate.js";
@@ -97,7 +102,9 @@ async function main() {
         .map((l) => l.trim())
         .filter((l) => l && !l.startsWith("#"));
       const batch = await validateBatch(inputs, { maxTools });
-      process.stdout.write(values.json ? JSON.stringify(batch, null, 2) + "\n" : formatBatchReport(batch));
+      process.stdout.write(
+        values.json ? JSON.stringify(batch, null, 2) + "\n" : formatBatchReport(batch),
+      );
       process.exit(0);
     }
     const target = positionals[1];
@@ -106,15 +113,23 @@ async function main() {
       process.exit(2);
     }
     const vr = await validateServer(target, { maxTools });
-    process.stdout.write(values.json ? JSON.stringify(vr, null, 2) + "\n" : formatValidateReport(vr));
+    process.stdout.write(
+      values.json ? JSON.stringify(vr, null, 2) + "\n" : formatValidateReport(vr),
+    );
     // Diagnostic, not a gate: only a run error is non-zero (MISSED can be incidental noise).
     process.exit(vr.error ? 2 : 0);
   }
 
   // A client config → audit the whole configured set together (composition analysis).
   if (isConfig(positionals[0])) {
-    const cr = await scanConfig(positionals[0], { policy: values.policy, handshake: values.handshake, online: values.online });
-    process.stdout.write(values.json ? JSON.stringify(cr, null, 2) + "\n" : formatCompositionReport(cr));
+    const cr = await scanConfig(positionals[0], {
+      policy: values.policy,
+      handshake: values.handshake,
+      online: values.online,
+    });
+    process.stdout.write(
+      values.json ? JSON.stringify(cr, null, 2) + "\n" : formatCompositionReport(cr),
+    );
     process.exit(cr.verdict === "fail" && !values["no-fail"] ? 1 : 0);
   }
 
@@ -122,7 +137,8 @@ async function main() {
   let surface;
   if (values.handshake) {
     const live = await handshake("npx", ["-y", positionals[0]]);
-    if (live.error) process.stderr.write(`handshake failed (${live.error}); falling back to static.\n`);
+    if (live.error)
+      process.stderr.write(`handshake failed (${live.error}); falling back to static.\n`);
     else surface = { tools: live.tools, resources: live.resources, prompts: live.prompts };
   }
 

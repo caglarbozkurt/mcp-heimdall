@@ -24,7 +24,11 @@ export function toSarif(report: Report): Record<string, unknown> {
       ruleId: f.id,
       level: LEVEL[f.severity],
       message: { text: f.evidence ? `${f.detail} [${f.evidence}]` : f.detail },
-      properties: { severity: f.severity, confidence: f.confidence ?? "high", category: f.category },
+      properties: {
+        severity: f.severity,
+        confidence: f.confidence ?? "high",
+        category: f.category,
+      },
       locations: f.location
         ? [
             isFile

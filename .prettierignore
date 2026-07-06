@@ -1,0 +1,8 @@
+dist
+node_modules
+pages/heimdall.js
+benchmarks/*.jsonl
+*.tgz
+# HTML pages are hand-tuned (inline styles/scripts); don't reflow them
+pages/index.html
+ui/index.html

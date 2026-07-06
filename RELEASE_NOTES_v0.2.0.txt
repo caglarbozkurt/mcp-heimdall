@@ -1,0 +1,53 @@
+## Heimdall 0.2.0 — OSV.dev CVE check
+
+Heimdall now checks a server's dependencies for **known vulnerabilities**, and the field run scaled to **2,500 real MCP servers**.
+
+### ✨ New: known-CVE check (`--online`)
+
+Declared dependencies are checked against the [OSV.dev](https://osv.dev) advisory database — real CVE/GHSA IDs, severity-ranked.
+
+```bash
+npx mcp-heimdall-scan firecrawl-mcp --online
+```
+
+- **Opt-in and privacy-first.** Heimdall stays 100% offline by default. `--online` is the only network call, and it sends *dependency names + versions only* — never your source.
+- **Facts → policy, not a hard verdict.** A known CVE **WARNs** under the default policy and **FAILs** under `strict` (or any `failOnSeverity: high`). It's never a hard gate, because a manifest range isn't a lockfile — honest about the uncertainty.
+- **Readable output:** worst-first, capped per dependency with a rollup for the rest.
+- **Works everywhere:** CLI and the in-browser build (OSV.dev is CORS-enabled). New "Check dependencies for known CVEs" toggle in both web UIs.
+- New policy fact `no_known_vulnerabilities`. Network failures degrade to an informational notice — never a crash.
+
+### 🔬 New: behavioral validation (`heimdall validate`)
+
+Static analysis says what a server *can* do — `validate` checks it against what it *actually does*. It runs the server with a capability recorder preloaded, drives each tool, and diffs observed runtime behavior against the static flags:
+
+```bash
+heimdall validate ./my-server            # confirmed / missed / not-exercised
+heimdall validate --list servers.txt     # batch, with a recall metric
+```
+
+- **confirmed** — flagged *and* observed.
+- **not exercised** — flagged but not triggered (a lower bound, not proof the flag is wrong).
+- **missed** — observed but not flagged → a real static gap to review.
+
+Trustworthy for finding false *negatives*. ⚠️ Runs the server and calls its tools — use a disposable VM/container.
+
+### 📊 Field-tested on 2,500 real MCP servers
+
+Swept across the npm registry: **1,726 scanned in ~5 min, 0.7% flagged**, zero crashes. What that says about the code agents trust:
+
+| Of 1,726 real servers… | share |
+|---|---|
+| can **run shell commands** | 45% |
+| make **network calls** | 67% |
+| can **exec _and_ reach network** | 34% |
+| can **`eval` code at runtime** | 9% |
+| touch **credential files** | 5% |
+
+The flagged 0.7% were driven by install-time code execution and prompt-injection — including real servers with **hidden zero-width characters embedded in their tool descriptions**. Full run: [`benchmarks/field-run.md`](https://github.com/caglarbozkurt/mcp-heimdall/blob/main/benchmarks/field-run.md).
+
+> Unlabeled data — a flag means **review this**, not proven malicious.
+
+### 🔧 Also
+- Docs synced (README, SECURITY, skill) and a "field-tested" section added to the landing page.
+
+**Full diff:** https://github.com/caglarbozkurt/mcp-heimdall/compare/v0.1.0...v0.2.0
