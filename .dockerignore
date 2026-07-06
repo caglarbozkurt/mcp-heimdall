@@ -1,0 +1,6 @@
+node_modules
+dist
+.git
+pages/heimdall.js
+benchmarks/*.jsonl
+*.tgz
