@@ -6,8 +6,9 @@
 
 **The watchman at your agent's gate.**
 
-A security scanner for **Model Context Protocol (MCP) servers** — vet a server,
-or a whole agent config, before your agent trusts it.
+A **local, pre-flight security scanner** for **Model Context Protocol (MCP) servers** — vet
+a server, or a whole agent config, before your agent trusts it. No account, no backend, and
+it never runs the server by default.
 
 [![npm](https://img.shields.io/npm/v/mcp-heimdall-scan)](https://www.npmjs.com/package/mcp-heimdall-scan)
 [![CI](https://github.com/caglarbozkurt/mcp-heimdall/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/caglarbozkurt/mcp-heimdall/actions/workflows/ci.yml)
@@ -25,7 +26,8 @@ or a whole agent config, before your agent trusts it.
 MCP servers are unvetted code with a natural-language attack surface: their tool
 descriptions go straight to your model, and the server runs with your machine's access.
 Heimdall scores **what a server can actually do** — not what it claims — and cites the
-exact evidence.
+exact evidence. It runs **entirely on your machine**, needs no account, and **never executes
+the server by default**, so you can vet a package *before* you install it and gate it in CI.
 
 ## Quickstart
 
@@ -59,12 +61,42 @@ an informational profile and never fails the scan — only hard **gates** and re
 
 ## What makes it different
 
-- **Sees the whole gate.** It reasons across the *set* of servers you've configured — the
-  cross-server exfil path neither server shows alone. Most scanners look at one at a time.
+- **Local, and it doesn't run the server.** Everything is static and offline by default — no
+  account, no backend, nothing uploaded — and it never executes untrusted code unless you opt
+  into `--handshake` (documented for a disposable VM only). You vet a package *before* installing.
 - **Proves the path.** Taint/data-flow turns "reads files AND has network = fail" into a
   concrete, located flow — so it doesn't cry wolf on a config read plus an unrelated API call.
+- **Sees the whole gate.** It reasons across the *set* of servers you've configured — the
+  cross-server exfil path neither server shows alone. Most scanners look at one at a time.
 - **A gate you control.** Detectors emit facts; a **policy** you define turns them into
   pass / warn / fail. Deny capabilities, require provenance, add audited waivers, gate CI.
+
+## How it compares
+
+Heimdall isn't the only MCP scanner — [Snyk](https://github.com/snyk/agent-scan),
+[Cisco](https://github.com/cisco-ai-defense/mcp-scanner), and
+[Invariant](https://github.com/invariantlabs-ai/mcp-scan) all have one, with more brand and
+cloud intelligence behind them. Heimdall's wedge is being the **lightweight, fully local,
+evidence-citing, CI-gateable** one that **doesn't execute servers by default**.
+
+| | **Heimdall** | Snyk agent-scan | Invariant MCP-Scan | Cisco MCP Scanner |
+|---|---|---|---|---|
+| Fully local, nothing shared | ✅ | ❌ shares data w/ cloud | ❌ calls their API | ⚠️ offline YARA; LLM engine is cloud |
+| Runs the server by default | ❌ static-first | scans installed | ⚠️ runtime proxy mode | ⚠️ live modes available |
+| Reads source → **proven taint** | ✅ | — | — | — |
+| Cross-server composition | ✅ | ~ toxic flows | ~ cross-origin | — |
+| Drift / rug-pull | ✅ | — | ✅ tool pinning | — |
+| Dependency CVEs | ✅ OSV.dev | ✅ | — | ✅ |
+| SARIF / CI gate | ✅ | — | — | ✅ |
+| No account / backend | ✅ | ❌ | ❌ | ⚠️ |
+
+**Where the incumbents win:** cloud intelligence (Snyk's vuln DB, Cisco's LLM-as-judge + AI
+Defense, Invariant's guardrail models), machine-wide inventory, and real adoption. If you want
+a hosted, all-in-one enterprise product, use those. Heimdall is for when you want a **fast,
+private, evidence-based pre-flight check you run yourself and gate in CI** — with nothing
+leaving your machine.
+
+> Competitor details are from their public docs/repos (mid-2026) and may change. `~` = partial, `—` = not clearly documented.
 
 ## Usage
 
@@ -208,9 +240,11 @@ reported, improving run over run.
 ## Tested at scale
 
 Run against **2,500 real MCP packages** from the npm registry (`benchmarks/`): **1,726 scanned**
-in ~5 minutes, **0.7% flagged** — robust on messy real-world code. Separately, **100%
-precision / recall** on a small labeled corpus (`npm run eval`), including the Damn Vulnerable
-MCP project. Full log: [`benchmarks/field-run.md`](benchmarks/field-run.md).
+in ~5 minutes, **0.7% flagged** — robust on messy real-world code. Separately, it scores
+**100% on the small labeled fixture corpus** (`npm run eval`, ~10 benign/malicious fixtures
+including the Damn Vulnerable MCP project) — a calibration check, *not* a broad real-world
+accuracy number; the field scans above are unlabeled and used only for robustness. Full log:
+[`benchmarks/field-run.md`](benchmarks/field-run.md).
 
 What that scan says about the ecosystem your agent trusts:
 
